@@ -7,13 +7,12 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
    <title>{{ $title ?? config('app.name') }}</title>
 
-   @vite(['resources/css/app.css', 'resources/js/app.js'])
+   @vite(['resources/css/app.css'])
 
    @livewireStyles
 </head>
 
-<body
-   x-data="{ page: 'ecommerce', 'loaded': true, 'darkMode': true, 'stickyMenu': false, 'sidebarToggle': false, 'scrollTop': false }"
+<body x-data="{  page: 'ecommerce', 'darkMode': true, 'stickyMenu': false, 'sidebarToggle': false, 'scrollTop': false }"
    x-init="
          darkMode = JSON.parse(localStorage.getItem('darkMode'));
          $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(value)))"
@@ -41,6 +40,17 @@
       </div>
       <!-- ===== Content Area End ===== -->
    </div>
+   <x-modals name="test">
+      <div class="p-6 mt-3">
+         <h1 class="font-bold text-center text-2xl">Hello</h1>
+      </div>
+   </x-modals>
+
+   <x-modals name="kepet">
+      <div class="p-6 mt-3">
+         <h1 class="font-bold text-center text-2xl">Kepet</h1>
+      </div>
+   </x-modals>
    @livewireScripts
 </body>
 
