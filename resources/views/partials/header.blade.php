@@ -167,7 +167,7 @@
         </a>
 
         <!-- Dropdown Start -->
-        <div x-show="dropdownOpen"
+        <div x-cloak x-show="dropdownOpen"
           class="absolute right-0 mt-2 flex w-55 flex-col rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
           <ul class="flex flex-col gap-5 border-b border-stroke px-6 py-7.5 dark:border-strokedark">
             <li>
