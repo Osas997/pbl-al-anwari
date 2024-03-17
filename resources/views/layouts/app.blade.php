@@ -40,18 +40,11 @@
       </div>
       <!-- ===== Content Area End ===== -->
    </div>
-   <x-modals name="test">
+   {{-- <x-modals name="test">
       <div class="p-6 mt-3">
          <h1 class="font-bold text-center text-2xl">Hello</h1>
       </div>
-   </x-modals>
-
-   <x-modals name="kepet">
-      <div class="p-6 mt-3">
-         <h1 class="font-bold text-center text-2xl">Kepet</h1>
-      </div>
-   </x-modals>
-
+   </x-modals> --}}
    @livewireScripts
 </body>
 
