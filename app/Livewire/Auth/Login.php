@@ -42,7 +42,7 @@ class Login extends Component
 
             Session::regenerate();
 
-            $this->redirectIntended(default: '/dashboard', navigate: true);
+            $this->redirectIntended(default: 'admin/dashboard', navigate: true);
         }
 
         RateLimiter::hit($this->throttleKey());

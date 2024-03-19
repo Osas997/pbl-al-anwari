@@ -6,13 +6,6 @@
     </div>
     @endif
 
-    @if (auth('admin')->check())
-    @if(auth('admin')->user()->hasRole('admin'))
-    <h1>Anda sudah login</h1>
-    @endif
-
-    @endif
-
     <div class="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
         <div class="border-b border-stroke md:px-6.5 px-2 py-4 dark:border-strokedark">
             <h3 class="font-medium text-black dark:text-white">
