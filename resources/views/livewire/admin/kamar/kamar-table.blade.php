@@ -31,7 +31,11 @@
                         {{ $item->ketua_kamar }}
                     </td>
                     <td class="px-6 py-4">
-                        <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                        <a x-on:click="$dispatch('update-kamar', { kamar_id: {{ $item->id }} })"
+                            class="font-medium text-blue-600 dark:text-blue-500 hover:underline cursor-pointer">Edit</a>
+                        |
+                        <a x-on:click="$dispatch('delete-kamar-modal', { kamar_id: {{ $item->id }} })"
+                            class="font-medium text-red-600 dark:text-red-500 hover:underline cursor-pointer">Delete</a>
                     </td>
                 </tr>
                 @endforeach

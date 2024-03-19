@@ -11,6 +11,14 @@ class KamarTable extends Component
 {
     use WithPagination;
 
+
+    #[On("delete-kamar")]
+    public function delete($kamar_id)
+    {
+        $kamar = Kamar::findOrFail($kamar_id);
+        $kamar->delete();
+    }
+
     #[On('toast')]
     public function render()
     {
