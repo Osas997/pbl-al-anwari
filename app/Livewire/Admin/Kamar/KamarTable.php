@@ -15,8 +15,12 @@ class KamarTable extends Component
     #[On("delete-kamar")]
     public function delete($kamar_id)
     {
-        $kamar = Kamar::findOrFail($kamar_id);
-        $kamar->delete();
+        try {
+            $kamar = Kamar::findOrFail($kamar_id);
+            $kamar->delete();
+        } catch (\Throwable $th) {
+            $this->dispatch('toast', "Gagal Menghapus Kamar " . $th->getMessage());
+        }
     }
 
     #[On('toast')]
