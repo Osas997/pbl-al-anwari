@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\LogoutController;
+use App\Livewire\Admin\Angkatan\Angkatan;
+use App\Livewire\Admin\Angkatan\AngkatanDeletedFile;
 use App\Livewire\Admin\Dashboard;
 use App\Livewire\Admin\Diniyyah\Diniyyah;
 use App\Livewire\Admin\Diniyyah\DinyyahDeletedFile;
@@ -25,6 +27,9 @@ Route::middleware('role:admin,admin')->prefix('admin')->group(function () {
 
    Route::get('diniyyah', Diniyyah::class)->name('diniyyah');
    Route::get('deleted-diniyyah', DinyyahDeletedFile::class)->name('deleted-diniyyah');
+
+   Route::get('angkatan', Angkatan::class)->name('angkatan');
+   Route::get('deleted-angkatan', AngkatanDeletedFile::class)->name('deleted-angkatan');
 
    Route::get('settings', App\Livewire\Santri\Test::class)->name('settings');
    Route::view('tes', 'app')->name('tes');

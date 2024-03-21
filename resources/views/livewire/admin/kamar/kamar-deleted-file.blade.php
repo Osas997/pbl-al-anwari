@@ -1,5 +1,5 @@
 <div>
-    <div>
+    <div class="pt-2 pb-6">
         <a wire:navigate href="{{ route('kamar') }}">Back</a>
     </div>
 

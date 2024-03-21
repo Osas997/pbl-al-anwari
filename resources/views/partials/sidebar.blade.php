@@ -79,14 +79,20 @@
               <ul class="mb-5.5 mt-4 flex flex-col gap-2.5 pl-6">
                 <li>
                   <a wire:navigate
-                    class="{{ Request::is('admin/kamar') ? 'text-active' : 'text-bodydark2' }} font-semibold group relative flex items-center gap-2.5 rounded-md px-4 font-mediumduration-300 ease-in-out hover:text-white"
+                    class="{{ Request::is('admin/kamar') || Request::is('admin/deleted-kamar') ? 'text-active' : 'text-bodydark2' }} font-semibold group relative flex items-center gap-2.5 rounded-md px-4 font-mediumduration-300 ease-in-out hover:text-white"
                     href="{{ route('kamar') }}">Kamar
                   </a>
                 </li>
                 <li>
                   <a wire:navigate
-                    class="{{ Request::is('admin/diniyyah') ? 'text-active' : 'text-bodydark2' }} group relative flex items-center gap-2.5 rounded-md px-4 font-medium duration-300 ease-in-out hover:text-white"
+                    class="{{ Request::is('admin/diniyyah') || Request::is('admin/deleted-diniyyah')? 'text-active' : 'text-bodydark2' }} group relative flex items-center gap-2.5 rounded-md px-4 font-medium duration-300 ease-in-out hover:text-white"
                     href="{{ route('diniyyah') }}">Diniyyah
+                  </a>
+                </li>
+                <li>
+                  <a wire:navigate
+                    class="{{ Request::is('admin/angkatan') || Request::is('admin/deleted-angkatan')? 'text-active' : 'text-bodydark2' }} group relative flex items-center gap-2.5 rounded-md px-4 font-medium duration-300 ease-in-out hover:text-white"
+                    href="{{ route('angkatan') }}">Angkatan
                   </a>
                 </li>
               </ul>

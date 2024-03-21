@@ -9,7 +9,7 @@
     <div class="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
         <div class="border-b border-stroke md:px-6.5 px-2 py-4 dark:border-strokedark">
             <h3 class="font-medium text-black dark:text-white">
-                Sign In Santri
+                Sign In
             </h3>
         </div>
         <form wire:submit="authenticate">
@@ -57,7 +57,7 @@
                 </div>
 
                 <button type="submit"
-                    class="flex w-full justify-center rounded bg-primary p-3 font-medium text-gray hover:bg-opacity-90">
+                    class="flex w-full justify-center text-white rounded bg-primary p-3 font-medium text-gray hover:bg-opacity-90">
                     Login
                 </button>
             </div>
