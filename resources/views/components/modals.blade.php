@@ -1,12 +1,11 @@
-{{-- @props([
+@props([
 'name',
-]) --}}
+'header'
+])
 
 <div x-data="{ modelOpen: false }" x-on:open-modal.window="$event.detail == '{{ $name }}' ? modelOpen = true : null"
    x-on:close-modal.window="$event.detail == '{{ $name }}' ? modelOpen = false : null"
-   x-on:close.stop="modelOpen = false" x-on:keydown.escape.window="modelOpen = false"
-   x-on:keydown.tab.prevent="$event.shiftKey || nextFocusable().focus()"
-   x-on:keydown.shift.tab.prevent="prevFocusable().focus()">
+   x-on:close.stop="modelOpen = false" x-on:keydown.escape.window="modelOpen = false">
    <div x-show="modelOpen" class="fixed inset-0 z-999999 overflow-y-auto" aria-labelledby="modal-title" role="dialog"
       aria-modal="true">
       <div class="flex items-start justify-center min-h-screen px-4 text-center md:items-center sm:block sm:p-0">
@@ -22,9 +21,9 @@
             x-transition:leave="transition ease-in duration-200 transform"
             x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100"
             x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-            class="inline-block w-full max-w-xl p-8 my-20 overflow-hidden text-left transition-all transform bg-white rounded-lg shadow-xl 2xl:max-w-2xl">
-            <div class="flex items-center justify-between space-x-4">
-               <h1 class="text-xl font-medium text-gray-800 ">Invite team memvber</h1>
+            class="inline-block w-full max-w-xl my-20 overflow-hidden text-left transition-all transform bg-white rounded-lg shadow-xl 2xl:max-w-2xl">
+            <div class="flex items-center p-6 justify-between space-x-4">
+               <h1 class="text-xl font-medium text-gray-800 ">{{ $header }}</h1>
 
                <button @click="modelOpen = false" class="text-gray-600 focus:outline-none hover:text-gray-700">
                   <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
@@ -34,12 +33,10 @@
                   </svg>
                </button>
             </div>
-
-            <p class="mt-2 text-sm text-gray-500 ">
-               Add your teammate to your team and start work to get things done
-            </p>
-
-            {{ $slot }}
+            <hr>
+            <div class="p-6">
+               {{ $slot }}
+            </div>
          </div>
       </div>
    </div>
