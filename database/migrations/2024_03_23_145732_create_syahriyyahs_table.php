@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('jenis_domisili');
             $table->integer('biaya');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

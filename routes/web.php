@@ -3,11 +3,15 @@
 use App\Http\Controllers\LogoutController;
 use App\Livewire\Admin\Angkatan\Angkatan;
 use App\Livewire\Admin\Angkatan\AngkatanDeletedFile;
+use App\Livewire\Admin\Catering\Catering;
+use App\Livewire\Admin\Catering\CateringDeletedFile;
 use App\Livewire\Admin\Dashboard;
 use App\Livewire\Admin\Diniyyah\Diniyyah;
 use App\Livewire\Admin\Diniyyah\DinyyahDeletedFile;
 use App\Livewire\Admin\Kamar\Kamar;
 use App\Livewire\Admin\Kamar\KamarDeletedFile;
+use App\Livewire\Admin\Syahriyyah\Syahriyyah;
+use App\Livewire\Admin\Syahriyyah\SyahriyyahDeletedFile;
 use App\Livewire\Auth\Login;
 use Illuminate\Support\Facades\Route;
 
@@ -30,6 +34,12 @@ Route::middleware('role:admin,admin')->prefix('admin')->group(function () {
 
    Route::get('angkatan', Angkatan::class)->name('angkatan');
    Route::get('deleted-angkatan', AngkatanDeletedFile::class)->name('deleted-angkatan');
+
+   Route::get('catering', Catering::class)->name('catering');
+   Route::get('deleted-catering', CateringDeletedFile::class)->name('deleted-catering');
+
+   Route::get('syahriyyah', Syahriyyah::class)->name('syahriyyah');
+   Route::get('deleted-syahriyyah', SyahriyyahDeletedFile::class)->name('deleted-syahriyyah');
 
    Route::get('settings', App\Livewire\Santri\Test::class)->name('settings');
    Route::view('tes', 'app')->name('tes');

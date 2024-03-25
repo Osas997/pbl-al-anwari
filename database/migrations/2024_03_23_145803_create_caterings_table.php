@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->integer('jumlah_catering');
             $table->integer('biaya');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
