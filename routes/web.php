@@ -36,10 +36,8 @@ Route::middleware('role:admin,admin')->prefix('admin')->group(function () {
    Route::get('deleted-angkatan', AngkatanDeletedFile::class)->name('deleted-angkatan');
 
    Route::get('catering', Catering::class)->name('catering');
-   Route::get('deleted-catering', CateringDeletedFile::class)->name('deleted-catering');
 
    Route::get('syahriyyah', Syahriyyah::class)->name('syahriyyah');
-   Route::get('deleted-syahriyyah', SyahriyyahDeletedFile::class)->name('deleted-syahriyyah');
 
    Route::get('settings', App\Livewire\Santri\Test::class)->name('settings');
    Route::view('tes', 'app')->name('tes');

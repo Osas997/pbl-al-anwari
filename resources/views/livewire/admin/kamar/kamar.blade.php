@@ -47,8 +47,12 @@
     <x-toast />
 </div>
 
-@push('script')
+
+@assets
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+@endassets
+
+@script
 <script>
     window.addEventListener('delete-kamar-modal', event => {
         Swal.fire({
@@ -73,4 +77,4 @@
         });
     });
 </script>
-@endpush
+@endscript
