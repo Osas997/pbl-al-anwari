@@ -1,10 +1,6 @@
-<div class="w-full md:w-1/3 mx-auto mt-22">
+{{-- <div class="w-full md:w-1/3 mx-auto mt-22">
 
-    @if (session()->has('error'))
-    <div class="flex w-full justify-center mb-4">
-        <x-alert-error message="{{ session('error') }}" />
-    </div>
-    @endif
+  
 
     <div class="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
         <div class="border-b border-stroke md:px-6.5 px-2 py-4 dark:border-strokedark">
@@ -62,5 +58,68 @@
                 </button>
             </div>
         </form>
+    </div>
+</div> --}}
+<div class="w-full min-h-screen flex items-center">
+
+
+    <div
+        class="flex w-full max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800 lg:max-w-4xl">
+        <div class="hidden bg-cover lg:block lg:w-1/2"
+            style="background-image: url('https://images.unsplash.com/photo-1606660265514-358ebbadc80d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1575&q=80');">
+        </div>
+
+        <div class="w-full px-6 py-8 md:px-8 lg:w-1/2">
+            <div class="flex justify-center mx-auto">
+                <img class="w-auto h-7 sm:h-8" src="https://merakiui.com/images/logo.svg" alt="">
+            </div>
+
+            <p class="mt-3 text-xl text-center text-gray-600 dark:text-gray-200 pb-4">
+                Welcome back!
+            </p>
+
+            @if (session()->has('error'))
+                <div class="flex w-full justify-center mb-4 my-2">
+                    <x-alert-error message="wdewdjk" />
+                </div>
+            @endif
+
+            <hr>
+
+            <div class="mt-4">
+                <label class="block mb-2 text-sm font-medium text-gray-600 dark:text-gray-200"
+                    for="LoggingEmailAddress">Username</label>
+                <input id="LoggingEmailAddress"
+                    class="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-blue-300"
+                    type="email" />
+            </div>
+
+            <div class="mt-4">
+                <div class="flex justify-between">
+                    <label class="block mb-2 text-sm font-medium text-gray-600 dark:text-gray-200"
+                        for="loggingPassword">Password</label>
+
+                </div>
+
+                <input id="loggingPassword"
+                    class="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-blue-300"
+                    type="password" />
+            </div>
+
+            <div class="mt-6">
+                <button
+                    class="w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-gray-800 rounded-lg hover:bg-gray-700 focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-50">
+                    Log In
+                </button>
+            </div>
+
+            <div class="flex items-center justify-between mt-4">
+                <span class="w-1/5 border-b dark:border-gray-600 md:w-1/4"></span>
+
+
+
+                <span class="w-1/5 border-b dark:border-gray-600 md:w-1/4"></span>
+            </div>
+        </div>
     </div>
 </div>
