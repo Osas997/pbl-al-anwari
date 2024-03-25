@@ -16,6 +16,8 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             RoleSeeder::class,
+            CateringSeeder::class,
+            SyahriyyahSeeder::class,
         ]);
 
         $admin = Admin::create([
