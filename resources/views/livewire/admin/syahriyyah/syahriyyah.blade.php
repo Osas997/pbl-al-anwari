@@ -2,7 +2,7 @@
     <!-- Breadcrumb Start -->
     <div class="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <h2 class="text-title-md2 font-bold text-black dark:text-white">
-            Syahriyyah
+            Data Syahriyyah
         </h2>
 
         <nav>

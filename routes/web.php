@@ -26,9 +26,6 @@ Route::get('/logout', LogoutController::class)->name('logout')->middleware('auth
 Route::middleware('role:admin,admin')->prefix('admin')->group(function () {
    Route::get('dashboard', Dashboard::class)->name('dashboard');
 
-   Route::get('kamar', Kamar::class)->name('kamar');
-   Route::get('deleted-kamar', KamarDeletedFile::class)->name('deleted-kamar');
-
    Route::get('diniyyah', Diniyyah::class)->name('diniyyah');
    Route::get('deleted-diniyyah', DinyyahDeletedFile::class)->name('deleted-diniyyah');
 

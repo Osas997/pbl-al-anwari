@@ -2,7 +2,7 @@
     <!-- Breadcrumb Start -->
     <div class="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <h2 class="text-title-md2 font-bold text-black dark:text-white">
-            Angkatan
+            Data Angkatan
         </h2>
 
         <nav>
@@ -24,8 +24,8 @@
             </button>
             <div>
                 <a href="{{ route('deleted-angkatan') }}" wire:navigate>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="#000000" class="bi bi-trash"
-                        viewBox="0 0 16 16">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="#000000"
+                        class="bi bi-trash" viewBox="0 0 16 16">
                         <path
                             d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z" />
                         <path
@@ -48,29 +48,29 @@
 </div>
 
 @push('script')
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script>
-    window.addEventListener('delete-angkatan-modal', event => {
-        Swal.fire({
-        title: "Apakah anda yakin?",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Yes, delete it!"
-        }).then((result) => {
-            if (result.isConfirmed) {
-                Swal.fire({
-                title: "Deleted!",
-                text: "Your file has been deleted.",
-                icon: "success"
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        window.addEventListener('delete-angkatan-modal', event => {
+            Swal.fire({
+                title: "Apakah anda yakin?",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, delete it!"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire({
+                        title: "Deleted!",
+                        text: "Your file has been deleted.",
+                        icon: "success"
+                    });
+
+                    Livewire.dispatch('delete-angkatan', {
+                        angkatan_id: event.detail.angkatan_id
+                    });
+                }
             });
-            
-            Livewire.dispatch('delete-angkatan', {
-                angkatan_id: event.detail.angkatan_id
-            });
-        }
         });
-    });
-</script>
+    </script>
 @endpush
