@@ -17,12 +17,8 @@
     <!-- Breadcrumb End -->
 
     <section class="py-8 px-10 bg-white rounded-lg">
-
         <livewire:admin.catering.catering-table />
     </section>
-
-    {{-- Modal Create --}}
-    <livewire:admin.catering.catering-create />
 
     {{-- Modal Edit --}}
     <livewire:admin.catering.catering-edit />

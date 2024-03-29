@@ -19,12 +19,12 @@
     <section class="py-8 px-10 bg-white rounded-lg dark:bg-slate-600">
         <div class="my-3 flex justify-between items-center">
             <button type="button" x-on:click="$dispatch('open-modal', 'create-diniyyah-modal')"
-                class="inline-block rounded-full bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-primary-3 transition duration-150 ease-in-out hover:bg-primary-accent-300 hover:shadow-primary-2 focus:bg-primary-accent-300 focus:shadow-primary-2 focus:outline-none focus:ring-0 active:bg-primary-600 active:shadow-primary-2 motion-reduce:transition-none dark:shadow-black/30 dark:hover:shadow-dark-strong dark:focus:shadow-dark-strong dark:active:shadow-dark-strong dark:bg-gray-300 dark:text-slate-800 dark:font-semibold">
+                class="inline-block rounded-full bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-primary-3 transition duration-150 ease-in-out hover:bg-primary-accent-300 hover:shadow-primary-2 focus:bg-primary-accent-300 focus:shadow-primary-2 focus:outline-none focus:ring-0 active:bg-primary-600 active:shadow-primary-2 motion-reduce:transition-none dark:shadow-black/30 dark:hover:shadow-dark-strong dark:focus:shadow-dark-strong dark:active:shadow-dark-strong dark:bg-gray-300 dark:text-slate-800 dark:font-bold">
                 Tambah Diniyyah
             </button>
             <div>
                 <a href="{{ route('deleted-diniyyah') }}" wire:navigate>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="#000000"
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" :fill="darkMode ? 'white' : 'black'"
                         class="bi bi-trash" viewBox="0 0 16 16">
                         <path
                             d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z" />
@@ -48,9 +48,9 @@
 </div>
 
 @push('script')
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script>
-        window.addEventListener('delete-diniyyah-modal', event => {
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    window.addEventListener('delete-diniyyah-modal', event => {
             Swal.fire({
                 title: "Apakah anda yakin?",
                 icon: "warning",
@@ -72,5 +72,5 @@
                 }
             });
         });
-    </script>
+</script>
 @endpush
