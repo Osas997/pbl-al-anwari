@@ -8,7 +8,6 @@
    <title>{{ $title ?? config('app.name') }}</title>
 
    @vite(['resources/css/app.css'])
-
    @livewireStyles
 </head>
 

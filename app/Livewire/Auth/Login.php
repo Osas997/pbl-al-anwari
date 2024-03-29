@@ -45,6 +45,15 @@ class Login extends Component
             $this->redirectIntended(default: 'admin/dashboard', navigate: true);
         }
 
+        if (Auth::guard('web')->attempt(["nis" => $this->username, "password" => $this->password])) {
+
+            RateLimiter::clear($this->throttleKey());
+
+            Session::regenerate();
+
+            $this->redirectIntended(default: 'santri/tes', navigate: true);
+        }
+
         RateLimiter::hit($this->throttleKey());
         session()->flash('error', 'Username Atau Password Anda Salah');
         return;

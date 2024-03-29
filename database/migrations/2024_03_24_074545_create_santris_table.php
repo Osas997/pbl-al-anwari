@@ -13,7 +13,9 @@ return new class extends Migration
     {
         Schema::create('santri', function (Blueprint $table) {
             $table->id();
+            $table->string('nama_santri');
             $table->string('nis');
+            $table->string('password');
             $table->string('no_nik');
             $table->string('no_kk');
             $table->enum('jenis_kelamin', ['L', 'P']);
@@ -36,6 +38,7 @@ return new class extends Migration
             $table->unsignedBigInteger('id_diniyyah');
             $table->foreign('id_diniyyah')->references('id')->on('diniyyah');
 
+            $table->softDeletes();
             $table->timestamps();
         });
     }

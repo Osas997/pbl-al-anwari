@@ -53,7 +53,7 @@
     window.addEventListener('delete-diniyyah-modal', event => {
             Swal.fire({
                 title: "Apakah anda yakin?",
-                icon: "warning",
+                icon: "warning",    
                 showCancelButton: true,
                 confirmButtonColor: "#3085d6",
                 cancelButtonColor: "#d33",
