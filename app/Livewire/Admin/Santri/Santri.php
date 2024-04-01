@@ -2,8 +2,10 @@
 
 namespace App\Livewire\Admin\Santri;
 
+use Livewire\Attributes\Title;
 use Livewire\Component;
 
+#[Title('Santri')]
 class Santri extends Component
 {
 
