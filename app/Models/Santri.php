@@ -38,7 +38,7 @@ class Santri extends Authenticatable
 
     public function diniyyah()
     {
-        return $this->belongsTo(Diniyyah::class, 'id_diniyyah', 'id');
+        return $this->belongsTo(Diniyyah::class, 'id_diniyyah', 'id')->withTrashed();
     }
 
     public function scopeSearchFilter($query, $search)

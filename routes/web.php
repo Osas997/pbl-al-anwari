@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\LogoutController;
+use App\Http\Controllers\TesController;
 use App\Livewire\Admin\Angkatan\Angkatan;
 use App\Livewire\Admin\Angkatan\AngkatanDeletedFile;
 use App\Livewire\Admin\Catering\Catering;
@@ -37,7 +38,7 @@ Route::middleware('admin')->prefix('admin')->group(function () {
 
    Route::get('santri', Santri::class)->name('santri');
    Route::get('deleted-santri', SantriDeletedFile::class)->name('deleted-santri');
-   Route::get('santri/{santri:id}', SantriDetail::class)->name('santri-detail');
+   Route::get('santri/{santri}', SantriDetail::class)->name('santri-detail');
 
    Route::get('settings', App\Livewire\Santri\Test::class)->name('settings');
    Route::view('tes', 'app')->name('tes');
@@ -46,3 +47,6 @@ Route::middleware('admin')->prefix('admin')->group(function () {
 Route::middleware('santri')->prefix('santri')->group(function () {
    Route::get('tes', App\Livewire\Santri\Test::class)->name('tes');
 });
+
+
+Route::get('tes', TesController::class)->name('tesDone');

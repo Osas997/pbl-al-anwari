@@ -83,13 +83,16 @@
                     <td class="px-6 py-4">
                         {{ $item->jenisKelamin($item->jenis_kelamin) }}
                     </td>
-                    <td class="px-6 py-4">
+                    <td class="px-6 py-4 font-bold">
                         {{ strtoupper($item->status) }}
-
                     </td>
                     <td class="px-6 py-4">
-                        <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Lihat
+                        <a href="{{ route('santri-detail', $item->id) }}" wire:navigate
+                            class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Lihat
                             Detail</a>
+                        |
+                        <a x-on:click="$dispatch('update-santri', { santri_id: {{ $item->id }} })"
+                            class="font-medium text-blue-600 dark:text-blue-500 hover:underline cursor-pointer">Edit</a>
                     </td>
                 </tr>
                 @endforeach

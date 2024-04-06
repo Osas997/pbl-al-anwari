@@ -160,10 +160,14 @@
                             <select id="diniyyah" wire:model="id_diniyyah"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                 <option selected>Pilih Diniyyah</option>
+                                @if ($dataDiniyyah->isNotEmpty())
                                 @foreach ($dataDiniyyah as $item)
                                 <option value="{{ $item->id }}">{{ $item->nama_tingkatan }} | {{ $item->kelas }}
                                 </option>
                                 @endforeach
+                                @else
+                                <option value="" disabled>Tidak ada diniyyah</option>
+                                @endif
                             </select>
                             @error('id_diniyyah')
                             <p class="mt-2 text-sm text-red-600 dark:text-red-500"><span class="font-medium">{{ $message
@@ -181,10 +185,14 @@
                             <select id="angkatan" wire:model="id_angkatan"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                 <option selected>Pilih Angkatan</option>
+                                @if ($dataAngkatan->isNotEmpty())
                                 @foreach ($dataAngkatan as $item)
                                 <option value="{{ $item->id }}">{{ $item->tahun_angkatan }}
                                 </option>
                                 @endforeach
+                                @else
+                                <option value="" disabled>Tidak ada angkatan</option>
+                                @endif
                             </select>
                             @error('id_angkatan')
                             <p class="mt-2 text-sm text-red-600 dark:text-red-500"><span class="font-medium">{{
@@ -204,10 +212,15 @@
                     <select id="syahriyyah" wire:model="id_syahriyyah"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                         <option selected>Syahriyyah</option>
+
+                        @if ($dataSyahriyyah->isNotEmpty())
                         @foreach ($dataSyahriyyah as $item)
                         <option value="{{ $item->id }}">{{ $item->jenis_domisili }}
                         </option>
                         @endforeach
+                        @else
+                        <option value="" disabled>Tidak ada syahriyyah</option>
+                        @endif
                     </select>
 
                     @error('id_syahriyyah')
@@ -224,10 +237,14 @@
                             <select id="catering" wire:model="id_catering"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                 <option selected>Pilih Catering</option>
+                                @if ($dataCatering->isNotEmpty())
                                 @foreach ($dataCatering as $item)
                                 <option value="{{ $item->id }}">{{ $item->jumlah_catering }} Kali Makan
                                 </option>
                                 @endforeach
+                                @else
+                                <option value="" disabled>Tidak ada catering</option>
+                                @endif
                             </select>
 
                             @error('id_catering')

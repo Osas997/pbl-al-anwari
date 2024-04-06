@@ -68,7 +68,7 @@ class SantriCreate extends Component
     #[Validate('exists:catering,id', message: "Catering Tidak Valid")]
     public $id_catering;
 
-    #[Validate('required', message: "Nama Ibu Tidak Boleh Kosong")]
+    #[Validate('required', message: "Angkatan Tidak Boleh Kosong")]
     #[Validate('exists:angkatan,id', message: "Angkatan Tidak Valid")]
     public $id_angkatan;
 
@@ -96,6 +96,7 @@ class SantriCreate extends Component
             $this->dispatch('toast', "Gagal Menambah Santri " . $th->getMessage());
         }
     }
+
     public function render()
     {
         $dataDiniyyah = Diniyyah::all();
