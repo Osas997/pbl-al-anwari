@@ -10,17 +10,25 @@ class DinyyahDeletedFile extends Component
 {
     public function restore($diniyyah_id)
     {
-        $diniyyah = Diniyyah::onlyTrashed()->findOrFail($diniyyah_id);
-        $diniyyah->restore();
-        $this->dispatch('toast', 'Diniyyah Berhasil Kembali');
+        try {
+            $diniyyah = Diniyyah::onlyTrashed()->findOrFail($diniyyah_id);
+            $diniyyah->restore();
+            $this->dispatch('toast', 'Diniyyah Berhasil Kembali');
+        } catch (\Throwable $th) {
+            $this->dispatch('toast', "Gagal Mengembalikan Diniyyah " . $th->getMessage());
+        }
     }
 
     #[On('force-delete-diniyyah')]
     public function forceDelete($diniyyah_id)
     {
-        $diniyyah = Diniyyah::onlyTrashed()->findOrFail($diniyyah_id);
-        $diniyyah->forceDelete();
-        $this->dispatch('toast', 'Diniyyah Terhapus Permanent');
+        try {
+            $diniyyah = Diniyyah::onlyTrashed()->findOrFail($diniyyah_id);
+            $diniyyah->forceDelete();
+            $this->dispatch('toast', 'Diniyyah Terhapus Permanent');
+        } catch (\Throwable $th) {
+            $this->dispatch('toast', "Gagal Menghapus Permanent Diniyyah " . $th->getMessage());
+        }
     }
 
 

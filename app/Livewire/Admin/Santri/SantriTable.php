@@ -20,10 +20,21 @@ class SantriTable extends Component
         $this->resetPage();
     }
 
+    #[On("delete-santri")]
+    public function delete($santri_id)
+    {
+        try {
+            $santri = Santri::findOrFail($santri_id);
+            $santri->delete();
+        } catch (\Throwable $th) {
+            $this->dispatch('toast', "Gagal Menghapus santri " . $th->getMessage());
+        }
+    }
+
     #[On('toast')]
     public function render()
     {
-        $santri = Santri::searchFilter($this->search)->orderBy('nama_santri', 'asc')->paginate(2);
+        $santri = Santri::searchFilter($this->search)->orderBy('nama_santri', 'asc')->paginate(15);
 
         return view('livewire.admin.santri.santri-table', compact('santri'));
     }

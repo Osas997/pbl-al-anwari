@@ -37,12 +37,6 @@ class SantriEdit extends Component
     #[Validate('in:P,L', message: "Jenis Kelamin Tidak Valid")]
     public $jenis_kelamin;
 
-    public $nis;
-
-    public $no_kk;
-
-    public $no_nik;
-
     #[Validate('required', message: "Syahriyyah Tidak Boleh Kosong")]
     #[Validate('exists:syahriyyah,id', message: "Syahriyyah Tidak Valid")]
     public $id_syahriyyah;
@@ -58,6 +52,12 @@ class SantriEdit extends Component
     #[Validate('required', message: "Nama Ibu Tidak Boleh Kosong")]
     #[Validate('exists:angkatan,id', message: "Angkatan Tidak Valid")]
     public $id_angkatan;
+
+    public $nis;
+
+    public $no_kk;
+
+    public $no_nik;
 
     public $santri_id;
 
