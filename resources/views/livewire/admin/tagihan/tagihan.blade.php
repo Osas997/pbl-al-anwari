@@ -18,12 +18,15 @@
 
     <section class="py-8 px-10 bg-white rounded-lg dark:bg-slate-600">
         <div class="my-3">
-            <button type="button" x-on:click="$dispatch('open-modal', 'create-diniyyah-modal')"
+            <button type="button" x-on:click="$dispatch('open-modal', 'create-tagihan-modal')"
                 class="inline-block rounded-full bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-primary-3 transition duration-150 ease-in-out hover:bg-primary-accent-300 hover:shadow-primary-2 focus:bg-primary-accent-300 focus:shadow-primary-2 focus:outline-none focus:ring-0 active:bg-primary-600 active:shadow-primary-2 motion-reduce:transition-none dark:shadow-black/30 dark:hover:shadow-dark-strong dark:focus:shadow-dark-strong dark:active:shadow-dark-strong dark:bg-gray-300 dark:text-slate-800 dark:font-bold">
                 Generate Tagihan
             </button>
         </div>
     </section>
+
+     {{-- Modal Create --}}
+    <livewire:admin.tagihan.tagihan-create />
 
     {{-- Toast --}}
     <x-toast />
