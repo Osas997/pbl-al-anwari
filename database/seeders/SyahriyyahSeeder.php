@@ -14,12 +14,12 @@ class SyahriyyahSeeder extends Seeder
     public function run(): void
     {
         Syahriyyah::create([
-            "jenis_domisili" => "Mondok",
+            "jenis_domisili" => "Mukim",
             "biaya" => 100_000
         ]);
 
         Syahriyyah::create([
-            "jenis_domisili" => "Mukim",
+            "jenis_domisili" => "Non Mukim",
             "biaya" => 50_000
         ]);
     }

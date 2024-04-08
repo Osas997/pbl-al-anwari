@@ -9,7 +9,9 @@ export default {
     ],
     darkMode: "class",
     theme: {
-        fontFamily: {},
+        fontFamily: {
+            poppins: ["Poppins", ...defaultTheme.fontFamily.sans],
+        },
         screens: {
             "2xsm": "375px",
             xsm: "425px",

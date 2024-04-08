@@ -39,7 +39,8 @@
         </div>
 
 
-        <livewire:admin.santri.santri-table />
+
+        <livewire:admin.santri.santri-table lazy />
     </section>
 
     {{-- Modal Create --}}

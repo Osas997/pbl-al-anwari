@@ -25,7 +25,8 @@
         </div>
     </section>
 
-     {{-- Modal Create --}}
+
+    {{-- Modal Create --}}
     <livewire:admin.tagihan.tagihan-create />
 
     {{-- Toast --}}

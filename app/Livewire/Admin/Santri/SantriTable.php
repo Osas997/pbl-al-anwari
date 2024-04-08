@@ -31,6 +31,11 @@ class SantriTable extends Component
         }
     }
 
+    public function placeholder()
+    {
+        return view("vendor.livewire.loading-spinner");
+    }
+
     #[On('toast')]
     public function render()
     {

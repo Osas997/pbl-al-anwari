@@ -11,8 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tagihans', function (Blueprint $table) {
+        Schema::create('tagihan', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('id_santri');
+            $table->enum('jenis_tagihan', ['catering', 'syahriyyah']);
+            $table->integer('nominal');
+            $table->date('tgl_tagihan');
+            $table->enum('status', ['belum lunas', 'lunas']);
+            $table->string('tahun_ajaran');
+            $table->string('semester')->nullable();
+            $table->string('bulan')->nullable();
+            $table->foreign('id_santri')->references('id')->on('santri');
             $table->timestamps();
         });
     }
