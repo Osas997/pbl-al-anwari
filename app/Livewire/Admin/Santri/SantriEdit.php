@@ -55,7 +55,7 @@ class SantriEdit extends Component
 
     public $nis;
 
-    public $no_kk;
+    public $no_hp;
 
     public $no_nik;
 
@@ -70,11 +70,11 @@ class SantriEdit extends Component
                 'digits:18',
                 "unique:santri,nis," . $this->santri_id,
             ],
-            "no_kk" => [
+            "no_hp" => [
                 'required',
                 'numeric',
-                'digits:16',
-                "unique:santri,no_kk," . $this->santri_id,
+                'digits_between:11,13',
+                "unique:santri,no_hp," . $this->santri_id,
             ],
             "no_nik" => [
                 'required',
@@ -92,10 +92,10 @@ class SantriEdit extends Component
             'nis.numeric' => 'NIS harus angka.',
             'nis.digits' => 'NIS harus terdiri dari 18 digit.',
             'nis.unique' => 'NIS sudah terdaftar.',
-            'no_kk.required' => 'Nomor KK tidak boleh kosong.',
-            'no_kk.numeric' => 'Nomor KK harus angka.',
-            'no_kk.digits' => 'Nomor KK harus terdiri dari 16 digit.',
-            'no_kk.unique' => 'Nomor KK sudah terdaftar.',
+            'no_hp.required' => 'Nomor HP tidak boleh kosong.',
+            'no_hp.numeric' => 'Nomor HP harus angka.',
+            'no_hp.digits' => 'No HP Harus 11-13 Digit',
+            'no_hp.unique' => 'Nomor HP sudah terdaftar.',
             'no_nik.required' => 'Nomor NIK tidak boleh kosong.',
             'no_nik.numeric' => 'Nomor NIK harus angka.',
             'no_nik.digits' => 'Nomor NIK harus terdiri dari 16 digit.',
@@ -110,7 +110,7 @@ class SantriEdit extends Component
         $this->santri_id = $santri->id;
         $this->nama_santri = $santri->nama_santri;
         $this->nis = $santri->nis;
-        $this->no_kk = $santri->no_kk;
+        $this->no_hp = $santri->no_hp;
         $this->no_nik = $santri->no_nik;
         $this->jenis_kelamin = $santri->jenis_kelamin;
         $this->tempat_lahir = $santri->tempat_lahir;

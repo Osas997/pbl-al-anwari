@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('nis');
             $table->string('password');
             $table->string('no_nik');
-            $table->string('no_kk');
+            $table->string('no_hp');
             $table->enum('jenis_kelamin', ['L', 'P']);
             $table->string('tempat_lahir');
             $table->date('tgl_lahir');

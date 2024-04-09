@@ -14,8 +14,8 @@
             </ol>
         </nav>
     </div>
-    <!-- Breadcrumb End -->
 
+    <!-- Breadcrumb End -->
     <section class="py-8 px-10 bg-white rounded-lg dark:bg-slate-600">
         <div class="my-3">
             <button type="button" x-on:click="$dispatch('open-modal', 'create-tagihan-modal')"

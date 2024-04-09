@@ -1,8 +1,5 @@
 <div class="px-2 md:px-4">
     <!-- Breadcrumb Start -->
-
-
-
     <div class="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <h2 class="text-title-md2 font-bold text-black dark:text-white">
             Data Santri
@@ -38,9 +35,8 @@
             </div>
         </div>
 
-
-
         <livewire:admin.santri.santri-table lazy />
+
     </section>
 
     {{-- Modal Create --}}

@@ -46,9 +46,9 @@ class SantriCreate extends Component
 
     #[Validate('required', message: "No KK Tidak Boleh Kosong")]
     #[Validate('numeric', message: "No KK Harus Angka")]
-    #[Validate('digits:16', message: "No KK Harus 16 Digit")]
-    #[Validate('unique:santri,no_kk', message: "No KK Sudah Terdaftar")]
-    public $no_kk;
+    #[Validate('digits_between:11,13', message: "No HP Harus 11-13 Digit")]
+    #[Validate('unique:santri,no_hp', message: "No HP Sudah Terdaftar")]
+    public $no_hp;
 
     #[Validate('required', message: "No NIK Tidak Boleh Kosong")]
     #[Validate('numeric', message: "No NIK Harus Angka")]
