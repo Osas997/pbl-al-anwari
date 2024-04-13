@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Admin\Tagihan;
 
+use App\Events\GenerateTagihan;
 use App\Models\Angkatan;
 use App\Models\Catering;
 use App\Models\Santri;
@@ -35,10 +36,12 @@ class TagihanCreate extends Component
             $this->validate([
                 "semester" => 'required|in:1,2',
             ]);
+            $this->reset('bulan');
         } else {
             $this->validate([
                 "bulan" => 'required|in:Januari,Februari,Maret,April,Mei,Juni,Juli,Agustus,September,Oktober,November,Desember',
             ]);
+            $this->reset('semester');
         }
 
         $allSantri = Santri::where('status', 'Aktif')->get();
@@ -48,7 +51,8 @@ class TagihanCreate extends Component
 
             foreach ($allSantri as $santri) {
                 $nominal = $validate["jenis_tagihan"] == "syahriyyah" ? $santri->syahriyyah->biaya : $santri->catering->biaya;
-                Tagihan::create([
+
+                $tagihan = Tagihan::create([
                     "id_santri" => $santri->id,
                     "jenis_tagihan" => $validate["jenis_tagihan"],
                     "nominal" => $nominal,
@@ -58,18 +62,20 @@ class TagihanCreate extends Component
                     "semester" => $this->semester,
                     "bulan" => $this->bulan
                 ]);
+
+                GenerateTagihan::dispatch($tagihan);
             }
 
             $this->reset();
 
-            $this->dispatch('toast', 'Berhasil Membuat Tagihan');
+            $this->dispatch('toast', 'Berhasil Membuat Tagihan Dan Mengirim Notifikasi Untuk Semua Santri');
 
             $this->dispatch('close-modal', 'create-tagihan-modal');
 
             DB::commit();
         } catch (\Throwable $th) {
             DB::rollBack();
-            $this->dispatch('toast', "Gagal Membuat Tagihan " . $th->getMessage());
+            $this->dispatch('toast', "Gagal Membuat Tagihan Atau Gagal Mengirim Notifikasi ");
         }
     }
 

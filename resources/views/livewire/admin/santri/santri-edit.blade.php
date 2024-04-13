@@ -1,5 +1,5 @@
 <div>
-    <x-modals name="edit-santri-modal" header="Edit Data Santri" width="max-w-3xl">
+    <x-modals name="edit-santri-modal" header="Edit Data Santri" width="max-w-3xl" margin="my-4">
         <form class="space-y-4" wire:submit='update'>
             <div class="flex justify-center gap-4 flex-wrap">
                 <div class="grow">
@@ -30,12 +30,12 @@
             </div>
             <div class="flex justify-center gap-4 flex-wrap">
                 <div class="grow">
-                    <label for="no_kk" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                        No Kartu Keluarga</label>
-                    <input type="text" id="no_kk" wire:model="no_kk"
+                    <label for="no_hp" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                        No Handphone</label>
+                    <input type="text" id="no_hp" wire:model="no_hp"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                        placeholder="Masukkan No Kartu Keluarga" required />
-                    @error('no_kk')
+                        placeholder="Masukkan No Handphone" required />
+                    @error('no_hp')
                     <p class="mt-2 text-sm text-red-600 dark:text-red-500"><span class="font-medium">{{ $message
                             }}</span>
                     </p>

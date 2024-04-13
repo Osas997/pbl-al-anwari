@@ -33,7 +33,7 @@ class Santri extends Authenticatable
 
     public function angkatan()
     {
-        return $this->belongsTo(Angkatan::class, 'id_angkatan', 'id');
+        return $this->belongsTo(Angkatan::class, 'id_angkatan', 'id')->withTrashed();
     }
 
     public function diniyyah()

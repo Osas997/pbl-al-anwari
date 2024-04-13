@@ -2,6 +2,7 @@
 'name',
 'header',
 'width' => 'max-w-xl',
+'margin' => 'my-22',
 ])
 
 
@@ -23,7 +24,7 @@
             x-transition:leave="transition ease-in duration-200 transform"
             x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100"
             x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-            class="inline-block w-full {{ $width }} my-20 overflow-hidden text-left transition-all transform bg-white dark:bg-slate-800 rounded-lg shadow-xl 2xl:max-w-2xl">
+            class="inline-block w-full {{ $width }} {{ $margin }} overflow-hidden text-left transition-all transform bg-white dark:bg-slate-800 rounded-lg shadow-xl 2xl:max-w-2xl">
             <div class="flex items-center p-6 justify-between space-x-4">
                <h1 class="text-xl font-medium text-gray-800 dark:text-white">{{ $header }}</h1>
 

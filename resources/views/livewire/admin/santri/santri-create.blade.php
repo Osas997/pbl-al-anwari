@@ -1,5 +1,5 @@
 <div>
-    <x-modals name="create-santri-modal" header="Tambah Data Santri" width="max-w-3xl">
+    <x-modals name="create-santri-modal" header="Tambah Data Santri" width="max-w-3xl" margin="my-4">
         <form class="space-y-4" wire:submit='store'>
             <div class="flex justify-center gap-4 flex-wrap">
                 <div class="grow">
