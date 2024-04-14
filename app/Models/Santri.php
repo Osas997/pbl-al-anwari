@@ -48,7 +48,7 @@ class Santri extends Authenticatable
             $query->where('nama_santri', 'like', '%' . $search . '%')
                 ->orWhere('nis', 'like', '%' . $search . '%')
                 ->orWhere('no_nik', 'like', '%' . $search . '%')
-                ->orWhere('no_kk', 'like', '%' . $search . '%'));
+                ->orWhere('no_hp', 'like', '%' . $search . '%'));
         }
 
         // if ($filter) {

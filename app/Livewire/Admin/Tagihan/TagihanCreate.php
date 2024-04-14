@@ -44,12 +44,18 @@ class TagihanCreate extends Component
             $this->reset('semester');
         }
 
-        $allSantri = Santri::where('status', 'Aktif')->get();
+        $dataSantri = Santri::where('status', 'Aktif');
+
+        // if ($validate["jenis_tagihan"] == "catering") {
+        //     $dataSantri = $dataSantri->whereHas('syahriyyah', fn ($q) => $q->where('jenis_domisili', 'Mukim'));
+        // }
+
+        $dataSantri = $dataSantri->get();
 
         try {
             DB::beginTransaction();
 
-            foreach ($allSantri as $santri) {
+            foreach ($dataSantri as $santri) {
                 $nominal = $validate["jenis_tagihan"] == "syahriyyah" ? $santri->syahriyyah->biaya : $santri->catering->biaya;
 
                 $tagihan = Tagihan::create([
@@ -63,7 +69,7 @@ class TagihanCreate extends Component
                     "bulan" => $this->bulan
                 ]);
 
-                GenerateTagihan::dispatch($tagihan);
+                // GenerateTagihan::dispatch($tagihan);
             }
 
             $this->reset();

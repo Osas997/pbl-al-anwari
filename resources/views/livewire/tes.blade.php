@@ -68,7 +68,7 @@
             </thead>
             <tbody>
                 @foreach ($santri as $index => $item)
-                <tr class="bg-white dark:bg-gray-800" wire:key="{{ $item->id }}">
+                <tr class="bg-white dark:bg-gray-800" wire:key="{{ $item->id }}" id="santri-{{ $item->id }}">
                     <th scope="row"
                         class="px-6 py-4 border border-slate-300 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                         {{ $item->nama_santri }}

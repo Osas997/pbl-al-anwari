@@ -19,7 +19,7 @@
 <body x-data="{'darkMode': true, 'stickyMenu': false, 'sidebarToggle': false, 'scrollTop': false }" x-init="
          darkMode = JSON.parse(localStorage.getItem('darkMode'));
          $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(value)))"
-   :class="{'dark text-bodydark bg-boxdark-2': darkMode === true}">
+   :class="{'dark text-bodydark bg-boxdark-2': darkMode === true}" id="app">
 
    <!-- ===== Page Wrapper Start ===== -->
    <div class="flex h-screen overflow-hidden">

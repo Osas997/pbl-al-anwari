@@ -8,7 +8,6 @@ use Livewire\Component;
 
 class DinyyahTable extends Component
 {
-
     #[On("delete-diniyyah")]
     public function delete($diniyyah_id)
     {
@@ -23,8 +22,7 @@ class DinyyahTable extends Component
     #[On('toast')]
     public function render()
     {
-        $diniyyah = Diniyyah::latest()->paginate(7);
-
+        $diniyyah = Diniyyah::latest()->get();
         return view('livewire.admin.diniyyah.dinyyah-table', compact('diniyyah'));
     }
 }

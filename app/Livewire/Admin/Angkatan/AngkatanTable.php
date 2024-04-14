@@ -23,7 +23,7 @@ class AngkatanTable extends Component
     #[On('toast')]
     public function render()
     {
-        $angkatan = Angkatan::latest()->paginate(7);
+        $angkatan = Angkatan::latest()->get();
         return view('livewire.admin.angkatan.angkatan-table', compact('angkatan'));
     }
 }

@@ -33,13 +33,13 @@ class SantriTable extends Component
 
     public function placeholder()
     {
-        return view("vendor.livewire.loading-spinner");
+        return view("vendor.loading-spinner");
     }
 
     #[On('toast')]
     public function render()
     {
-        $santri = Santri::searchFilter($this->search)->orderBy('nama_santri', 'asc')->paginate(15);
+        $santri = Santri::searchFilter($this->search)->orderBy('nama_santri', 'asc')->paginate(10);
 
         return view('livewire.admin.santri.santri-table', compact('santri'));
     }
