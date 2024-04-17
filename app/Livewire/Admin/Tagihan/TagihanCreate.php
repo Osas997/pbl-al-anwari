@@ -44,7 +44,7 @@ class TagihanCreate extends Component
             $this->reset('semester');
         }
 
-        $dataSantri = Santri::where('status', 'Aktif');
+        $dataSantri = Santri::with(['syahriyyah', 'catering'])->where('status', 'Aktif');
 
         // if ($validate["jenis_tagihan"] == "catering") {
         //     $dataSantri = $dataSantri->whereHas('syahriyyah', fn ($q) => $q->where('jenis_domisili', 'Mukim'));

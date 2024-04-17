@@ -30,7 +30,7 @@
                         {{ $item->jumlah_catering }} Kali Makan
                     </td>
                     <td class="px-6 py-4">
-                        {{ $item->formatToRupiah($item->biaya) }}
+                        {{ $item->formatToRupiah('biaya') }}
                     </td>
                     <td class="px-6 py-4">
                         <a x-on:click="$dispatch('update-catering', { catering_id: {{ $item->id }} })"

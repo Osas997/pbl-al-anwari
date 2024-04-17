@@ -26,9 +26,15 @@
         </div>
         @else
         <div class="my-3">
-            <h1 class="font-semibold text-center text-red-500 text-2xl"> Santri Tidak Ditemukan </h1>
+            <h1 class="font-semibold text-center text-red-500 text-2xl"> Santri Tidak Ditemukan Tidak Dapat Membuat
+                Tagihan</h1>
         </div>
         @endif
+    </section>
+
+
+    <section class="mt-6 px-10 py-8 bg-white rounded-lg dark:bg-slate-600">
+        <livewire:admin.tagihan.tagihan-table lazy />
     </section>
 
 

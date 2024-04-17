@@ -13,6 +13,7 @@ use App\Livewire\Admin\Santri\SantriDeletedFile;
 use App\Livewire\Admin\Santri\SantriDetail;
 use App\Livewire\Admin\Syahriyyah\Syahriyyah;
 use App\Livewire\Admin\Tagihan\Tagihan;
+use App\Livewire\Admin\Tagihan\TagihanDetail;
 use App\Livewire\Auth\Login;
 use App\Livewire\Tes;
 use Illuminate\Support\Facades\Route;
@@ -43,6 +44,7 @@ Route::middleware('admin')->prefix('admin')->group(function () {
    Route::get('santri/{santri}', SantriDetail::class)->name('santri-detail');
 
    Route::get('tagihan', Tagihan::class)->name('tagihan');
+   Route::get('tagihan/{tagihan}', TagihanDetail::class)->name('tagihan-detail');
 
    Route::get('settings', App\Livewire\Santri\Test::class)->name('settings');
    Route::get('/tes',  Tes::class)->name('tes');

@@ -1,0 +1,22 @@
+<?php
+
+namespace App\Livewire\Admin\Tagihan;
+
+use App\Models\Tagihan;
+use Livewire\Component;
+
+class TagihanDetail extends Component
+{
+
+    public $tagihan;
+
+    public function mount(Tagihan $tagihan)
+    {
+        $this->tagihan = $tagihan->load('santri');
+    }
+
+    public function render()
+    {
+        return view('livewire.admin.tagihan.tagihan-detail');
+    }
+}

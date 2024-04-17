@@ -35,8 +35,11 @@
             </div>
         </div>
 
-        <livewire:admin.santri.santri-table lazy />
 
+    </section>
+
+    <section class="mt-6 px-10 py-8 bg-white rounded-lg dark:bg-slate-600">
+        <livewire:admin.santri.santri-table lazy />
     </section>
 
     {{-- Modal Create --}}

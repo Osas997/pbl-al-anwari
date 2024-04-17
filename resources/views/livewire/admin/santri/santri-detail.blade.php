@@ -119,7 +119,7 @@
                 <p class="w-2/3 mx-4 text-sm md:text-md">{{ $santri->diniyyah->nama_tingkatan }}</p>
             </div>
         </div>
-        <h1 class="font-semibold text-md text-black py-6">Biaya</h1>
+        <h1 class="font-semibold text-md text-black py-6 dark:text-white">Biaya</h1>
         <div class="w-full text-gray-900 divide-y divide-gray-200 dark:text-white dark:divide-gray-700">
             <div class="flex px-2 py-2 gap-4 items-center">
                 <div class="flex w-1/3 justify-between me-2">
@@ -127,7 +127,7 @@
                     <p>:</p>
                 </div>
                 <p class="w-2/3 mx-4 text-sm md:text-md">{{ $santri->syahriyyah->jenis_domisili }} (
-                    {{ $santri->syahriyyah->formatToRupiah($santri->syahriyyah->biaya) }} )</p>
+                    {{ $santri->syahriyyah->formatToRupiah('biaya') }} )</p>
             </div>
             <div class="flex px-2 py-2 gap-4 items-center">
                 <div class="flex w-1/3 justify-between me-2">
@@ -136,7 +136,7 @@
                 </div>
                 <p class="w-2/3 mx-4 text-sm md:text-md">
                     {{ $santri->catering->jumlah_catering }} Kali Makan ( {{
-                    $santri->catering->formatToRupiah($santri->catering->biaya) }} )
+                    $santri->catering->formatToRupiah('biaya') }} )
                 </p>
             </div>
         </div>

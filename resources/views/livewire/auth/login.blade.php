@@ -56,7 +56,7 @@
                     </label>
                 </div>
 
-                <button type="submit"
+                <button type="submit" wire:loading.class="bg-blue-800 cursor-wait"
                     class="flex w-full justify-center text-white rounded bg-primary p-3 font-medium text-gray hover:bg-opacity-90">
                     Login
                 </button>

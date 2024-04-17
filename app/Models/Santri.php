@@ -41,7 +41,12 @@ class Santri extends Authenticatable
         return $this->belongsTo(Diniyyah::class, 'id_diniyyah', 'id')->withTrashed();
     }
 
-    public function scopeSearchFilter($query, $search)
+    public function tagihan()
+    {
+        return $this->hasMany(Tagihan::class, 'id_santri', 'id');
+    }
+
+    public function scopeSearchFilter($query, $search, $status)
     {
         if ($search) {
             $query->where(fn ($query) =>
@@ -51,15 +56,11 @@ class Santri extends Authenticatable
                 ->orWhere('no_hp', 'like', '%' . $search . '%'));
         }
 
-        // if ($filter) {
-        //     if ($filter == "pelakuRendah") {
-        //         $query->whereHas(
-        //             'surveyRespon',
-        //             fn ($query) =>
-        //             $query->whereBetween("skor_total_pelaku", [1, 23])
-        //         );
-        //     }
-
+        if ($status) {
+            $query->where('status', $status);
+        } else {
+            $query->where('status', 'Aktif');
+        }
         //     if ($filter == "pelakuSedang") {
         //         $query->whereHas(
         //             'surveyRespon',
