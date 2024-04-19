@@ -2,7 +2,9 @@
 
 namespace App\Livewire\Admin\Tagihan;
 
+use App\Models\Pembayaran;
 use App\Models\Tagihan;
+use Livewire\Attributes\On;
 use Livewire\Attributes\Title;
 use Livewire\Component;
 
@@ -17,8 +19,11 @@ class TagihanDetail extends Component
         $this->tagihan = $tagihan->load(['santri']);
     }
 
+    #[On('pembayaran-tunai')]
     public function render()
     {
-        return view('livewire.admin.tagihan.tagihan-detail');
+        $tagihanLunas = Pembayaran::where("id_tagihan", $this->tagihan->id)->first();
+
+        return view('livewire.admin.tagihan.tagihan-detail', compact('tagihanLunas'));
     }
 }

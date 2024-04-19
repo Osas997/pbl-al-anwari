@@ -50,7 +50,8 @@ class PembayaranTunai extends Component
                 "status" => "lunas"
             ]);
 
-            $this->dispatch('toast', "Berhasil Melakukan Pembayaran Tagihan");
+            $this->dispatch('pembayaran-tunai');
+            toastr()->success('Berhasil Melakukan Pembayaran Tagihan !');
             DB::commit();
         } catch (\Throwable $th) {
             DB::rollBack();

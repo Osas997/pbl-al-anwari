@@ -115,7 +115,13 @@
                 </div>
             </div>
             <div class="py-8 px-10 bg-white rounded-lg dark:bg-slate-600 md:w-1/2 w-full">
+                @if ($tagihanLunas)
+                <div class="flex justify-center items-center h-full">
+                    <p class="text-center text-green-500 text-2xl font-semibold">Tagihan Sudah Lunas</p>
+                </div>
+                @else
                 <livewire:admin.tagihan.pembayaran-tunai :tagihanId="$tagihan->id" />
+                @endif
             </div>
         </div>
     </section>

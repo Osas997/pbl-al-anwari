@@ -7,11 +7,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Spatie\Permission\Traits\HasRoles;
 
 class Santri extends Authenticatable
 {
-    use HasFactory, Notifiable, HasRoles, SoftDeletes, JenisKelaminTrait;
+    use HasFactory, Notifiable, SoftDeletes, JenisKelaminTrait;
 
     protected $table = "santri";
 

@@ -16,7 +16,6 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $this->call([
-            RoleSeeder::class,
             CateringSeeder::class,
             SyahriyyahSeeder::class,
             AngkatanSeeder::class,
@@ -25,12 +24,10 @@ class DatabaseSeeder extends Seeder
 
         Santri::factory(100)->create();
 
-        $admin = Admin::create([
+        Admin::create([
             "nama_admin" => "Admin Pondok",
             "username" => "admin",
             "password" => "admin",
         ]);
-
-        $admin->assignRole('admin');
     }
 }

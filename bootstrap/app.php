@@ -12,7 +12,6 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->alias([
-            'role' => \Spatie\Permission\Middleware\RoleMiddleware::class,
             'guestOnly' => App\Http\Middleware\guestOnly::class,
             'admin' => App\Http\Middleware\Admin::class,
             'santri' => App\Http\Middleware\Santri::class,
