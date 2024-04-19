@@ -141,7 +141,7 @@ return \Carbon\Carbon::createFromDate(null, $monthNumber, null,
                                 </p>
                             </div>
                             <div class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
-                                {{ $item->formatToRupiah($item->biaya) }}
+                                {{ $item->formatToRupiah('biaya') }}
                             </div>
                         </div>
                     </li>
@@ -156,7 +156,7 @@ return \Carbon\Carbon::createFromDate(null, $monthNumber, null,
                                 </p>
                             </div>
                             <div class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
-                                {{ $item->formatToRupiah($item->biaya) }}
+                                {{ $item->formatToRupiah('biaya') }}
                             </div>
                         </div>
                     </li>

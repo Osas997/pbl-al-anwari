@@ -3,8 +3,10 @@
 namespace App\Livewire\Admin\Tagihan;
 
 use App\Models\Tagihan;
+use Livewire\Attributes\Title;
 use Livewire\Component;
 
+#[Title('Detail Tagihan')]
 class TagihanDetail extends Component
 {
 
@@ -12,7 +14,7 @@ class TagihanDetail extends Component
 
     public function mount(Tagihan $tagihan)
     {
-        $this->tagihan = $tagihan->load('santri');
+        $this->tagihan = $tagihan->load(['santri']);
     }
 
     public function render()

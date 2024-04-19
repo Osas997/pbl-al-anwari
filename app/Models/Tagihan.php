@@ -22,6 +22,11 @@ class Tagihan extends Model
         return $this->belongsTo(Santri::class, 'id_santri');
     }
 
+    public function pembayaran()
+    {
+        $this->hasOne(Pembayaran::class, 'id_tagihan', 'id');
+    }
+
     public function scopeSearchFilter($query, $search)
     {
         if ($search) {

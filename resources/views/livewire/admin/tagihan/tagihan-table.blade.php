@@ -112,7 +112,7 @@
                                             d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" />
                                     </svg>
                                 </a>
-                                <a x-on:click="$dispatch('delete-santri-modal', { santri_id: {{ $item->id }} })"
+                                <a x-on:click="$dispatch('delete-tagihan-modal', { tagihan_id: {{ $item->id }} })"
                                     class="cursor-pointer px-3 py-2 text-blue-600 transition-all ease-in-out duration-300 hover:bg-blue-600 hover:text-white rounded-xl">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                         class="bi bi-trash-fill" viewBox="0 0 16 16">
@@ -131,8 +131,8 @@
 
         @else
 
-        <div class="my-3">
-            <h1 class="font-semibold text-center text-red-500 text-2xl"> Data Santri Tidak Ditemukan </h1>
+        <div class="my-3 py-4">
+            <h1 class="font-semibold text-center text-red-500 text-2xl"> Data Tagihan Tidak Ditemukan </h1>
         </div>
 
         @endif

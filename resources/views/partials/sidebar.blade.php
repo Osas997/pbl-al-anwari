@@ -27,7 +27,7 @@
 
                 <ul class="mb-6 flex flex-col gap-1.5">
                     @if(auth('admin')->check())
-                          <!-- Menu Item Dashboard -->
+                    <!-- Menu Item Dashboard -->
                     <li>
                         <a wire:navigate href="{{ route('dashboard') }}"
                             class="cursor-pointer group relative flex items-center gap-2.5 rounded-sm px-4 py-2 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4"
@@ -157,7 +157,7 @@
                             <ul class="mb-5.5 mt-4 flex flex-col gap-2.5 pl-6">
                                 <li>
                                     <a wire:navigate
-                                        class="{{ Request::is('admin/tagihan') ? 'text-active' : 'text-bodydark2' }} group relative flex items-center gap-2.5 rounded-md px-4 font-medium duration-300 ease-in-out hover:text-white"
+                                        class="{{ Request::is('admin/tagihan*')  ? 'text-active' : 'text-bodydark2' }} group relative flex items-center gap-2.5 rounded-md px-4 font-medium duration-300 ease-in-out hover:text-white"
                                         href="{{ route('tagihan') }}">Tagihan
                                     </a>
                                 </li>
@@ -194,7 +194,7 @@
                             Tagihan
                         </a>
                     </li>
-                    @endif 
+                    @endif
                 </ul>
             </div>
     </div>

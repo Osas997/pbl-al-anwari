@@ -48,7 +48,7 @@
 @push('script')
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
-    window.addEventListener('delete-diniyyah-modal', event => {
+    window.addEventListener('delete-tagihan-modal', event => {
             Swal.fire({
                 title: "Apakah anda yakin?",
                 icon: "warning",    
@@ -64,8 +64,8 @@
                         icon: "success"
                     });
 
-                    Livewire.dispatch('delete-diniyyah', {
-                        diniyyah_id: event.detail.diniyyah_id
+                    Livewire.dispatch('delete-tagihan', {
+                        tagihan: event.detail.tagihan_id
                     });
                 }
             });
