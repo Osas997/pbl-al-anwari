@@ -12,16 +12,6 @@ use Livewire\Component;
 #[Title('Tagihan Santri')]
 class Tagihan extends Component
 {
-
-    public function cetakPdf()
-    {
-        $tagihan = ModelsTagihan::with('santri')->where('status', 'belum lunas')->latest()->get();
-        $pdf = Pdf::loadview('tagihan-pdf', compact('tagihan'));
-        return response()->streamDownload(function () use ($pdf) {
-            echo $pdf->stream();
-        }, Carbon::now()->format('d-m-Y') . 'tagihan.pdf');
-    }
-
     public function render()
     {
         $totalSantri = Santri::where('status', 'Aktif')->count();

@@ -69,7 +69,7 @@ class TagihanCreate extends Component
                     "bulan" => $this->bulan
                 ]);
 
-                // GenerateTagihan::dispatch($tagihan);
+                // GenerateTagihan::dispatch($tagihan->load('santri'));
             }
 
             $this->reset();

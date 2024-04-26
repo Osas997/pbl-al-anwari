@@ -2,33 +2,6 @@
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
         <div class="flex flex-column sm:flex-row flex-wrap space-y-4 sm:space-y-0 items-center justify-between pb-4">
 
-            <div class="sm:flex sm:items-center sm:ms-6">
-                <x-dropdown align="right" width="w-full">
-                    <x-slot name="trigger">
-                        <button
-                            class="inline-flex items-center px-3 py-2 borderransparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
-                            <div x-data="{{ json_encode(['name' => auth('admin')->user()->username]) }}" x-text="name"
-                                x-on:profile-updated.window="name = $event.detail.name"></div>
-
-                            <div class="ms-1">
-                                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd"
-                                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                                        clip-rule="evenodd" />
-                                </svg>
-                            </div>
-                        </button>
-                    </x-slot>
-
-                    <x-slot name="content">
-                        <div class="p-4">
-                            <h1>kontol</h1>
-                        </div>
-                    </x-slot>
-                </x-dropdown>
-            </div>
-
             <label for="table-search" class="sr-only">Search</label>
             <div class="relative">
                 <div
@@ -43,6 +16,15 @@
                 <input type="text" id="table-search" wire:model.live='search'
                     class="block p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="Cari Data Santri">
+            </div>
+
+            <button type="button" wire:click="cetakPdf" wire:loading.remove wire:target='cetakPdf'
+                class="inline-block rounded-full bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-primary-3 transition duration-150 ease-in-out hover:bg-primary-accent-300 hover:shadow-primary-2 focus:bg-primary-accent-300 focus:shadow-primary-2 focus:outline-none focus:ring-0 active:bg-primary-600 active:shadow-primary-2 motion-reduce:transition-none dark:shadow-black/30 dark:hover:shadow-dark-strong dark:focus:shadow-dark-strong dark:active:shadow-dark-strong dark:bg-gray-300 dark:text-slate-800 dark:font-bold">
+                Cetak PDF
+            </button>
+
+            <div wire:loading wire:target='cetakPdf'>
+                <p>Downloading...</p>
             </div>
         </div>
         @if ($tagihan->isNotEmpty())

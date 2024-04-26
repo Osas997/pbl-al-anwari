@@ -3,6 +3,8 @@
 namespace App\Livewire\Admin\Tagihan;
 
 use App\Models\Tagihan;
+use Barryvdh\DomPDF\Facade\Pdf;
+use Carbon\Carbon;
 use Livewire\Attributes\On;
 use Livewire\Attributes\Url;
 use Livewire\Component;
@@ -12,13 +14,13 @@ class TagihanTable extends Component
 {
     use WithPagination;
 
-    #[Url('s')]
+    #[Url('search')]
     public $search = '';
-
 
     #[On('delete-tagihan')]
     public function deleteTagihan(Tagihan $tagihan)
     {
+        dd(request('search'));
         try {
             if ($tagihan->status == 'lunas') {
                 $this->dispatch('toast', "Gagal Menghapus Tagihan, Tagihan Telah Lunas");
@@ -39,6 +41,15 @@ class TagihanTable extends Component
     public function placeholder()
     {
         return view("vendor.loading-spinner");
+    }
+
+    public function cetakPdf()
+    {
+        $tagihan = Tagihan::with('santri')->where('status', 'belum lunas')->searchFilter($this->search)->latest()->get();
+        $pdf = Pdf::loadview('tagihan-pdf', compact('tagihan'));
+        return response()->streamDownload(function () use ($pdf) {
+            echo $pdf->stream();
+        }, Carbon::now()->format('d-m-Y') . 'tagihan.pdf');
     }
 
     #[On('toast')]
