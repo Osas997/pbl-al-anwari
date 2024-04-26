@@ -16,7 +16,7 @@
     </div>
 
     <!-- Breadcrumb End -->
-    <section class="py-8 px-10 bg-white rounded-lg dark:bg-slate-600">
+    <section class="py-8 px-6 bg-white rounded-lg dark:bg-slate-600">
         @if ($totalSantri > 0)
         <div class="my-3 flex justify-between">
             <button type="button" x-on:click="$dispatch('open-modal', 'create-tagihan-modal')"
