@@ -3,7 +3,7 @@
 
     <div class="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <h2 class="text-title-md2 font-bold text-black dark:text-white">
-            Detail Data Santri
+            Detail Data Tagihan
         </h2>
 
         <nav>
@@ -19,7 +19,6 @@
 
     <section>
         <div class="py-8 px-10 bg-white rounded-lg dark:bg-slate-600 w-full">
-            Tagihan Detail Santri ID {{ $tagihan->id }}
             <div class="py-2 mt-8 flex flex-col md:flex-row md:gap-12 gap-4">
                 <div class="w-full md:w-1/6 flex justify-center">
                     <img src="{{ asset('images/no_profile.png') }}" alt="profile.png"
@@ -114,13 +113,63 @@
                     </div>
                 </div>
             </div>
-            <div class="py-8 px-10 bg-white rounded-lg dark:bg-slate-600 md:w-1/2 w-full">
+            <div class="py-8 px-2 bg-white rounded-lg dark:bg-slate-600 md:w-1/2 w-full">
                 @if ($tagihanLunas)
-                <div class="flex justify-center items-center h-full">
-                    <p class="text-center text-green-500 text-2xl font-semibold">Tagihan Sudah Lunas</p>
+                @if ($tagihanLunas->status == "dikonfirmasi")
+                <div class="flex flex-col justify-evenly h-full">
+                    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                            <tr>
+                                <th scope="col" class="px-6 py-3">
+                                    #
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Tanggal Bayar
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Jumlah Bayar
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Metode
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                <th scope="row"
+                                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                    <a target="_blank" href="{{ route('kwitansi-pembayaran', $tagihanLunas->id) }}">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                            fill="currentColor" class="bi bi-printer-fill" viewBox="0 0 16 16">
+                                            <path
+                                                d="M5 1a2 2 0 0 0-2 2v1h10V3a2 2 0 0 0-2-2zm6 8H5a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1" />
+                                            <path
+                                                d="M0 7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2h-1v-2a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v2H2a2 2 0 0 1-2-2zm2.5 1a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1" />
+                                        </svg></a>
+                                </th>
+                                <td class="px-6 py-4">
+                                    {{ $tagihanLunas->tanggal_bayar->translatedFormat('d F Y') }}
+                                </td>
+                                <td class="px-6 py-4">
+                                    {{ $tagihanLunas->formatToRupiah('jumlah_bayar') }}
+                                </td>
+                                <td class="px-6 py-4 uppercase">
+                                    {{ $tagihanLunas->metode_pembayaran }}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="text-center mt-8 text-green-500 text-3xl font-semibold">Tagihan Sudah Lunas</p>
                 </div>
+                @elseif($tagihanLunas->status == "pending")
+                <div>
+                    <p>Pembayaran Pending Silahkan Cek bukti upload</p>
+                </div>
+                @endif
                 @else
-                <livewire:admin.tagihan.pembayaran-tunai :tagihanId="$tagihan->id" />
+                <div class="px-4">
+                    <livewire:admin.tagihan.pembayaran-tunai :tagihanId="$tagihan->id" />
+                </div>
                 @endif
             </div>
         </div>

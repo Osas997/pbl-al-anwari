@@ -8,6 +8,7 @@ use App\Livewire\Admin\Catering\Catering;
 use App\Livewire\Admin\Dashboard;
 use App\Livewire\Admin\Diniyyah\Diniyyah;
 use App\Livewire\Admin\Diniyyah\DinyyahDeletedFile;
+use App\Livewire\Admin\Pembayaran\KwitansiPembayaran;
 use App\Livewire\Admin\Santri\Santri;
 use App\Livewire\Admin\Santri\SantriDeletedFile;
 use App\Livewire\Admin\Santri\SantriDetail;
@@ -47,6 +48,8 @@ Route::middleware('admin')->prefix('admin')->group(function () {
    Route::get('tagihan', Tagihan::class)->name('tagihan');
    Route::get('tagihan-selesai', TagihanSelesai::class)->name('tagihan-selesai');
    Route::get('tagihan/{tagihan}', TagihanDetail::class)->name('tagihan-detail');
+
+   Route::get('kwitansi/{pembayaran}', KwitansiPembayaran::class)->name('kwitansi-pembayaran');
 
    Route::get('settings', App\Livewire\Santri\Test::class)->name('settings');
    Route::get('/tes',  Tes::class)->name('tes');

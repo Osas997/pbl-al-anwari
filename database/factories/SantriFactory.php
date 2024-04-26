@@ -23,7 +23,7 @@ class SantriFactory extends Factory
         return [
             'nama_santri' => fake()->name,
             'nis' => fake()->unique()->numerify('##########'),
-            'password' => bcrypt(fake()->password),
+            'password' => bcrypt('password'),
             'no_nik' => fake()->unique()->numerify('################'),
             'no_hp' => fake()->numerify('08##########'),
             'jenis_kelamin' => fake()->randomElement(['L', 'P']),

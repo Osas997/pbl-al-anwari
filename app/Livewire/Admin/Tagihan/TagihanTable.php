@@ -20,7 +20,6 @@ class TagihanTable extends Component
     #[On('delete-tagihan')]
     public function deleteTagihan(Tagihan $tagihan)
     {
-        dd(request('search'));
         try {
             if ($tagihan->status == 'lunas') {
                 $this->dispatch('toast', "Gagal Menghapus Tagihan, Tagihan Telah Lunas");

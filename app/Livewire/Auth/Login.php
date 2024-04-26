@@ -43,6 +43,8 @@ class Login extends Component
             Session::regenerate();
 
             $this->redirectIntended(default: 'admin/dashboard', navigate: true);
+
+            return;
         }
 
         if (Auth::guard('web')->attempt(["nis" => $this->username, "password" => $this->password])) {
@@ -52,6 +54,8 @@ class Login extends Component
             Session::regenerate();
 
             $this->redirectIntended(default: 'santri/tes', navigate: true);
+
+            return;
         }
 
         RateLimiter::hit($this->throttleKey());
