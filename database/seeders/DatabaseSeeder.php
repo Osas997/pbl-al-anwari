@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
             SyahriyyahSeeder::class,
             AngkatanSeeder::class,
             DiniyyahSeeder::class,
+            IndoBankSeeder::class
         ]);
 
         Santri::factory(100)->create();

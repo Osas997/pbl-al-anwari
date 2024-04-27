@@ -1,4 +1,4 @@
-<header class="sticky top-0 z-99 flex w-full bg-[#f4f4f5] drop-shadow-1 dark:bg-boxdark dark:drop-shadow-none h-14">
+<header class="sticky top-0 z-9 flex w-full bg-[#f4f4f5] drop-shadow-1 dark:bg-boxdark dark:drop-shadow-none h-14">
   <div class="flex flex-grow items-center justify-between px-4 py-4 shadow-2 md:px-6 2xl:px-11">
     <div class="flex items-center gap-2 sm:gap-4 lg:hidden">
       <!-- Hamburger Toggle BTN -->

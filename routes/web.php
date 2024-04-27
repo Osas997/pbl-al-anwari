@@ -9,6 +9,8 @@ use App\Livewire\Admin\Dashboard;
 use App\Livewire\Admin\Diniyyah\Diniyyah;
 use App\Livewire\Admin\Diniyyah\DinyyahDeletedFile;
 use App\Livewire\Admin\Pembayaran\KwitansiPembayaran;
+use App\Livewire\Admin\Rekening\Rekening;
+use App\Livewire\Admin\Rekening\RekeningDeletedFile;
 use App\Livewire\Admin\Santri\Santri;
 use App\Livewire\Admin\Santri\SantriDeletedFile;
 use App\Livewire\Admin\Santri\SantriDetail;
@@ -34,6 +36,8 @@ Route::middleware('admin')->prefix('admin')->group(function () {
    Route::get('diniyyah', Diniyyah::class)->name('diniyyah');
    Route::get('deleted-diniyyah', DinyyahDeletedFile::class)->name('deleted-diniyyah');
 
+   Route::get('rekening-bank', Rekening::class)->name('rekening-bank');
+
    Route::get('angkatan', Angkatan::class)->name('angkatan');
    Route::get('deleted-angkatan', AngkatanDeletedFile::class)->name('deleted-angkatan');
 
@@ -57,6 +61,8 @@ Route::middleware('admin')->prefix('admin')->group(function () {
 
 Route::middleware('santri')->prefix('santri')->group(function () {
    Route::get('tes', App\Livewire\Santri\Test::class)->name('tes');
+
+   Route::get('tagihan', App\Livewire\Santri\Tagihan\Tagihan::class)->name('tagihan-santri');
 });
 
 
