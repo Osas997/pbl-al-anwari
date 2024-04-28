@@ -39,7 +39,18 @@
 
 @script
 <script>
-    window.addEventListener('delete-angkatan-modal', event => {
+    $(document).ready(function() {
+
+    $('.bank-select-create').select2({
+        placeholder: 'Pilih Bank',
+    });
+
+    $('.bank-select-edit').select2({
+        placeholder: 'Pilih Bank',
+    });
+    });
+
+    window.addEventListener('delete-rekening-modal', event => {
             Swal.fire({
                 title: "Apakah anda yakin?",
                 icon: "warning",
@@ -55,8 +66,8 @@
                         icon: "success"
                     });
 
-                    Livewire.dispatch('delete-angkatan', {
-                        angkatan_id: event.detail.angkatan_id
+                    Livewire.dispatch('delete-rekening', {
+                        rekening_id: event.detail.rekening_id
                     });
                 }
             });

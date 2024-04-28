@@ -10,10 +10,10 @@ class RekeningTable extends Component
 {
 
     #[On("delete-rekening")]
-    public function delete($bank_pondok_id)
+    public function delete($rekening_id)
     {
         try {
-            $rekening = BankPondok::findOrFail($bank_pondok_id);
+            $rekening = BankPondok::findOrFail($rekening_id);
             $rekening->delete();
         } catch (\Throwable $th) {
             $this->dispatch('toast', "Gagal Menghapus rekening " . $th->getMessage());
