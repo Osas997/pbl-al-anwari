@@ -10,7 +10,6 @@ use App\Livewire\Admin\Diniyyah\Diniyyah;
 use App\Livewire\Admin\Diniyyah\DinyyahDeletedFile;
 use App\Livewire\Admin\Pembayaran\KwitansiPembayaran;
 use App\Livewire\Admin\Rekening\Rekening;
-use App\Livewire\Admin\Rekening\RekeningDeletedFile;
 use App\Livewire\Admin\Santri\Santri;
 use App\Livewire\Admin\Santri\SantriDeletedFile;
 use App\Livewire\Admin\Santri\SantriDetail;

@@ -17,7 +17,7 @@ class KwitansiPembayaran extends Component
 
     public function mount(Pembayaran $pembayaran)
     {
-        $this->pembayaran = $pembayaran->load(['tagihan', 'tagihan.santri']);
+        $this->pembayaran = $pembayaran->load(['tagihan', 'tagihan.santri', 'admin']);
     }
 
     public function render()

@@ -3,9 +3,6 @@
 namespace App\Livewire\Admin\Tagihan;
 
 use App\Models\Santri;
-use App\Models\Tagihan as ModelsTagihan;
-use Barryvdh\DomPDF\Facade\Pdf;
-use Carbon\Carbon;
 use Livewire\Attributes\Title;
 use Livewire\Component;
 
