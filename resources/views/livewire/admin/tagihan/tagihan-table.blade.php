@@ -128,7 +128,7 @@
         @else
 
         <div class="my-3 py-4">
-            <h1 class="font-semibold text-center text-red-500 text-2xl"> Data Tagihan Tidak Ditemukan </h1>
+            <h1 class="font-semibold text-center text-red-500 text-xl"> Tidak Ada Data Tagihan </h1>
         </div>
 
         @endif

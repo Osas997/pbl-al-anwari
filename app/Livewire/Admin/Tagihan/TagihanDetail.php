@@ -22,7 +22,7 @@ class TagihanDetail extends Component
     #[On('pembayaran-tunai')]
     public function render()
     {
-        $tagihanLunas = Pembayaran::where("id_tagihan", $this->tagihan->id)->first();
+        $tagihanLunas = Pembayaran::where("id_tagihan", $this->tagihan->id)->where("status", "dikonfirmasi")->first();
 
         return view('livewire.admin.tagihan.tagihan-detail', compact('tagihanLunas'));
     }

@@ -17,19 +17,23 @@
 
     <!-- Breadcrumb End -->
     <section class="py-8 px-6 bg-white rounded-lg dark:bg-slate-600">
-        @if ($totalSantri > 0)
+        @if ($totalSantri > 0 && $totalRekening > 0)
         <div class="my-3 flex justify-between">
             <button type="button" x-on:click="$dispatch('open-modal', 'create-tagihan-modal')"
                 class="inline-block rounded-full bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-primary-3 transition duration-150 ease-in-out hover:bg-primary-accent-300 hover:shadow-primary-2 focus:bg-primary-accent-300 focus:shadow-primary-2 focus:outline-none focus:ring-0 active:bg-primary-600 active:shadow-primary-2 motion-reduce:transition-none dark:shadow-black/30 dark:hover:shadow-dark-strong dark:focus:shadow-dark-strong dark:active:shadow-dark-strong dark:bg-gray-300 dark:text-slate-800 dark:font-bold">
                 Generate Tagihan
             </button>
         </div>
-        @else
-        <div class="my-3">
-            <h1 class="font-semibold text-center text-red-500 text-2xl"> Santri Tidak Ditemukan Tidak Dapat Membuat
-                Tagihan</h1>
-        </div>
-        @endif
+        @elseif($totalRekening <= 0) <div class="my-3">
+            <h1 class="font-semibold text-center text-red-500 text-xl">Data Rekening Pondok Kosong Silahkan Tambahkan
+                Terlebih Dahulu !
+            </h1>
+            @else
+            <div class="my-3">
+                <h1 class="font-semibold text-center text-red-500 text-xl"> Santri Tidak Ditemukan Tidak Dapat Membuat
+                    Tagihan</h1>
+            </div>
+            @endif
     </section>
 
 

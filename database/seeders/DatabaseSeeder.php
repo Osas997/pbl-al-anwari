@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Admin;
+use App\Models\BankPondok;
 use App\Models\Santri;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -29,6 +30,13 @@ class DatabaseSeeder extends Seeder
             "nama_admin" => "Admin Pondok",
             "username" => "admin",
             "password" => "admin",
+        ]);
+
+        BankPondok::create([
+            "nama_bank" => "BANK MANDIRI",
+            "sandi_bank" => "008",
+            "nomor_rekening" => "1234567890",
+            "nama_rekening" => "RUOK FF"
         ]);
     }
 }

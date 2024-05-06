@@ -65,7 +65,8 @@
                     </td>
                     <td class="px-6 py-4 text-center">
                         @if ($item->status === 'belum lunas')
-                        <a href="" class="italic font-medium text-blue-600 dark:text-blue-500 hover:underline">BAYAR</a>
+                        <a wire:navigate href="{{ route('tagihan-detail-santri', $item->id) }}"
+                            class="italic font-medium text-blue-600 dark:text-blue-500 hover:underline">BAYAR</a>
                         @else
                         <a href="{{ route('kwitansi-pembayaran', $item->id) }}" target="_blank"
                             class="italic font-medium text-blue-600 dark:text-blue-500 hover:underline">Cetak</a>

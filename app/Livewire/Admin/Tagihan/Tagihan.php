@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Admin\Tagihan;
 
+use App\Models\BankPondok;
 use App\Models\Santri;
 use Livewire\Attributes\Title;
 use Livewire\Component;
@@ -13,6 +14,8 @@ class Tagihan extends Component
     {
         $totalSantri = Santri::where('status', 'Aktif')->count();
 
-        return view('livewire.admin.tagihan.tagihan', compact('totalSantri'));
+        $totalRekening = BankPondok::count();
+
+        return view('livewire.admin.tagihan.tagihan', compact('totalSantri', 'totalRekening'));
     }
 }

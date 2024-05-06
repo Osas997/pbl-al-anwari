@@ -45,6 +45,11 @@ class Santri extends Authenticatable
         return $this->hasMany(Tagihan::class, 'id_santri', 'id');
     }
 
+    public function rekening()
+    {
+        return $this->hasMany(BankSantri::class, 'id_santri', 'id');
+    }
+
     public function scopeSearchFilter($query, $search, $status)
     {
         if ($search) {
