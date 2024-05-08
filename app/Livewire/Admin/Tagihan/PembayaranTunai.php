@@ -11,7 +11,6 @@ use Livewire\Component;
 
 class PembayaranTunai extends Component
 {
-    #[Validate('exists:tagihan,id', message: 'Tagihan Tidak Valid')]
     public $tagihanId;
 
     #[Validate('required', message: 'Tanggal Bayar Tidak Boleh Kosong')]
@@ -20,12 +19,24 @@ class PembayaranTunai extends Component
 
     #[Validate('required', message: 'Jumlah Bayar Tidak Boleh Kosong')]
     #[Validate('numeric', message: 'Jumlah Bayar Tidak Valid')]
-    #[Validate('min:1', message: "Jumlah Bayar Tidak Boleh Kurang Dari 0")]
+    #[Validate('gte:nominalTagihan')]
     public $jumlah_bayar;
 
-    public function mount($tagihanId)
+    public $nominalTagihan;
+
+    public function messages()
+    {
+        $nominal = formatToRupiah($this->nominalTagihan);
+        return [
+            'jumlah_bayar.gte' => 'Jumlah Bayar Tidak Boleh Kurang Dari ' . $nominal
+        ];
+    }
+
+    public function mount($tagihanId, $nominal)
     {
         $this->tagihanId = $tagihanId;
+        $this->jumlah_bayar = $nominal;
+        $this->nominalTagihan = $nominal;
     }
 
     #[On('bayar-tagihan')]

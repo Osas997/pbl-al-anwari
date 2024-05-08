@@ -114,7 +114,7 @@
                 </div>
             </div>
             <div class="py-8 px-2 bg-white rounded-lg dark:bg-slate-600 md:w-1/2 w-full">
-                @if ($tagihanLunas)
+                @isset ($tagihanLunas)
                 @if ($tagihanLunas->status == "dikonfirmasi")
                 <div class="flex flex-col justify-evenly h-full">
                     <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
@@ -162,15 +162,21 @@
                     <p class="text-center mt-8 text-green-500 text-3xl font-semibold">Tagihan Sudah Lunas</p>
                 </div>
                 @elseif($tagihanLunas->status == "pending")
-                <div>
-                    <p>Pembayaran Pending Silahkan Cek bukti upload</p>
+                <div class="flex justify-center items-center h-full">
+                    <p class="font-semibold text-center text-lg text-orange-600">Bukti Pembayaran Sudah Di
+                        Upload Silahkan Cek bukti
+                        upload Di
+                        Menu Pembayaran</p>
+                    <div>
+                        <img src="{{ Storage::url($tagihanLunas->pembayaranBank->bukti_transfer) }}" alt="">
+                    </div>
                 </div>
                 @endif
                 @else
                 <div class="px-4">
-                    <livewire:admin.tagihan.pembayaran-tunai :tagihanId="$tagihan->id" />
+                    <livewire:admin.tagihan.pembayaran-tunai :tagihanId="$tagihan->id" :nominal="$tagihan->nominal" />
                 </div>
-                @endif
+                @endisset
             </div>
         </div>
     </section>

@@ -4,6 +4,7 @@ namespace App\Livewire\Santri\Tagihan;
 
 use App\Models\Pembayaran;
 use App\Models\Tagihan;
+use Livewire\Attributes\On;
 use Livewire\Attributes\Title;
 use Livewire\Component;
 
@@ -16,13 +17,14 @@ class TagihanDetail extends Component
         $this->tagihan = $tagihan->load(['santri']);
     }
 
+    #[On('pembayaran-transfer')]
     public function render()
     {
         $this->cekHakAkses($this->tagihan);
 
-        $tagihanLunas = Pembayaran::where("id_tagihan", $this->tagihan->id)->first();
+        $pembayaran = Pembayaran::where("id_tagihan", $this->tagihan->id)->first();
 
-        return view('livewire.santri.tagihan.tagihan-detail', compact('tagihanLunas'));
+        return view('livewire.santri.tagihan.tagihan-detail', compact('pembayaran'));
     }
 
     public function cekHakAkses($tagihan)

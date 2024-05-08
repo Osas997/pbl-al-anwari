@@ -1,19 +1,19 @@
-<div class="py-4">
+<div class="py-4 font-poppins">
     <div class="bg-white dark:bg-form-input mb-8">
         <label class="mb-2 block font-medium text-md font-poppins text-black dark:text-white">
             Pilih Bank Pengirim
         </label>
-        <select wire:model.live='jenis_tagihan' id="jenis_tagihan"
+        <select wire:model.live='idBankSantri' id="idBankSantri"
             class="cursor-pointer text-black dark:text-white w-full rounded border border-stroke bg-transparent py-1 pl-5 pr-12 outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input">
             @if ($rekeningSantri->isNotEmpty())
             @foreach ($rekeningSantri as $item)
-            <option value="">{{ $item->nama_bank }}</option>
+            <option value="{{ $item->id }}">{{ $item->nama_bank }} | {{ $item->nomor_rekening }}</option>
             @endforeach
             @else
             <option value="" disabled>Belum Ada Rekening Silahkan Tambah Rekening Terlebih Dahulu</option>
             @endif
         </select>
-        @error('jenis_tagihan')
+        @error('idBankSantri')
         <p class="mt-2 text-sm text-red-600 dark:text-red-500"><span class="font-medium">{{
                 $message
                 }}</span>
@@ -56,5 +56,27 @@
     </div>
 
     <x-divider-info>INFORMASI PEMBAYARAN</x-divider-info>
+
+    <div class="py-2">
+        <span class="py-3 text-md block font-medium font-poppins">
+            Upload Bukti Pembayaran
+        </span>
+        <livewire:dropzone wire:model="buktiPembayaran" :rules="['required','image','mimes:png,jpeg','max:1024']"
+            :multiple="false" />
+        @error('buktiPembayaran')
+        <p class="mt-2 text-sm text-red-600 dark:text-red-500"><span class="font-medium">{{
+                $message
+                }}</span>
+        </p>
+        @enderror
+    </div>
+
+    <div class="mt-6 w-full flex justify-center">
+        <div class="w-full md:w-72">
+            <x-button type="button" class="w-full" x-on:click="$dispatch('confirm-pembayaran-modal')">
+                <span class="w-full">Konfirmasi Pembayaran</span>
+            </x-button>
+        </div>
+    </div>
 
 </div>

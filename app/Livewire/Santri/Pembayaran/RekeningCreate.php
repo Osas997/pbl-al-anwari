@@ -14,6 +14,7 @@ class RekeningCreate extends Component
     public $nama_rekening;
 
     #[Validate('required', message: "Nomor Rekening Tidak Boleh Kosong")]
+    #[Validate('unique:bank_santri,nomor_rekening', message: "Nomor Rekening Sudah Terdaftar")]
     public $nomor_rekening;
 
     #[Validate('required', message: "Bank Tidak Boleh Kosong")]

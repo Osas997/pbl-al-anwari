@@ -3,7 +3,7 @@
 
     <div class="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <h2 class="text-title-md2 font-bold text-black dark:text-white">
-            Detail Data Tagihan
+            Detail Data Tagihan {{ auth()->user()->nama_santri }}
         </h2>
 
         <nav>
@@ -83,6 +83,22 @@
 
         </div>
 
+        @isset($pembayaran)
+        @if ($pembayaran->status == 'pending')
+        <div class="py-2 mb-2 w-full">
+            <div class="py-8 px-10 bg-white rounded-lg dark:bg-slate-600 ">
+                <p class="text-lg font-semibold text-center text-orange-600">Pembayaran Sudah Dilakukan Tunggu Sampai
+                    Admin Mengkonfirmasi</p>
+            </div>
+        </div>
+        @elseif($pembayaran->status == 'dikonfirmasi')
+        <div class="py-2 mb-2 w-full">
+            <div class="py-8 px-10 bg-white rounded-lg dark:bg-slate-600 ">
+                <p class="text-lg font-semibold text-center text-emerald-500">Pembayaran Sudah Lunas</p>
+            </div>
+        </div>
+        @endif
+        @else
         <div class="py-2 mb-2 w-full">
             <div class="py-8 px-10 bg-white rounded-lg dark:bg-slate-600 ">
                 <div>
@@ -182,12 +198,13 @@
                         </button>
 
 
-                        <livewire:santri.pembayaran.pembayaran-create />
+                        <livewire:santri.pembayaran.pembayaran-create :tagihanId="$tagihan->id"
+                            :nominal="$tagihan->nominal" />
                     </div>
                 </div>
             </div>
         </div>
-
+        @endisset
     </section>
 
     {{-- Toast --}}
@@ -205,6 +222,21 @@
             placeholder: 'Pilih Bank',
         });
     });
+
+    window.addEventListener('confirm-pembayaran-modal', () => {
+    Swal.fire({
+    title: "Konfirmasi Pembayaran ?",
+    showCancelButton: true,
+    confirmButtonText: "Bayar",
+    }).then((result) => {
+    /* Read more about isConfirmed, isDenied below */
+    if (result.isConfirmed) {
+        Livewire.dispatch('bayar-tagihan')
+    } else if (result.isDenied) {
+    }
+    });
+});
+
     Alpine.store('accordion', {
         tab: 0
         });

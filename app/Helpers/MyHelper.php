@@ -20,3 +20,9 @@ function formatTerbilang($x)
    elseif ($x < 1000000000)
       return formatTerbilang($x / 1000000) . " juta" . formatTerbilang($x % 1000000);
 }
+
+function formatToRupiah($nominal)
+{
+   $amount = $nominal;
+   return 'Rp ' . number_format($amount, 0, ',', '.');
+}

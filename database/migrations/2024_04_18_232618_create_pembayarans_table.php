@@ -14,12 +14,11 @@ return new class extends Migration
         Schema::create('pembayaran', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('id_tagihan');
-            $table->unsignedBigInteger('id_admin');
+            $table->unsignedBigInteger('id_admin')->nullable(true);
             $table->enum('metode_pembayaran', ['transfer', 'tunai']);
             $table->integer('jumlah_bayar');
             $table->datetime('tanggal_bayar');
             $table->enum('status', ['dikonfirmasi', 'pending'])->nullable();
-            $table->string('bukti_bayar')->nullable();
             $table->foreign('id_tagihan')->references('id')->on('tagihan');
             $table->foreign('id_admin')->references('id')->on('admin');
             $table->timestamps();

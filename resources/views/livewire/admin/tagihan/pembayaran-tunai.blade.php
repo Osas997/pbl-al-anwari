@@ -16,8 +16,7 @@
                 </div>
             </div>
             <div class="my-4">
-                <x-input wire:model='jumlah_bayar' label="Jumlah Yang Dibayarkan" placeholder="50000" type="number"
-                    min="0" />
+                <x-input wire:model='jumlah_bayar' label="Jumlah Yang Dibayarkan" type="number" min="0" />
                 @error('jumlah_bayar')
                 <p class="mt-2 text-sm text-red-600 dark:text-red-500"><span class="font-medium">{{ $message
                         }}</span>
@@ -39,7 +38,6 @@
 @endassets
 @script
 <script>
-    console.log('asu');
     // Confirm Modal pembayraran
 window.addEventListener('confirm-pembayaran-modal', () => {
     Swal.fire({

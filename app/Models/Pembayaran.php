@@ -21,6 +21,11 @@ class Pembayaran extends Model
         return $this->belongsTo(Tagihan::class, 'id_tagihan', 'id');
     }
 
+    public function pembayaranBank()
+    {
+        return $this->hasOne(PembayaranBank::class, 'id_pembayaran', 'id');
+    }
+
     public function admin()
     {
         return $this->belongsTo(Admin::class, 'id_admin', 'id');
