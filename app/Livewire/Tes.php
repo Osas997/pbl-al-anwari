@@ -22,7 +22,7 @@ class Tes extends Component
     }
     public function render()
     {
-        $santri = Santri::searchFilter($this->search)->orderBy('nama_santri', 'asc')->paginate(20);
+        $santri = Santri::orderBy('nama_santri', 'asc')->paginate(20);
 
         return view('livewire.tes', compact('santri'));
     }

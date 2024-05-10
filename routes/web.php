@@ -9,6 +9,8 @@ use App\Livewire\Admin\Dashboard;
 use App\Livewire\Admin\Diniyyah\Diniyyah;
 use App\Livewire\Admin\Diniyyah\DinyyahDeletedFile;
 use App\Livewire\Admin\Pembayaran\KwitansiPembayaran;
+use App\Livewire\Admin\Pembayaran\Pembayaran;
+use App\Livewire\Admin\Pembayaran\PembayaranDetail;
 use App\Livewire\Admin\Rekening\Rekening;
 use App\Livewire\Admin\Santri\Santri;
 use App\Livewire\Admin\Santri\SantriDeletedFile;
@@ -51,6 +53,9 @@ Route::middleware('admin')->prefix('admin')->group(function () {
    Route::get('tagihan', Tagihan::class)->name('tagihan');
    Route::get('tagihan-selesai', TagihanSelesai::class)->name('tagihan-selesai');
    Route::get('tagihan/{tagihan}', TagihanDetail::class)->name('tagihan-detail');
+
+   Route::get('pembayaran', Pembayaran::class)->name('pembayaran');
+   Route::get('pembayaran/{id}', PembayaranDetail::class)->name('pembayaran-detail');
 
    Route::get('kwitansi/{pembayaran}', KwitansiPembayaran::class)->name('kwitansi-pembayaran');
 

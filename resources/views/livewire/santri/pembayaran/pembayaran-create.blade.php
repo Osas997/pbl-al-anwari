@@ -6,6 +6,7 @@
         <select wire:model.live='idBankSantri' id="idBankSantri"
             class="cursor-pointer text-black dark:text-white w-full rounded border border-stroke bg-transparent py-1 pl-5 pr-12 outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input">
             @if ($rekeningSantri->isNotEmpty())
+            <option value="">Pilih</option>
             @foreach ($rekeningSantri as $item)
             <option value="{{ $item->id }}">{{ $item->nama_bank }} | {{ $item->nomor_rekening }}</option>
             @endforeach

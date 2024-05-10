@@ -24,7 +24,7 @@ class Tagihan extends Model
 
     public function pembayaran()
     {
-        $this->hasOne(Pembayaran::class, 'id_tagihan', 'id');
+        $this->hasMany(Pembayaran::class, 'id_tagihan', 'id');
     }
 
     public function scopeSearchFilter($query, $search)

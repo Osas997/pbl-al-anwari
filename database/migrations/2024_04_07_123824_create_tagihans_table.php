@@ -17,7 +17,7 @@ return new class extends Migration
             $table->enum('jenis_tagihan', ['catering', 'syahriyyah']);
             $table->integer('nominal');
             $table->date('tgl_tagihan');
-            $table->enum('status', ['belum lunas', 'lunas']);
+            $table->enum('status', ['belum lunas', 'lunas', 'angsur']);
             $table->string('tahun_ajaran');
             $table->string('semester')->nullable();
             $table->string('bulan')->nullable();

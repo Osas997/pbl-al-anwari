@@ -23,6 +23,7 @@
                 <div class="border-b border-stroke px-7 py-4 dark:border-strokedark">
                     <h3 class="font-medium text-black dark:text-white">
                         Personal Information
+                        <x-button type="button" class="ml-3" wire:click="save">save</x-button>
                     </h3>
                 </div>
                 <div class="p-7">

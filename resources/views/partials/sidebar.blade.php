@@ -204,8 +204,8 @@
                             <ul class="mb-5.5 mt-4 flex flex-col gap-2.5 pl-6">
                                 <li>
                                     <a wire:navigate
-                                        class="{{ Request::is('admin/tagihan') || Request::is('admin/tagihan/*')  ? 'text-active' : 'text-bodydark2' }} group relative flex items-center gap-2.5 rounded-md px-4 font-medium duration-300 ease-in-out hover:text-white"
-                                        href="{{ route('tagihan') }}">Pembayaran
+                                        class="{{ Request::is('admin/pembayaran') || Request::is('admin/pembayaran/*')  ? 'text-active' : 'text-bodydark2' }} group relative flex items-center gap-2.5 rounded-md px-4 font-medium duration-300 ease-in-out hover:text-white"
+                                        href="{{ route('pembayaran') }}">Pembayaran
                                     </a>
                                 </li>
                                 <li>

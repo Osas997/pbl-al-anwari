@@ -12,12 +12,9 @@ use Illuminate\Support\Facades\Storage;
 use Livewire\Attributes\On;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
-use Livewire\WithFileUploads;
 
 class PembayaranCreate extends Component
 {
-    use WithFileUploads;
-
     #[Validate('required', message: 'Bukti Pembayaran Harus Diisi')]
     public $buktiPembayaran;
 

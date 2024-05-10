@@ -62,7 +62,7 @@ class PembayaranTunai extends Component
             ]);
 
             $this->dispatch('pembayaran-tunai');
-            toastr()->success('Berhasil Melakukan Pembayaran Tagihan !');
+            flash('Berhasil Melakukan Pembayaran Tagihan !', 'success');
             DB::commit();
         } catch (\Throwable $th) {
             DB::rollBack();
