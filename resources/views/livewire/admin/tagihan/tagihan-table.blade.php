@@ -1,8 +1,8 @@
 <div class="py-4 font-poppins scroll-smooth" id="tagihan-table">
-    <div class="relative overflow-x-auto shadow-md sm:rounded-lg px-6 py-4">
+    <div class="relative overflow-x-auto sm:rounded-lg">
         <div class="flex flex-column sm:flex-row flex-wrap space-y-4 sm:space-y-0 items-center justify-between pb-4">
             <label for="table-search" class="sr-only">Search</label>
-            <div class="flex gap-4 flex-wrap">
+            <div class="flex gap-4 flex-wrap items-center">
                 <div class="relative">
                     <div
                         class="absolute inset-y-0 left-0 rtl:inset-r-0 rtl:right-0 flex items-center ps-3 pointer-events-none">
@@ -18,7 +18,7 @@
                         placeholder="Cari Data Santri">
                 </div>
 
-                <div x-data="{ open: false }" @click.away="open = false" class="relative">
+                <div x-data="{ open: false }" @click.away="open = false" class="relative h-fit">
                     <button @click="open = !open"
                         class="flex items-center bg-white border border-zinc-300 text-zinc-700 py-2 px-4 rounded-lg focus:outline-none focus:border-blue-500">
                         {{-- <span x-text="{{ json_encode($status) }}"></span> --}}
@@ -112,6 +112,7 @@
                                             d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" />
                                     </svg>
                                 </a>
+                                @if ($item->status == 'belum lunas')
                                 <a x-on:click="$dispatch('delete-tagihan-modal', { tagihan_id: {{ $item->id }} })"
                                     class="cursor-pointer px-3 py-2 text-blue-600 transition-all ease-in-out duration-300 hover:bg-blue-600 hover:text-white rounded-xl">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -120,6 +121,7 @@
                                             d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z" />
                                     </svg>
                                 </a>
+                                @endif
                             </div>
                         </div>
                     </td>

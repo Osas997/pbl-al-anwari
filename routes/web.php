@@ -51,7 +51,6 @@ Route::middleware('admin')->prefix('admin')->group(function () {
    Route::get('santri/{santri}', SantriDetail::class)->name('santri-detail');
 
    Route::get('tagihan', Tagihan::class)->name('tagihan');
-   Route::get('tagihan-selesai', TagihanSelesai::class)->name('tagihan-selesai');
    Route::get('tagihan/{tagihan}', TagihanDetail::class)->name('tagihan-detail');
 
    Route::get('pembayaran', Pembayaran::class)->name('pembayaran');

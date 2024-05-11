@@ -173,7 +173,8 @@
                 <p class="text-center mt-8 text-green-500 text-2xl font-semibold">Tagihan Sudah Lunas</p>
                 @else
                 <div class="px-4">
-                    <livewire:admin.tagihan.pembayaran-tunai :tagihanId="$tagihan->id" :nominal="$tagihan->nominal" />
+                    <livewire:admin.tagihan.pembayaran-tunai :tagihanId="$tagihan->id"
+                        :sisaTagihan="$tagihan->sisaTagihan()" :nominal="$tagihan->nominal" />
                 </div>
                 @endif
 

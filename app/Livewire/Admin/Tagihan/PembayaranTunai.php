@@ -24,10 +24,10 @@ class PembayaranTunai extends Component
 
     public $nominalTagihan;
 
-    public function mount($tagihanId, $nominal)
+    public function mount($tagihanId, $nominal, $sisaTagihan)
     {
         $this->tagihanId = $tagihanId;
-        $this->jumlah_bayar = $nominal;
+        $this->jumlah_bayar = $nominal - $sisaTagihan;
         $this->nominalTagihan = $nominal;
     }
 
@@ -61,7 +61,7 @@ class PembayaranTunai extends Component
                 ]);
             }
 
-            $this->clear('tanggal_bayar', 'jumlah_bayar');
+            $this->reset('tanggal_bayar', 'jumlah_bayar');
 
             $this->dispatch('pembayaran-tunai');
             flash('Berhasil Melakukan Pembayaran Tagihan !', 'success');
