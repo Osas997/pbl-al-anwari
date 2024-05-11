@@ -14,13 +14,15 @@ class RekeningTable extends Component
     {
         try {
             $rekening = BankPondok::findOrFail($rekening_id);
+            flash('Berhasil Hapus Rekening', 'success');
             $rekening->delete();
         } catch (\Throwable $th) {
-            $this->dispatch('toast', "Gagal Menghapus rekening " . $th->getMessage());
+            flash('Gagal Menghapus Rekening ' . $th->getMessage(), 'danger');
         }
     }
 
-    #[On("toast")]
+    #[On("create-rekening")]
+    #[On("update-rekening")]
     public function render()
     {
         $rekening = BankPondok::latest()->get();

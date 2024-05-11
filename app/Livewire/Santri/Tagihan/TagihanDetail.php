@@ -14,7 +14,7 @@ class TagihanDetail extends Component
     public $tagihan;
     public function mount(Tagihan $tagihan)
     {
-        $this->tagihan = $tagihan->load(['santri']);
+        $this->tagihan = $tagihan->load(['santri', 'pembayaran']);
     }
 
     #[On('pembayaran-transfer')]
@@ -22,9 +22,15 @@ class TagihanDetail extends Component
     {
         $this->cekHakAkses($this->tagihan);
 
-        $pembayaran = Pembayaran::where("id_tagihan", $this->tagihan->id)->first();
+        $isPending = false;
 
-        return view('livewire.santri.tagihan.tagihan-detail', compact('pembayaran'));
+        foreach ($this->tagihan->pembayaran as $pembayaran) {
+            if ($pembayaran->metode_pembayaran == 'transfer' && $pembayaran->status == 'pending') {
+                $isPending = true;
+            }
+        }
+
+        return view('livewire.santri.tagihan.tagihan-detail', compact('isPending'));
     }
 
     public function cekHakAkses($tagihan)

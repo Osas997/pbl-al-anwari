@@ -68,6 +68,9 @@ Route::middleware('santri')->prefix('santri')->group(function () {
 
    Route::get('tagihan', App\Livewire\Santri\Tagihan\Tagihan::class)->name('tagihan-santri');
    Route::get('tagihan/{tagihan}', App\Livewire\Santri\Tagihan\TagihanDetail::class)->name('tagihan-detail-santri');
+
+   Route::get('riwayat-pembayaran', App\Livewire\Santri\Pembayaran\RiwayatPembayaran::class)->name('riwayat-pembayaran-santri');
+   Route::get('riwayat-pembayaran/{tagihan}', App\Livewire\Santri\Pembayaran\RiwayatPembayaranDetail::class)->name('riwayat-pembayaran-detail-santri');
 });
 
 

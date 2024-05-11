@@ -53,7 +53,7 @@
             </tr>
         </tbody>
     </table>
-    <div class="text-gray-700 mb-12 italic">Terbilang : {{ ucwords(formatTerbilang($pembayaran->tagihan->nominal)) }}
+    <div class="text-gray-700 mb-12 italic">Terbilang : {{ ucwords(formatTerbilang($pembayaran->jumlah_bayar)) }}
     </div>
     <div class="text-gray-700 text-base">{{ $pembayaran->admin->username }}</div>
 </div>

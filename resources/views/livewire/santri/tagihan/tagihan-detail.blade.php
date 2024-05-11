@@ -83,21 +83,23 @@
 
         </div>
 
-        @isset($pembayaran)
-        @if ($pembayaran->status == 'pending')
+
+        @if ($isPending)
         <div class="py-2 mb-2 w-full">
             <div class="py-8 px-10 bg-white rounded-lg dark:bg-slate-600 ">
                 <p class="text-lg font-semibold text-center text-orange-600">Pembayaran Sudah Dilakukan Tunggu Sampai
                     Admin Mengkonfirmasi</p>
             </div>
         </div>
-        @elseif($pembayaran->status == 'dikonfirmasi')
+        @else
+
+        @if($tagihan->status == 'lunas')
         <div class="py-2 mb-2 w-full">
             <div class="py-8 px-10 bg-white rounded-lg dark:bg-slate-600 ">
                 <p class="text-lg font-semibold text-center text-emerald-500">Pembayaran Sudah Lunas</p>
             </div>
         </div>
-        @endif
+
         @else
         <div class="py-2 mb-2 w-full">
             <div class="py-8 px-10 bg-white rounded-lg dark:bg-slate-600 ">
@@ -204,7 +206,9 @@
                 </div>
             </div>
         </div>
-        @endisset
+        @endif
+
+        @endif
     </section>
 
     {{-- Toast --}}

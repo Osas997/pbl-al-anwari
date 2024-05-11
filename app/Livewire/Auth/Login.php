@@ -53,7 +53,7 @@ class Login extends Component
 
             Session::regenerate();
 
-            $this->redirectIntended(default: 'santri/tes', navigate: true);
+            $this->redirectIntended(default: 'santri/tagihan', navigate: true);
 
             return;
         }

@@ -37,11 +37,13 @@ class RekeningCreate extends Component
 
             $this->reset();
 
-            $this->dispatch('toast', 'Berhasil Menambah Rekening');
+            flash('Berhasil Menambah Rekening', 'success');
+
+            $this->dispatch('create-rekening');
 
             $this->dispatch('close-modal', 'create-rekening-modal');
         } catch (\Throwable $th) {
-            $this->dispatch('toast', "Gagal Menambah Rekening " . $th->getMessage());
+            flash('Gagal Menambah Rekening ' . $th->getMessage(), 'danger');
         }
     }
 

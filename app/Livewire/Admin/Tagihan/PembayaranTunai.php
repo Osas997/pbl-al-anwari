@@ -19,18 +19,10 @@ class PembayaranTunai extends Component
 
     #[Validate('required', message: 'Jumlah Bayar Tidak Boleh Kosong')]
     #[Validate('numeric', message: 'Jumlah Bayar Tidak Valid')]
-    #[Validate('gte:nominalTagihan')]
+    #[Validate('min:0', message: 'Jumlah Bayar Tidak Boleh Kurang Dari Rp. 0')]
     public $jumlah_bayar;
 
     public $nominalTagihan;
-
-    public function messages()
-    {
-        $nominal = formatToRupiah($this->nominalTagihan);
-        return [
-            'jumlah_bayar.gte' => 'Jumlah Bayar Tidak Boleh Kurang Dari ' . $nominal
-        ];
-    }
 
     public function mount($tagihanId, $nominal)
     {
@@ -46,7 +38,7 @@ class PembayaranTunai extends Component
         try {
             DB::beginTransaction();
 
-            $tagihan = Tagihan::findOrFail($this->tagihanId);
+            $tagihan = Tagihan::with('pembayaran')->findOrFail($this->tagihanId);
 
             Pembayaran::create([
                 "id_tagihan" => $this->tagihanId,
@@ -57,9 +49,19 @@ class PembayaranTunai extends Component
                 "status" => "dikonfirmasi"
             ]);
 
-            $tagihan->update([
-                "status" => "lunas"
-            ]);
+            $jumlah_bayar = $tagihan->pembayaran->sum('jumlah_bayar') + $this->jumlah_bayar;
+
+            if ($jumlah_bayar >= $this->nominalTagihan) {
+                $tagihan->update([
+                    "status" => "lunas"
+                ]);
+            } else {
+                $tagihan->update([
+                    "status" => "angsur"
+                ]);
+            }
+
+            $this->clear('tanggal_bayar', 'jumlah_bayar');
 
             $this->dispatch('pembayaran-tunai');
             flash('Berhasil Melakukan Pembayaran Tagihan !', 'success');

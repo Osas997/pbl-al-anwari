@@ -17,6 +17,8 @@ class TagihanTable extends Component
     #[Url('search')]
     public $search = '';
 
+    public $status = 'belum lunas';
+
     #[On('delete-tagihan')]
     public function deleteTagihan(Tagihan $tagihan)
     {
@@ -37,11 +39,18 @@ class TagihanTable extends Component
         $this->resetPage();
     }
 
+    public function changeStatus($status)
+    {
+        if (!$status) return;
+        $this->status = $status;
+    }
+
     public function placeholder()
     {
         return view("vendor.loading-spinner");
     }
 
+    #[On('cetakPdf')]
     public function cetakPdf()
     {
         $tagihan = Tagihan::with('santri')->where('status', 'belum lunas')->searchFilter($this->search)->latest()->get();
@@ -54,7 +63,7 @@ class TagihanTable extends Component
     #[On('toast')]
     public function render()
     {
-        $tagihan = Tagihan::with('santri')->where('status', 'belum lunas')->searchFilter($this->search)->latest()->paginate(25);
+        $tagihan = Tagihan::with('santri')->searchFilter($this->search, $this->status)->latest()->paginate(25);
         return view('livewire.admin.tagihan.tagihan-table', compact('tagihan'));
     }
 }

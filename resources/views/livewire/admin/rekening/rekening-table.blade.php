@@ -40,7 +40,7 @@
                     </td>
                     <td class="px-6 py-4">
                         <div class="flex gap-2">
-                            <a x-on:click="$dispatch('update-rekening', { rekening_id: {{ $item->id }} })"
+                            <a x-on:click="$dispatch('edit-rekening', { rekening_id: {{ $item->id }} })"
                                 class="font-medium text-blue-600 dark:text-blue-500 hover:underline cursor-pointer">Edit</a>
                             |
                             <a x-on:click="$dispatch('delete-rekening-modal', { rekening_id: {{ $item->id }} })"

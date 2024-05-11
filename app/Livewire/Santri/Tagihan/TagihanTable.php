@@ -14,7 +14,14 @@ class TagihanTable extends Component
 
     public function render()
     {
-        $tagihan = Tagihan::with('santri')->where('id_santri', auth()->user()->id)->latest()->get();
+        $tagihan = Tagihan::with('santri')
+            ->where(function ($query) {
+                $query->where('status', 'belum lunas')
+                    ->orWhere('status', 'angsur');
+            })
+            ->where('id_santri', auth()->user()->id)
+            ->latest()
+            ->get();
 
         return view('livewire.santri.tagihan.tagihan-table', compact('tagihan'));
     }

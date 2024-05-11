@@ -1,5 +1,5 @@
 <div>
-    <div class="pb-4 px-2 border-b">
+    <div class="pb-4 px-2 border-b pt-6">
         <p class="text-black font-semibold">Form Pembayaran </p>
     </div>
     <div class="w-full py-2 my-2">

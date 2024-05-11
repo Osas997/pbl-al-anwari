@@ -36,7 +36,7 @@ class TagihanSelesaiTable extends Component
     }
     public function render()
     {
-        $tagihan =  Tagihan::with('santri')->where('status', 'lunas')->searchFilter($this->search)->latest()->paginate(25);;
+        $tagihan =  Tagihan::with('santri')->where('status', 'lunas')->latest()->paginate(25);;
         return view('livewire.admin.tagihan.tagihan-selesai-table', compact('tagihan'));
     }
 }

@@ -54,7 +54,7 @@
         @this.id_bank = data;
         });
 
-    window.addEventListener('toast', () => {
+    window.addEventListener('create-rekening', () => {
         $('.bank-select-create').val("").trigger('change');
     })
     });

@@ -24,10 +24,17 @@ class Tagihan extends Model
 
     public function pembayaran()
     {
-        $this->hasMany(Pembayaran::class, 'id_tagihan', 'id');
+        return $this->hasMany(Pembayaran::class, 'id_tagihan', 'id');
     }
 
-    public function scopeSearchFilter($query, $search)
+    public function sisaTagihan()
+    {
+        return $this->hasMany(Pembayaran::class, 'id_tagihan', 'id')->where('status', 'dikonfirmasi')->sum('jumlah_bayar');
+    }
+
+
+
+    public function scopeSearchFilter($query, $search, $status)
     {
         if ($search) {
             $query->where(fn ($query) =>
@@ -42,10 +49,10 @@ class Tagihan extends Model
             ));
         }
 
-        // if ($status) {
-        //     $query->where('status', $status);
-        // } else {
-        //     $query->where('status', 'Aktif');
-        // }
+        if ($status && $status == 'lunas') {
+            $query->where('status', 'lunas');
+        } else {
+            $query->where('status', 'belum lunas')->orWhere('status', 'angsur');
+        }
     }
 }

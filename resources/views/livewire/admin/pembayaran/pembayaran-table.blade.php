@@ -96,7 +96,7 @@
         @else
 
         <div class="my-3 py-4">
-            <h1 class="font-semibold text-center text-red-500 text-2xl"> Data Pembayaran Tidak Ditemukan </h1>
+            <h1 class="font-semibold text-center text-red-500 text-2xl"> Tidak Ada Data Pembayaran </h1>
         </div>
 
         @endif

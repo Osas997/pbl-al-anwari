@@ -53,19 +53,13 @@
                         {{ $item->formatToRupiah('nominal') }}
                     </td>
                     <td class="px-6 py-4 text-center">
-                        @if ($item->status === 'angsur')
-                        <div class="py-2 px-3 rounded-xl bg-orange-500 text-white ">
+                        <div class="py-2 px-3 rounded-xl bg-green-600 text-white ">
                             {{ ucwords($item->status) }}
                         </div>
-                        @else
-                        <div class="py-2 px-3 rounded-xl bg-red-600 text-white ">
-                            {{ ucwords($item->status) }}
-                        </div>
-                        @endif
                     </td>
                     <td class="px-6 py-4 text-center">
                         <a wire:navigate href="{{ route('tagihan-detail-santri', $item->id) }}"
-                            class="italic font-medium text-blue-600 dark:text-blue-500 hover:underline">BAYAR</a>
+                            class="italic font-medium text-blue-600 dark:text-blue-500 hover:underline">Detail</a>
                     </td>
                 </tr>
                 @endforeach
@@ -74,7 +68,7 @@
         @else
         <p
             class="text-center text-emerald-400 dark:text-gray-300 font-semibold text-lg md:text-2xl py-6 overflow-y-hidden">
-            Tidak Ada Tagihan Terima Kasih</p>
+            Tidak Ada Riwayat Pembayaran</p>
         @endif
     </div>
 </div>

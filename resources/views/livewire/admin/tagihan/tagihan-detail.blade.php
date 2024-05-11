@@ -114,69 +114,76 @@
                 </div>
             </div>
             <div class="py-8 px-2 bg-white rounded-lg dark:bg-slate-600 md:w-1/2 w-full">
-                @isset ($tagihanLunas)
-                @if ($tagihanLunas->status == "dikonfirmasi")
-                <div class="flex flex-col justify-evenly h-full">
-                    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                            <tr>
-                                <th scope="col" class="px-6 py-3">
-                                    #
-                                </th>
-                                <th scope="col" class="px-6 py-3">
-                                    Tanggal Bayar
-                                </th>
-                                <th scope="col" class="px-6 py-3">
-                                    Jumlah Bayar
-                                </th>
-                                <th scope="col" class="px-6 py-3">
-                                    Metode
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                <th scope="row"
-                                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    <a target="_blank" href="{{ route('kwitansi-pembayaran', $tagihanLunas->id) }}">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                            fill="currentColor" class="bi bi-printer-fill" viewBox="0 0 16 16">
-                                            <path
-                                                d="M5 1a2 2 0 0 0-2 2v1h10V3a2 2 0 0 0-2-2zm6 8H5a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1" />
-                                            <path
-                                                d="M0 7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2h-1v-2a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v2H2a2 2 0 0 1-2-2zm2.5 1a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1" />
-                                        </svg></a>
-                                </th>
-                                <td class="px-6 py-4">
-                                    {{ $tagihanLunas->tanggal_bayar->translatedFormat('d F Y') }}
-                                </td>
-                                <td class="px-6 py-4">
-                                    {{ $tagihanLunas->formatToRupiah('jumlah_bayar') }}
-                                </td>
-                                <td class="px-6 py-4 uppercase">
-                                    {{ $tagihanLunas->metode_pembayaran }}
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <p class="text-center mt-8 text-green-500 text-3xl font-semibold">Tagihan Sudah Lunas</p>
-                </div>
-                @elseif($tagihanLunas->status == "pending")
-                <div class="flex justify-center items-center h-full">
-                    <p class="font-semibold text-center text-lg text-orange-600">Bukti Pembayaran Sudah Di
-                        Upload Silahkan Cek bukti
-                        upload Di
-                        Menu Pembayaran</p>
-                    <div>
-                        <img src="{{ Storage::url($tagihanLunas->pembayaranBank->bukti_transfer) }}" alt="">
-                    </div>
-                </div>
+
+                @if ($tagihan->status == 'angsur' || $tagihan->status == 'lunas')
+                <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                        <tr>
+                            <th scope="col" class="px-6 py-3">
+                                #
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Tanggal Bayar
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Jumlah Bayar
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Metode
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($tagihan->pembayaran as $item)
+                        @if ($item->status == 'dikonfirmasi')
+                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                            <th scope="row"
+                                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                <a target="_blank" href="{{ route('kwitansi-pembayaran', $item->id) }}">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                        class="bi bi-printer-fill" viewBox="0 0 16 16">
+                                        <path
+                                            d="M5 1a2 2 0 0 0-2 2v1h10V3a2 2 0 0 0-2-2zm6 8H5a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1" />
+                                        <path
+                                            d="M0 7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2h-1v-2a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v2H2a2 2 0 0 1-2-2zm2.5 1a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1" />
+                                    </svg></a>
+                            </th>
+                            <td class="px-6 py-4">
+                                {{ $item->tanggal_bayar->translatedFormat('d F Y') }}
+                            </td>
+                            <td class="px-6 py-4">
+                                {{ $item->formatToRupiah('jumlah_bayar') }}
+                            </td>
+                            <td class="px-6 py-4 uppercase">
+                                {{ $item->metode_pembayaran }}
+                            </td>
+                        </tr>
+                        @endif
+                        @endforeach
+                    </tbody>
+                </table>
                 @endif
+
+                @if ($isPending)
+                <p class="text-center mt-8 text-orange-500 text-xl font-semibold">Pembayaran sudah dilakukan segara
+                    konfirmasi di halaman pembayaran</p>
+                @else
+
+                @if ($tagihan->status == "lunas")
+                <p class="text-center mt-8 text-green-500 text-2xl font-semibold">Tagihan Sudah Lunas</p>
                 @else
                 <div class="px-4">
                     <livewire:admin.tagihan.pembayaran-tunai :tagihanId="$tagihan->id" :nominal="$tagihan->nominal" />
                 </div>
-                @endisset
+                @endif
+
+                @endif
+
+                @if ($tagihan->status == "angsur")
+                <div class="pt-8">
+                    <p>Sisa Tagihan : {{ $tagihan->nominal - $tagihan->sisaTagihan() }}</p>
+                </div>
+                @endif
             </div>
         </div>
     </section>

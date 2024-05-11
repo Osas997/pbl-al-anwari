@@ -33,8 +33,6 @@
     {{-- Modal Edit --}}
     <livewire:admin.rekening.rekening-edit />
 
-    {{-- Toast --}}
-    <x-toast />
 </div>
 
 @script

@@ -23,7 +23,7 @@ class RekeningEdit extends Component
 
     public $rekening_id;
 
-    #[On('update-rekening')]
+    #[On('edit-rekening')]
     public function edit($rekening_id)
     {
         $rekening = BankPondok::findOrFail($rekening_id);
@@ -53,11 +53,13 @@ class RekeningEdit extends Component
 
             $this->reset();
 
-            $this->dispatch('toast', 'Berhasil Update Rekening');
+            flash('Berhasil Ubah Rekening', 'success');
+
+            $this->dispatch('update-rekening');
 
             $this->dispatch('close-modal', 'edit-rekening-modal');
         } catch (\Throwable $th) {
-            $this->dispatch('toast', "Gagal Ubah Angkatan " . $th->getMessage());
+            flash('Gagal Mengubah Rekening ' . $th->getMessage(), 'danger');
         }
     }
     public function render()
