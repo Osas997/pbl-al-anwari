@@ -16,7 +16,7 @@ class guestOnly
     public function handle(Request $request, Closure $next): Response
     {
         if (auth()->check()) {
-            return redirect()->route('home');
+            return redirect()->route('tagihan-santri');
         }
         if (auth('admin')->check()) {
             return redirect()->route('dashboard');
