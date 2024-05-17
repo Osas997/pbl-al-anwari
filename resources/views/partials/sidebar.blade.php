@@ -187,8 +187,8 @@
                                 </li>
                                 <li>
                                     <a wire:navigate
-                                        class="{{ Request::is('admin/tagihan-selesai') ? 'text-active' : 'text-bodydark2' }} group relative flex items-center gap-2.5 rounded-md px-4 font-medium duration-300 ease-in-out hover:text-white"
-                                        href="#">History Pembayaran
+                                        class="{{ Request::is('admin/riwayat-pembayaran') ? 'text-active' : 'text-bodydark2' }} group relative flex items-center gap-2.5 rounded-md px-4 font-medium duration-300 ease-in-out hover:text-white"
+                                        href="{{ route('riwayat-pembayaran') }}">Riwayat Pembayaran
                                     </a>
                                 </li>
                             </ul>

@@ -20,13 +20,29 @@ class TagihanCreate extends Component
     #[Validate('in:syahriyyah,catering', message: 'Jenis Tagihan tidak valid')]
     public $jenis_tagihan;
 
-    #[Validate('required', message: 'Tahun Ajaran harus diisi')]
-    #[Validate('exists:angkatan,tahun_angkatan', message: 'Tahun Ajaran tidak valid')]
     public $tahun_ajaran;
 
     public $semester;
 
     public $bulan;
+
+    public function rules()
+    {
+        return [
+            "tahun_ajaran" => [
+                'required',
+                'in:' . implode(',', range(2022, Carbon::now()->year)),
+            ]
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'tahun_ajaran.required' => 'Angkatan Tidak Boleh Kosong',
+            'tahun_ajaran.in' => 'Angkatan Tidak Valid',
+        ];
+    }
 
     public function generate()
     {
@@ -89,10 +105,14 @@ class TagihanCreate extends Component
     {
         $dataSyahriyyah = Syahriyyah::all();
         $dataCatering = Catering::all();
-        $dataAngkatan = Angkatan::all();
+
+        $tahunMulai = 2022;
+        $tahunSaatIni = Carbon::now()->year;
+
+        $dataTahun = range($tahunMulai, $tahunSaatIni);
 
         $totalSantri = Santri::where('status', 'Aktif')->count();
 
-        return view('livewire.admin.tagihan.tagihan-create', compact('totalSantri', 'dataSyahriyyah', 'dataCatering', 'dataAngkatan'));
+        return view('livewire.admin.tagihan.tagihan-create', compact('totalSantri', 'dataSyahriyyah', 'dataCatering', 'dataTahun'));
     }
 }

@@ -11,6 +11,7 @@ use App\Livewire\Admin\Diniyyah\DinyyahDeletedFile;
 use App\Livewire\Admin\Pembayaran\KwitansiPembayaran;
 use App\Livewire\Admin\Pembayaran\Pembayaran;
 use App\Livewire\Admin\Pembayaran\PembayaranDetail;
+use App\Livewire\Admin\Pembayaran\RiwayatPembayaran;
 use App\Livewire\Admin\Rekening\Rekening;
 use App\Livewire\Admin\Santri\Santri;
 use App\Livewire\Admin\Santri\SantriDeletedFile;
@@ -53,6 +54,8 @@ Route::middleware('admin')->prefix('admin')->group(function () {
    Route::get('pembayaran', Pembayaran::class)->name('pembayaran');
    Route::get('pembayaran/{id}', PembayaranDetail::class)->name('pembayaran-detail');
 
+   Route::get('riwayat-pembayaran', RiwayatPembayaran::class)->name('riwayat-pembayaran');
+
    Route::get('kwitansi/{pembayaran}', KwitansiPembayaran::class)->name('kwitansi-pembayaran');
 
    Route::get('settings', App\Livewire\Santri\Test::class)->name('settings');
@@ -66,7 +69,6 @@ Route::middleware('santri')->prefix('santri')->group(function () {
    Route::get('tagihan/{tagihan}', App\Livewire\Santri\Tagihan\TagihanDetail::class)->name('tagihan-detail-santri');
 
    Route::get('riwayat-pembayaran', App\Livewire\Santri\Pembayaran\RiwayatPembayaran::class)->name('riwayat-pembayaran-santri');
-   Route::get('riwayat-pembayaran/{tagihan}', App\Livewire\Santri\Pembayaran\RiwayatPembayaranDetail::class)->name('riwayat-pembayaran-detail-santri');
 });
 
 

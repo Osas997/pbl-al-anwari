@@ -16,7 +16,7 @@ class PembayaranDetail extends Component
 
     public function mount($id)
     {
-        $pembayaran = Pembayaran::with(['tagihan', 'tagihan.santri', 'pembayaranBank', 'pembayaranBank.bankPondok', 'pembayaranBank.bankSantri'])->where('id', $id)->where('metode_pembayaran', 'transfer')->firstOrFail();
+        $pembayaran = Pembayaran::with(['tagihan', 'tagihan.santri', 'pembayaranBank', 'pembayaranBank.bankPondok', 'pembayaranBank.bankSantri'])->where('id', $id)->firstOrFail();
         $this->pembayaran = $pembayaran;
     }
 

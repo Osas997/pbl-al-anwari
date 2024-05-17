@@ -1,4 +1,4 @@
-<div class="py-4 font-poppins scroll-smooth" id="tagihan-table">
+<div class="font-poppins scroll-smooth" id="tagihan-table">
     <div class="relative overflow-x-auto sm:rounded-lg">
         <div class="flex flex-column sm:flex-row flex-wrap space-y-4 sm:space-y-0 items-center justify-between pb-4">
             <label for="table-search" class="sr-only">Search</label>
@@ -21,8 +21,8 @@
                 <div x-data="{ open: false }" @click.away="open = false" class="relative h-fit">
                     <button @click="open = !open"
                         class="flex items-center bg-white border border-zinc-300 text-zinc-700 py-2 px-4 rounded-lg focus:outline-none focus:border-blue-500">
-                        {{-- <span x-text="{{ json_encode($status) }}"></span> --}}
-                        <span x-text="'Belum Lunas'"></span>
+                        <span>{{ ucwords($status) }}</span>
+                        {{-- <span x-text=""></span> --}}
                         <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                             xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
@@ -42,8 +42,6 @@
                 </div>
 
             </div>
-
-
         </div>
         @if ($tagihan->isNotEmpty())
         <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 mt-4">

@@ -63,8 +63,8 @@
             </div>
             <input x-ref="input" wire:model="upload" type="file" class="dz-hidden"
                 x-on:livewire-upload-start="isLoading = true" x-on:livewire-upload-finish="isLoading = false"
-                x-on:livewire-upload-error="console.log('livewire-dropzone upload error', error)" @if(!
-                is_null($this->accept)) accept="{{ $this->accept }}" @endif
+                x-on:livewire-upload-error="console.log(error)" @if(! is_null($this->accept)) accept="{{ $this->accept
+            }}" @endif
             @if($multiple === true) multiple @endif
             >
         </div>

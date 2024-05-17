@@ -76,11 +76,12 @@
                         <p class="text-sm md:text-md">Jenis Tagihan</p>
                         <p>:</p>
                     </div>
-                    <p class="w-2/3 mx-4 text-sm md:text-md">
+                    <a wire:navigate href="{{ route('tagihan-detail', $pembayaran->tagihan->id) }}"
+                        class="w-2/3 mx-4 text-sm md:text-md hover:text-blue-600 hover:underline">
                         {{ $pembayaran->tagihan->jenis_tagihan == "syahriyyah" ? "Syahriyyah " .
                         $pembayaran->tagihan->santri->syahriyyah->jenis_domisili : "Catering " .
                         $pembayaran->tagihan->santri->catering->jumlah_catering . " Kali Makan"}}
-                    </p>
+                    </a>
                 </div>
                 <div class="flex px-2 py-2 gap-4 items-center">
                     <div class="flex w-1/3 justify-between me-2 items-center">
@@ -109,7 +110,7 @@
                 @else
                 <div class="flex px-2 py-2 gap-4 items-center">
                     <div class="flex w-1/3 justify-between me-2 items-center">
-                        <p class="text-sm md:text-md">Bulan pembayaran->Tagihan</p>
+                        <p class="text-sm md:text-md">Bulan Tagihan</p>
                         <p>:</p>
                     </div>
                     <p class="w-2/3 mx-4 text-sm md:text-md">{{ $pembayaran->tagihan->bulan }}
@@ -118,16 +119,25 @@
                 @endif
                 <div class="flex px-2 py-2 gap-4 items-center">
                     <div class="flex w-1/3 justify-between me-2 items-center">
-                        <p class="text-sm md:text-md">Tanggal pembayaran->Tagihan</p>
+                        <p class="text-sm md:text-md">Tanggal Tagihan</p>
                         <p>:</p>
                     </div>
                     <p class="w-2/3 mx-4 text-sm md:text-md">{{ $pembayaran->tagihan->tgl_tagihan->translatedFormat('d F
                         Y') }}
                     </p>
                 </div>
+                <div class="flex px-2 py-2 gap-4 items-center">
+                    <div class="flex w-1/3 justify-between me-2 items-center">
+                        <p class="text-sm md:text-md">Status Tagihan</p>
+                        <p>:</p>
+                    </div>
+                    <p class="w-2/3 mx-4 text-sm md:text-md">{{ $pembayaran->tagihan->status }}
+                    </p>
+                </div>
             </div>
         </div>
 
+        @if ($pembayaran->metode_pembayaran == 'transfer')
         <div class="mb-4 py-6 px-10 bg-white rounded-lg dark:bg-slate-600 w-full">
             <div class="flex gap-2 justify-start items-center">
                 <p class="font-semibold text-xl py-2">Informasi Bank Penerima</p>
@@ -205,6 +215,7 @@
                 </div>
             </div>
         </div>
+        @endif
 
         <div class="mb-4 py-6 px-10 bg-white rounded-lg dark:bg-slate-600 w-full">
             <div class="flex gap-2 justify-start items-center">
@@ -252,6 +263,7 @@
                         : 'Dikonfirmasi'
                         }}</p>
                 </div>
+                @if ($pembayaran->metode_pembayaran == 'transfer')
                 <div class="flex px-2 py-2 gap-4 items-center">
                     <div class="flex w-1/3 justify-between me-2 items-center">
                         <p class="text-sm md:text-md">Bukti Transfer</p>
@@ -265,6 +277,7 @@
                         </x-button>
                     </div>
                 </div>
+                @endif
 
                 @if ($pembayaran->status == 'pending')
                 <div class="pt-6 flex justify-start gap-4 flex-wrap">

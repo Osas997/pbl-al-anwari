@@ -43,8 +43,8 @@ return \Carbon\Carbon::createFromDate(null, $monthNumber, null,
                     <select wire:model='tahun_ajaran'
                         class="relative z-20 text-black dark:text-white w-full appearance-none rounded border border-stroke bg-transparent py-3 pl-5 pr-12 outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input">
                         <option value="">Pilih</option>
-                        @foreach ($dataAngkatan as $item)
-                        <option value="{{ $item->tahun_angkatan }}" class="text-black">{{ $item->tahun_angkatan }}
+                        @foreach ($dataTahun as $tahun)
+                        <option value="{{ $tahun }}" class="text-black">{{ $tahun }}
                         </option>
                         @endforeach
                     </select>
