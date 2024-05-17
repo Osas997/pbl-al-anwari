@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('no_hp');
             $table->enum('jenis_kelamin', ['L', 'P']);
             $table->string('tempat_lahir');
+            $table->string('tahun_angkatan');
             $table->date('tgl_lahir');
             $table->string('alamat');
             $table->string('nama_ayah');
@@ -31,9 +32,6 @@ return new class extends Migration
 
             $table->unsignedBigInteger('id_catering');
             $table->foreign('id_catering')->references('id')->on('catering');
-
-            $table->unsignedBigInteger('id_angkatan');
-            $table->foreign('id_angkatan')->references('id')->on('angkatan');
 
             $table->unsignedBigInteger('id_diniyyah');
             $table->foreign('id_diniyyah')->references('id')->on('diniyyah');

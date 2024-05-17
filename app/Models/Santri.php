@@ -30,11 +30,6 @@ class Santri extends Authenticatable
         return $this->belongsTo(Catering::class, 'id_catering', 'id');
     }
 
-    public function angkatan()
-    {
-        return $this->belongsTo(Angkatan::class, 'id_angkatan', 'id')->withTrashed();
-    }
-
     public function diniyyah()
     {
         return $this->belongsTo(Diniyyah::class, 'id_diniyyah', 'id')->withTrashed();

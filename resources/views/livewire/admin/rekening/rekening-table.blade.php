@@ -12,7 +12,7 @@
                         Nama Bank
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        Nama Rekening
+                        Nama Pemilik Rekening
                     </th>
                     <th scope="col" class="px-6 py-3">
                         Nomor Rekening

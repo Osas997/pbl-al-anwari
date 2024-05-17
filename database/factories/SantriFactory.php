@@ -39,8 +39,8 @@ class SantriFactory extends Factory
             'id_catering' => function () {
                 return Catering::inRandomOrder()->first()->id;
             },
-            'id_angkatan' => function () {
-                return Angkatan::inRandomOrder()->first()->id;
+            'tahun_angkatan' => function () {
+                return rand(2022, 2024);
             },
             'id_diniyyah' => function () {
                 return Diniyyah::inRandomOrder()->first()->id;

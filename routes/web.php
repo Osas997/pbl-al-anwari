@@ -39,9 +39,6 @@ Route::middleware('admin')->prefix('admin')->group(function () {
 
    Route::get('rekening-bank', Rekening::class)->name('rekening-bank');
 
-   Route::get('angkatan', Angkatan::class)->name('angkatan');
-   Route::get('deleted-angkatan', AngkatanDeletedFile::class)->name('deleted-angkatan');
-
    Route::get('catering', Catering::class)->name('catering');
 
    Route::get('syahriyyah', Syahriyyah::class)->name('syahriyyah');

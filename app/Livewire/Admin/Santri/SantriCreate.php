@@ -68,9 +68,25 @@ class SantriCreate extends Component
     #[Validate('exists:catering,id', message: "Catering Tidak Valid")]
     public $id_catering;
 
-    #[Validate('required', message: "Angkatan Tidak Boleh Kosong")]
-    #[Validate('exists:angkatan,id', message: "Angkatan Tidak Valid")]
-    public $id_angkatan;
+    public $tahun_angkatan;
+
+    public function rules()
+    {
+        return [
+            "tahun_angkatan" => [
+                'required',
+                'in:' . implode(',', range(2022, Carbon::now()->year)),
+            ]
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'tahun_angkatan.required' => 'Angkatan Tidak Boleh Kosong',
+            'tahun_angkatan.in' => 'Angkatan Tidak Valid',
+        ];
+    }
 
     public function store()
     {
@@ -85,25 +101,28 @@ class SantriCreate extends Component
         try {
             $santri = Santri::create($validate);
 
-            $santri->assignRole('santri');
-
             $this->reset();
 
-            $this->dispatch('toast', 'Berhasil Menambah Santri');
+            flash('Berhasil Menambah Data Santri', 'success');
+
+            $this->dispatch('santri');
 
             $this->dispatch('close-modal', 'create-santri-modal');
         } catch (\Throwable $th) {
-            $this->dispatch('toast', "Gagal Menambah Santri " . $th->getMessage());
+            flash('Gagal Menambah Data Santri ' . $th->getMessage(), 'error');
         }
     }
 
     public function render()
     {
         $dataDiniyyah = Diniyyah::all();
-        $dataAngkatan = Angkatan::all();
         $dataCatering = Catering::all();
         $dataSyahriyyah = Syahriyyah::all();
 
-        return view('livewire.admin.santri.santri-create', compact('dataDiniyyah', 'dataAngkatan', 'dataCatering', 'dataSyahriyyah'));
+        $tahunMulai = 2022;
+        $tahunSaatIni = Carbon::now()->year;
+
+        $dataTahun = range($tahunMulai, $tahunSaatIni);
+        return view('livewire.admin.santri.santri-create', compact('dataDiniyyah', 'dataTahun', 'dataCatering', 'dataSyahriyyah'));
     }
 }

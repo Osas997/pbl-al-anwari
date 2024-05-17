@@ -13,7 +13,7 @@ class SantriDetail extends Component
 
     public function mount(Santri $santri)
     {
-        $this->santri = $santri->load(['angkatan', 'diniyyah']);
+        $this->santri = $santri->load(['diniyyah']);
     }
 
     public function render()

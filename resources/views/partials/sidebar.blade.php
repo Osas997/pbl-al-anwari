@@ -87,12 +87,6 @@
                                 </li>
                                 <li>
                                     <a wire:navigate
-                                        class="{{ Request::is('admin/angkatan') || Request::is('admin/deleted-angkatan') ? 'text-active' : 'text-bodydark2' }} group relative flex items-center gap-2.5 rounded-md px-4 font-medium duration-300 ease-in-out hover:text-white"
-                                        href="{{ route('angkatan') }}">Angkatan
-                                    </a>
-                                </li>
-                                <li>
-                                    <a wire:navigate
                                         class="{{ Request::is('admin/rekening-bank') ? 'text-active' : 'text-bodydark2' }} group relative flex items-center gap-2.5 rounded-md px-4 font-medium duration-300 ease-in-out hover:text-white"
                                         href="{{ route('rekening-bank') }}">Rekening Bank
                                     </a>

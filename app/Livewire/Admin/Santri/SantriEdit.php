@@ -49,9 +49,7 @@ class SantriEdit extends Component
     #[Validate('exists:catering,id', message: "Catering Tidak Valid")]
     public $id_catering;
 
-    #[Validate('required', message: "Nama Ibu Tidak Boleh Kosong")]
-    #[Validate('exists:angkatan,id', message: "Angkatan Tidak Valid")]
-    public $id_angkatan;
+    public $tahun_angkatan;
 
     public $nis;
 
@@ -81,6 +79,10 @@ class SantriEdit extends Component
                 'numeric',
                 'digits:16',
                 "unique:santri,no_nik," . $this->santri_id,
+            ],
+            "tahun_angkatan" => [
+                'required',
+                'in:' . implode(',', range(2022, Carbon::now()->year)),
             ]
         ];
     }
@@ -99,7 +101,9 @@ class SantriEdit extends Component
             'no_nik.required' => 'Nomor NIK tidak boleh kosong.',
             'no_nik.numeric' => 'Nomor NIK harus angka.',
             'no_nik.digits' => 'Nomor NIK harus terdiri dari 16 digit.',
-            'no_nik.unique' => 'Nomor NIK sudah terdaftar.'
+            'no_nik.unique' => 'Nomor NIK sudah terdaftar.',
+            'tahun_angkatan.required' => 'Angkatan Tidak Boleh Kosong',
+            'tahun_angkatan.in' => 'Angkatan Tidak Valid',
         ];
     }
 
@@ -118,7 +122,7 @@ class SantriEdit extends Component
         $this->alamat = $santri->alamat;
         $this->nama_ayah = $santri->nama_ayah;
         $this->nama_ibu = $santri->nama_ibu;
-        $this->id_angkatan = $santri->id_angkatan;
+        $this->tahun_angkatan = $santri->tahun_angkatan;
         $this->id_syahriyyah = $santri->id_syahriyyah;
         $this->id_diniyyah = $santri->id_diniyyah;
         $this->id_catering = $santri->id_catering;
@@ -146,10 +150,14 @@ class SantriEdit extends Component
     public function render()
     {
         $dataDiniyyah = Diniyyah::all();
-        $dataAngkatan = Angkatan::all();
         $dataCatering = Catering::all();
         $dataSyahriyyah = Syahriyyah::all();
 
-        return view('livewire.admin.santri.santri-edit', compact('dataDiniyyah', 'dataAngkatan', 'dataCatering', 'dataSyahriyyah'));
+        $tahunMulai = 2022;
+        $tahunSaatIni = Carbon::now()->year;
+
+        $dataTahun = range($tahunMulai, $tahunSaatIni);
+
+        return view('livewire.admin.santri.santri-edit', compact('dataDiniyyah', 'dataTahun', 'dataCatering', 'dataSyahriyyah'));
     }
 }

@@ -19,7 +19,6 @@ class DatabaseSeeder extends Seeder
         $this->call([
             CateringSeeder::class,
             SyahriyyahSeeder::class,
-            AngkatanSeeder::class,
             DiniyyahSeeder::class,
             IndoBankSeeder::class
         ]);

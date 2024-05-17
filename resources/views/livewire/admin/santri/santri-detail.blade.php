@@ -109,7 +109,7 @@
                     <p class="text-sm md:text-md">Angkatan</p>
                     <p>:</p>
                 </div>
-                <p class="w-2/3 mx-4 text-sm md:text-md">{{ $santri->angkatan->tahun_angkatan }}</p>
+                <p class="w-2/3 mx-4 text-sm md:text-md">{{ $santri->tahun_angkatan }}</p>
             </div>
             <div class="flex px-2 py-2 gap-4 items-center">
                 <div class="flex w-1/3 justify-between me-2">
