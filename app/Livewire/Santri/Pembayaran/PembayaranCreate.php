@@ -2,12 +2,15 @@
 
 namespace App\Livewire\Santri\Pembayaran;
 
+use App\Models\Admin;
 use App\Models\BankPondok;
 use App\Models\BankSantri;
 use App\Models\Pembayaran;
 use App\Models\PembayaranBank;
+use App\Notifications\PembayaranCreated;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\File;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Attributes\On;
 use Livewire\Attributes\Validate;
@@ -80,12 +83,15 @@ class PembayaranCreate extends Component
                 "bukti_transfer" => $buktiBayarPath
             ]);
 
+            $admin = Admin::all();
+            Notification::send($admin, new PembayaranCreated($pembayaran));
+
             $this->dispatch('pembayaran-transfer');
-            $this->dispatch('toast', 'Berhasil Melakukan Pembayaran Silahkan Tunggu Admin Untuk Melakukan Konfirmasi !');
+            flash('Berhasil Melakukan Pembayaran', 'success');
             DB::commit();
         } catch (\Throwable $th) {
             DB::rollBack();
-            $this->dispatch('toast', "Gagal Melakukan Pembayaran Tagihan " . $th->getMessage());
+            flash("Gagal Melakukan Pembayaran " . $th->getMessage(), 'error');
         }
     }
 

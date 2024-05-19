@@ -2,8 +2,6 @@
 
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\TesController;
-use App\Livewire\Admin\Angkatan\Angkatan;
-use App\Livewire\Admin\Angkatan\AngkatanDeletedFile;
 use App\Livewire\Admin\Catering\Catering;
 use App\Livewire\Admin\Dashboard;
 use App\Livewire\Admin\Diniyyah\Diniyyah;

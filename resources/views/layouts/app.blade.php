@@ -31,7 +31,7 @@
       <!-- ===== Content Area Start ===== -->
       <div class="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden">
          <!-- ===== Header Start ===== -->
-         @include('partials.header')
+         <livewire:header />
          <!-- ===== Header End ===== -->
 
          <!-- ===== Main Content Start ===== -->
