@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Admin\Pembayaran;
 
+use App\Events\CreatePembayaran;
 use App\Models\Pembayaran;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
@@ -43,11 +44,15 @@ class PembayaranDetail extends Component
                 'status' => 'lunas',
             ]);
 
+            // CreatePembayaran::dispatch($this->pembayaran->load(['tagihan', 'tagihan.santri']));
+
             flash('Berhasil Mengkonfirmasi Pembayaran', 'success');
+
             DB::commit();
         } catch (\Throwable $th) {
             DB::rollBack();
-            flash($th->getMessage(), 'error');
+            flash("Gagal Mengkonfirmasi Pembayaran " . $th->getMessage(), 'error');
+            return redirect()->route('pembayaran-detail', $this->pembayaran->id);
         }
     }
 

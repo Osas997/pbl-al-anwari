@@ -69,13 +69,13 @@
                     <!-- Dark Mode Toggler -->
                 </li>
 
-                <!-- Notification Menu Area -->
+                @if (auth('admin')->check())
                 <li wire:click="markAllAsRead" class="relative" x-data="{ dropdownOpen: false }"
                     @click.outside="dropdownOpen = false">
                     <a wire:poll
                         class="relative flex h-8.5 w-8.5 items-center justify-center rounded-full border-[0.5px] border-stroke bg-gray hover:text-primary dark:border-strokedark dark:bg-meta-4 dark:text-white"
                         href="#" @click.prevent="dropdownOpen = ! dropdownOpen;">
-                        @if (auth('admin')->check() && auth('admin')->user()->unreadNotifications->count() > 0)
+                        @if (auth('admin')->user()->unreadNotifications->count() > 0)
                         <span class="absolute -top-0.5 right-0 z-1 h-2 w-2 rounded-full bg-meta-1">
                             <span
                                 class="absolute -z-1 inline-flex h-full w-full animate-ping rounded-full bg-meta-1 opacity-75"></span>
@@ -95,8 +95,6 @@
                         <div class="px-4.5 py-3">
                             <h5 class="text-sm font-medium text-bodydark2">Notification</h5>
                         </div>
-
-                        @if (auth('admin')->check())
                         <ul class="flex h-auto flex-col overflow-y-auto">
                             @foreach (auth('admin')->user()->notifications as $notification)
                             <li>
@@ -110,16 +108,12 @@
                                 </a>
                             </li>
                             @endforeach
-
                         </ul>
-                        @else
-
-                        @endif
-
-
                     </div>
                     <!-- Dropdown End -->
                 </li>
+                @endif
+                <!-- Notification Menu Area -->
                 <!-- Notification Menu Area -->
             </ul>
 

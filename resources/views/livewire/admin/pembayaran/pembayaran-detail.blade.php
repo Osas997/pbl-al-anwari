@@ -279,7 +279,7 @@
                 </div>
                 @endif
 
-                @if ($pembayaran->status == 'pending')
+                @if ($pembayaran->status === 'pending')
                 <div class="pt-6 flex justify-start gap-4 flex-wrap">
                     <x-button x-on:click="$dispatch('konfirmasi-pembayaran-modal')"
                         class="w-full md:w-fit flex gap-2 items-center">

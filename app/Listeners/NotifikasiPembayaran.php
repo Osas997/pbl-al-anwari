@@ -2,13 +2,12 @@
 
 namespace App\Listeners;
 
-use App\Events\GenerateTagihan;
+use App\Events\CreatePembayaran;
+use GuzzleHttp\Client;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
-use GuzzleHttp\Client;
 
-
-class NotifikasiTagihanDibuat
+class NotifikasiPembayaran
 {
     /**
      * Create the event listener.
@@ -24,15 +23,15 @@ class NotifikasiTagihanDibuat
     /**
      * Handle the event.
      */
-    public function handle(GenerateTagihan $event): void
+    public function handle(CreatePembayaran $event): void
     {
         $client = new Client();
 
-        $tagihan = $event->tagihan;
+        $pembayaran = $event->pembayaran;
 
-        $number = $tagihan->santri->no_hp;
+        $number = $pembayaran->tagihan->santri->no_hp;
 
-        $message = "Assalamualaikum. \nTagihan pembayaran " . $tagihan->jenis_tagihan . " anda sebesar " . $tagihan->formatToRupiah($tagihan->nominal) . " sudah dibuat. Silahkan bayar secepatnya. Terima kasih.";
+        $message = "Assalamualaikum. \n Terima kasih sudah melakukan membayar tagihan Anda. Sebesar " . formatToRupiah($pembayaran->nominal)  . " \n Terima kasih";
 
         try {
             $client->request('POST', $this->url, [

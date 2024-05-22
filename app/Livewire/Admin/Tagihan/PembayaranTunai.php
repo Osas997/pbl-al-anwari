@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Admin\Tagihan;
 
+use App\Events\CreatePembayaran;
 use App\Models\Pembayaran;
 use App\Models\Tagihan;
 use Illuminate\Support\Facades\DB;
@@ -40,7 +41,7 @@ class PembayaranTunai extends Component
 
             $tagihan = Tagihan::with('pembayaran')->findOrFail($this->tagihanId);
 
-            Pembayaran::create([
+            $pembayaran = Pembayaran::create([
                 "id_tagihan" => $this->tagihanId,
                 "id_admin" => auth("admin")->user()->id,
                 "metode_pembayaran" => "tunai",
@@ -63,12 +64,14 @@ class PembayaranTunai extends Component
 
             $this->reset('tanggal_bayar', 'jumlah_bayar');
 
+            // CreatePembayaran::dispatch($pembayaran->load(['tagihan', 'tagihan.santri']));
+
             $this->dispatch('pembayaran-tunai');
             flash('Berhasil Melakukan Pembayaran Tagihan !', 'success');
             DB::commit();
         } catch (\Throwable $th) {
             DB::rollBack();
-            $this->dispatch('toast', "Gagal Melakukan Pembayaran Tagihan " . $th->getMessage());
+            flash('Gagal Melakukan Pembayaran Tagihan !' . $th->getMessage(), 'error');
         }
     }
 
