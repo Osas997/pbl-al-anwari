@@ -13,7 +13,8 @@
         "laravel/framework": "^11.0",
         "laravel/tinker": "^2.9",
         "livewire/livewire": "^3.4",
-        "php-flasher/flasher-laravel": "^1.15"
+        "php-flasher/flasher-laravel": "^1.15",
+        "staudenmeir/belongs-to-through": "^2.5"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",

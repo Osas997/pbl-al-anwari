@@ -90,14 +90,14 @@ class TagihanCreate extends Component
 
             $this->reset();
 
-            $this->dispatch('toast', 'Berhasil Membuat Tagihan Dan Mengirim Notifikasi Untuk Semua Santri');
+            flash("Tagihan Berhasil Dibuat", "success");
 
             $this->dispatch('close-modal', 'create-tagihan-modal');
 
             DB::commit();
         } catch (\Throwable $th) {
             DB::rollBack();
-            $this->dispatch('toast', "Gagal Membuat Tagihan Atau Gagal Mengirim Notifikasi ");
+            flash("Tagihan Gagal Dibuat" . $th->getMessage(), "error");
         }
     }
 

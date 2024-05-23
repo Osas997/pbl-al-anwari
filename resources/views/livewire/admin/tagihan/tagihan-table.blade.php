@@ -45,7 +45,7 @@
         </div>
         @if ($tagihan->isNotEmpty())
         <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 mt-4">
-            <thead class="text-xs text-white uppercase bg-gray-500 dark:bg-gray-700 dark:text-gray-400">
+            <thead class="text-xs text-white uppercase bg-slate-800 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
                     <th scope="col" class="px-6 py-3 border border-slate-300">
                         No

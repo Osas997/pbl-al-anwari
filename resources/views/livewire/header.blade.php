@@ -72,8 +72,7 @@
                 @if (auth('admin')->check())
                 <li wire:click="markAllAsRead" class="relative" x-data="{ dropdownOpen: false }"
                     @click.outside="dropdownOpen = false">
-                    <a wire:poll
-                        class="relative flex h-8.5 w-8.5 items-center justify-center rounded-full border-[0.5px] border-stroke bg-gray hover:text-primary dark:border-strokedark dark:bg-meta-4 dark:text-white"
+                    <a class="relative flex h-8.5 w-8.5 items-center justify-center rounded-full border-[0.5px] border-stroke bg-gray hover:text-primary dark:border-strokedark dark:bg-meta-4 dark:text-white"
                         href="#" @click.prevent="dropdownOpen = ! dropdownOpen;">
                         @if (auth('admin')->user()->unreadNotifications->count() > 0)
                         <span class="absolute -top-0.5 right-0 z-1 h-2 w-2 rounded-full bg-meta-1">
@@ -91,7 +90,7 @@
 
                     <!-- Dropdown Start -->
                     <div x-show="dropdownOpen" x-cloak
-                        class="absolute -right-27 mt-2.5 flex h-90 w-75 flex-col rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark sm:right-0 sm:w-80">
+                        class="z-999999 absolute -right-27 mt-2.5 flex h-90 w-75 flex-col rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark sm:right-0 sm:w-80">
                         <div class="px-4.5 py-3">
                             <h5 class="text-sm font-medium text-bodydark2">Notification</h5>
                         </div>

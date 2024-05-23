@@ -3,6 +3,7 @@
 
 <head>
    <title>Laporan</title>
+
    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
@@ -13,6 +14,7 @@
       }
    </style>
 </head>
+
 
 <body>
    <center>
@@ -25,31 +27,32 @@
             <th>No</th>
             <th>Nama Santri</th>
             <th>Tagihan</th>
-            <th>Nominal</th>
-            <th>Status</th>
             <th>Bulan</th>
             <th>Semester</th>
             <th>Tahun</th>
-            <th>Tanggal</th>
+            <th>Metode</th>
+            <th>Jumlah Bayar</th>
+            <th>Tanggal Bayar</th>
          </tr>
       </thead>
       <tbody>
-         @foreach ($tagihan as $index => $item)
+         @foreach ($pembayaran as $item)
          <tr>
             <th>{{ $loop->iteration }}</th>
             <th>{{ $item->santri->nama_santri }}</th>
-            <td>{{ $item->jenis_tagihan }}</td>
-            <td>{{ $item->formatToRupiah('nominal') }}</td>
-            <td>{{ $item->status }}</td>
-            <td>{{ $item->bulan ? $item->bulan : '-' }}</td>
-            <td>{{ $item->semester ? $item->semester : '-' }}</td>
-            <td>{{ $item->tahun_ajaran }}</td>
-            <td>{{ $item->tgl_tagihan->translatedFormat('d F Y') }}</td>
+            <td>{{ $item->tagihan->jenis_tagihan }}</td>
+            <td>{{ $item->tagihan->bulan ? $item->tagihan->bulan : '-' }}</td>
+            <td>{{ $item->tagihan->semester ? $item->tagihan->semester : '-' }}</td>
+            <td>{{ $item->tagihan->tahun_ajaran }}</td>
+            <td>{{ $item->metode_pembayaran }}</td>
+            <td>{{ $item->formatToRupiah('jumlah_bayar') }}</td>
+            <td>{{ $item->tanggal_bayar->translatedFormat('d F Y') }}</td>
          </tr>
          @endforeach
       </tbody>
    </table>
 
 </body>
+
 
 </html>

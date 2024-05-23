@@ -12,7 +12,7 @@ use Livewire\Attributes\Title;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 
-#[Layout('layouts.guest')]
+// #[Layout('layouts.guest')]
 #[Title('Login')]
 class Login extends Component
 {
@@ -70,6 +70,6 @@ class Login extends Component
 
     public function render()
     {
-        return view('livewire.auth.login');
+        return view('livewire.auth.login')->layout('layouts.guest');
     }
 }

@@ -6,6 +6,7 @@ use App\Livewire\Admin\Catering\Catering;
 use App\Livewire\Admin\Dashboard;
 use App\Livewire\Admin\Diniyyah\Diniyyah;
 use App\Livewire\Admin\Diniyyah\DinyyahDeletedFile;
+use App\Livewire\Admin\Laporan\Laporan;
 use App\Livewire\Admin\Pembayaran\KwitansiPembayaran;
 use App\Livewire\Admin\Pembayaran\Pembayaran;
 use App\Livewire\Admin\Pembayaran\PembayaranDetail;
@@ -54,7 +55,16 @@ Route::middleware('admin')->prefix('admin')->group(function () {
 
    Route::get('riwayat-pembayaran', RiwayatPembayaran::class)->name('riwayat-pembayaran');
 
+   Route::get('laporan', Laporan::class)->name('laporan');
+
    Route::get('kwitansi/{pembayaran}', KwitansiPembayaran::class)->name('kwitansi-pembayaran');
+
+   Route::get('tes-pembayaran', function () {
+      return view('pembayaran-pdf', [
+         "pembayaran" => \App\Models\Pembayaran::with(['tagihan', 'santri'])->where('status', 'dikonfirmasi')->get(),
+         "title" => "Laporan Tagihan Santri",
+      ]);
+   });
 
    Route::get('settings', App\Livewire\Santri\Test::class)->name('settings');
    Route::get('/tes',  Tes::class)->name('tes');

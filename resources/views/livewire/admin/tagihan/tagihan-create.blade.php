@@ -1,9 +1,3 @@
-@php
-function getMonthName($monthNumber) {
-return \Carbon\Carbon::createFromDate(null, $monthNumber, null,
-'UTC')->locale('id_ID')->translatedFormat('F');
-}
-@endphp
 <div class="font-poppins">
     <x-modals name="create-tagihan-modal" header="Generate Tagihan">
         <form class="space-y-4" wire:submit='generate'>

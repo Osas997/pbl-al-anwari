@@ -26,3 +26,8 @@ function formatToRupiah($nominal)
    $amount = $nominal;
    return 'Rp ' . number_format($amount, 0, ',', '.');
 }
+
+function getMonthName($monthNumber)
+{
+   return \Carbon\Carbon::createFromDate(null, $monthNumber, null)->locale('id_ID')->translatedFormat('F');
+}
