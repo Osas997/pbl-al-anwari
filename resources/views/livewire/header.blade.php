@@ -72,7 +72,8 @@
                 @if (auth('admin')->check())
                 <li wire:click="markAllAsRead" class="relative" x-data="{ dropdownOpen: false }"
                     @click.outside="dropdownOpen = false">
-                    <a class="relative flex h-8.5 w-8.5 items-center justify-center rounded-full border-[0.5px] border-stroke bg-gray hover:text-primary dark:border-strokedark dark:bg-meta-4 dark:text-white"
+                    <a wire:poll.5s
+                        class="relative flex h-8.5 w-8.5 items-center justify-center rounded-full border-[0.5px] border-stroke bg-gray hover:text-primary dark:border-strokedark dark:bg-meta-4 dark:text-white"
                         href="#" @click.prevent="dropdownOpen = ! dropdownOpen;">
                         @if (auth('admin')->user()->unreadNotifications->count() > 0)
                         <span class="absolute -top-0.5 right-0 z-1 h-2 w-2 rounded-full bg-meta-1">

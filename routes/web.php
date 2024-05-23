@@ -59,13 +59,6 @@ Route::middleware('admin')->prefix('admin')->group(function () {
 
    Route::get('kwitansi/{pembayaran}', KwitansiPembayaran::class)->name('kwitansi-pembayaran');
 
-   Route::get('tes-pembayaran', function () {
-      return view('pembayaran-pdf', [
-         "pembayaran" => \App\Models\Pembayaran::with(['tagihan', 'santri'])->where('status', 'dikonfirmasi')->get(),
-         "title" => "Laporan Tagihan Santri",
-      ]);
-   });
-
    Route::get('settings', App\Livewire\Santri\Test::class)->name('settings');
    Route::get('/tes',  Tes::class)->name('tes');
 });
