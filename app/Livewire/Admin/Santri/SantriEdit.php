@@ -140,7 +140,9 @@ class SantriEdit extends Component
 
             $this->reset();
 
-            $this->dispatch('toast', 'Berhasil Ubah Data Santri');
+            flash('Berhasil Update Data Santri', 'success');
+
+            $this->dispatch('santri');
 
             $this->dispatch('close-modal', 'edit-santri-modal');
         } catch (\Throwable $th) {

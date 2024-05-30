@@ -47,7 +47,7 @@ class SantriTable extends Component
         return view("vendor.loading-spinner");
     }
 
-    #[On('toast')]
+    #[On('santri')]
     public function render()
     {
         $santri = Santri::searchFilter($this->search, $this->status)->orderBy('nama_santri', 'asc')->paginate(10);

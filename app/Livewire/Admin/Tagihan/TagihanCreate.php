@@ -92,6 +92,8 @@ class TagihanCreate extends Component
 
             flash("Tagihan Berhasil Dibuat", "success");
 
+            $this->dispatch('tagihan');
+
             $this->dispatch('close-modal', 'create-tagihan-modal');
 
             DB::commit();

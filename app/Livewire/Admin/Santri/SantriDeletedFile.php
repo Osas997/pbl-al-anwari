@@ -13,9 +13,9 @@ class SantriDeletedFile extends Component
         try {
             $santri = Santri::onlyTrashed()->findOrFail($santri_id);
             $santri->restore();
-            $this->dispatch('toast', 'Santri Berhasil Kembali');
+            flash('Berhasil Restore Data Santri', 'success');
         } catch (\Throwable $th) {
-            $this->dispatch('toast', "Gagal Mengembalikan Santri " . $th->getMessage());
+            flash("Gagal Mengembalikan Santri " . $th->getMessage(), 'success');
         }
     }
 
@@ -25,9 +25,9 @@ class SantriDeletedFile extends Component
         try {
             $santri = Santri::onlyTrashed()->findOrFail($santri_id);
             $santri->forceDelete();
-            $this->dispatch('toast', 'Santri Terhapus Permanent');
+            flash('Berhasil Hapus Data Santri', 'success');
         } catch (\Throwable $th) {
-            $this->dispatch('toast', "Gagal Menghapus Santri " . $th->getMessage());
+            flash("Gagal Menghapus Data Santri " . $th->getMessage(), 'success');
         }
     }
     public function render()

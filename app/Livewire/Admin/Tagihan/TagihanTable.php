@@ -49,18 +49,8 @@ class TagihanTable extends Component
     {
         return view("vendor.loading-spinner");
     }
-
-    #[On('cetakPdf')]
-    public function cetakPdf()
-    {
-        $tagihan = Tagihan::with('santri')->where('status', 'belum lunas')->searchFilter($this->search)->latest()->get();
-        $pdf = Pdf::loadview('tagihan-pdf', compact('tagihan'));
-        return response()->streamDownload(function () use ($pdf) {
-            echo $pdf->stream();
-        }, Carbon::now()->format('d-m-Y') . 'tagihan.pdf');
-    }
-
-    #[On('toast')]
+  
+    #[On('tagihan')]
     public function render()
     {
         $tagihan = Tagihan::with('santri')->searchFilter($this->search, $this->status)->latest()->paginate(25);
