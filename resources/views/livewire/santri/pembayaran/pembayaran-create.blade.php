@@ -62,7 +62,7 @@
         <span class="py-3 text-md block font-medium font-poppins">
             Upload Bukti Pembayaran
         </span>
-        <livewire:dropzone wire:model="buktiPembayaran" :rules="['required','image','mimes:png,jpeg','max:1024']"
+        <livewire:dropzone wire:model="buktiPembayaran" :rules="['required','image','mimes:png,jpeg,jpg','max:1024']"
             :multiple="false" />
         @error('buktiPembayaran')
         <p class="mt-2 text-sm text-red-600 dark:text-red-500"><span class="font-medium">{{

@@ -12,11 +12,22 @@
       table tr th {
          font-size: 9pt;
       }
+
+      .img-container {
+         width: 100%;
+      }
+
+      img {
+         width: 100%;
+      }
    </style>
 </head>
 
 
 <body>
+   <div class="img-container">
+      <img src="{{ public_path('images/kop.png') }}" alt="kop.png">
+   </div>
    <center>
       <h5>{{ $title }}</h5>
    </center>
