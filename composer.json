@@ -17,6 +17,7 @@
         "staudenmeir/belongs-to-through": "^2.5"
     },
     "require-dev": {
+        "enlightn/enlightn": "^2.10",
         "fakerphp/faker": "^1.23",
         "laravel/pint": "^1.13",
         "laravel/sail": "^1.26",
