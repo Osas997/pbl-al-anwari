@@ -41,7 +41,7 @@ class NotifikasiTagihanDibuat
                     'message' => $message,
                 ],
                 'headers' => [
-                    'Authorization' => 'bearer ' . env('SECRET_KEY'),
+                    'Authorization' => 'bearer ' . config('app.secret_key'),
                 ],
             ]);
         } catch (\Throwable $th) {

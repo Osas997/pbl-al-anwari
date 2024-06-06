@@ -121,7 +121,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Credentials
+    | Credentials`
     |--------------------------------------------------------------------------
     |
     | The following credentials are used to share your Enlightn report with
@@ -146,6 +146,7 @@ return [
     // flagged by the License Analyzer.
     'commercial_packages' => [
         'enlightn/enlightnpro',
+
     ],
 
     'allowed_permissions' => [
