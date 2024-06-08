@@ -20,6 +20,7 @@ use App\Livewire\Admin\Tagihan\Tagihan;
 use App\Livewire\Admin\Tagihan\TagihanDetail;
 use App\Livewire\Admin\Tagihan\TagihanSelesai;
 use App\Livewire\Auth\Login;
+use App\Livewire\Santri\Profile;
 use App\Livewire\Tes;
 use Illuminate\Support\Facades\Route;
 
@@ -59,12 +60,11 @@ Route::middleware('admin')->prefix('admin')->group(function () {
 
    Route::get('kwitansi/{pembayaran}', KwitansiPembayaran::class)->name('kwitansi-pembayaran');
 
-   Route::get('settings', App\Livewire\Santri\Test::class)->name('settings');
    Route::get('/tes',  Tes::class)->name('tes');
 });
 
 Route::middleware('santri')->prefix('santri')->group(function () {
-   Route::get('tes', App\Livewire\Santri\Test::class)->name('tes');
+   Route::get('settings', Profile::class)->name('change-password');
 
    Route::get('tagihan', App\Livewire\Santri\Tagihan\Tagihan::class)->name('tagihan-santri');
    Route::get('tagihan/{tagihan}', App\Livewire\Santri\Tagihan\TagihanDetail::class)->name('tagihan-detail-santri');
