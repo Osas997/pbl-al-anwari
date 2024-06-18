@@ -5,6 +5,7 @@ namespace App\Livewire\Admin\Tagihan;
 use App\Events\CreatePembayaran;
 use App\Models\Pembayaran;
 use App\Models\Tagihan;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Livewire\Attributes\On;
 use Livewire\Attributes\Validate;
@@ -30,6 +31,7 @@ class PembayaranTunai extends Component
         $this->tagihanId = $tagihanId;
         $this->jumlah_bayar = $nominal - $sisaTagihan;
         $this->nominalTagihan = $nominal;
+        $this->tanggal_bayar = Carbon::now()->format('Y-m-d');
     }
 
     #[On('bayar-tagihan')]
