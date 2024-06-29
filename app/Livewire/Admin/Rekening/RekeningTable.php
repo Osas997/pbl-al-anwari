@@ -13,9 +13,16 @@ class RekeningTable extends Component
     public function delete($rekening_id)
     {
         try {
+            $totalRekening = BankPondok::count();
+            if ($totalRekening == 1) {
+                flash('Gagal Menghapus Rekening. Tidak Bisa Menghapus Rekening Terakhir', 'danger');
+                return;
+            }
+
             $rekening = BankPondok::findOrFail($rekening_id);
-            flash('Berhasil Hapus Rekening', 'success');
+
             $rekening->delete();
+            flash('Berhasil Hapus Rekening', 'success');
         } catch (\Throwable $th) {
             flash('Gagal Menghapus Rekening ' . $th->getMessage(), 'danger');
         }
