@@ -14,7 +14,7 @@ class NotifikasiTagihanDibuat
      * Create the event listener.
      */
 
-    protected $url = "http://localhost:3000/send-message";
+    protected $url = "https://api.fonnte.com/send";
 
     public function __construct()
     {
