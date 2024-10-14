@@ -99,7 +99,8 @@ class TagihanCreate extends Component
             DB::commit();
         } catch (\Throwable $th) {
             DB::rollBack();
-            flash("Tagihan Gagal Dibuat" . $th->getMessage(), "error");
+            throw $th;
+            // flash("Tagihan Gagal Dibuat" . $th->getMessage(), "error");
         }
     }
 

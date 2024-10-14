@@ -7,7 +7,7 @@ use GuzzleHttp\Client;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 
-class NotifikasiPembayaran
+class NotifikasiPembayaran implements ShouldQueue
 {
     /**
      * Create the event listener.

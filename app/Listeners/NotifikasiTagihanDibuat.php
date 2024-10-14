@@ -6,10 +6,12 @@ use App\Events\GenerateTagihan;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use GuzzleHttp\Client;
+use Illuminate\Bus\Queueable;
 
-
-class NotifikasiTagihanDibuat
+class NotifikasiTagihanDibuat implements ShouldQueue
 {
+    use Queueable;
+
     /**
      * Create the event listener.
      */
@@ -32,16 +34,18 @@ class NotifikasiTagihanDibuat
 
         $number = $tagihan->santri->no_hp;
 
-        $message = "Assalamualaikum. \nTagihan pembayaran " . $tagihan->jenis_tagihan . " anda sebesar " . $tagihan->formatToRupiah($tagihan->nominal) . " sudah dibuat. Silahkan bayar secepatnya. Terima kasih.";
+        $nama_santri = $tagihan->santri->nama_santri;
+
+        $message = "Assalamualaikum" . $nama_santri . "\nTagihan pembayaran " . $tagihan->jenis_tagihan . " anda sebesar " . $tagihan->formatToRupiah('nominal') . " sudah dibuat. Silahkan bayar secepatnya. Terima kasih.";
 
         try {
             $client->request('POST', $this->url, [
                 'form_params' => [
-                    'number' => $number,
+                    'target' => $number,
                     'message' => $message,
                 ],
                 'headers' => [
-                    'Authorization' => 'bearer ' . config('app.secret_key'),
+                    'Authorization' => 'buaSzEaEwZ8rKS+SqpMv',
                 ],
             ]);
         } catch (\Throwable $th) {
