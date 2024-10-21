@@ -9,9 +9,9 @@
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                         placeholder="Masukkan Nama Santri" required />
                     @error('nama_santri')
-                    <p class="mt-2 text-sm text-red-600 dark:text-red-500"><span class="font-medium">{{ $message
-                            }}</span>
-                    </p>
+                        <p class="mt-2 text-sm text-red-600 dark:text-red-500"><span
+                                class="font-medium">{{ $message }}</span>
+                        </p>
                     @enderror
                 </div>
                 <div class="grow">
@@ -21,9 +21,9 @@
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                         placeholder="Masukkan NIS ( Nomor Induk Siswa )" required />
                     @error('nis')
-                    <p class="mt-2 text-sm text-red-600 dark:text-red-500"><span class="font-medium">{{ $message
-                            }}</span>
-                    </p>
+                        <p class="mt-2 text-sm text-red-600 dark:text-red-500"><span
+                                class="font-medium">{{ $message }}</span>
+                        </p>
                     @enderror
                 </div>
 
@@ -36,9 +36,9 @@
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                         placeholder="Masukkan No Handphone / WA" required />
                     @error('no_hp')
-                    <p class="mt-2 text-sm text-red-600 dark:text-red-500"><span class="font-medium">{{ $message
-                            }}</span>
-                    </p>
+                        <p class="mt-2 text-sm text-red-600 dark:text-red-500"><span
+                                class="font-medium">{{ $message }}</span>
+                        </p>
                     @enderror
                 </div>
                 <div class="grow">
@@ -48,9 +48,9 @@
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                         placeholder="Masukkan Nomor Induk Kependudukan" required />
                     @error('no_nik')
-                    <p class="mt-2 text-sm text-red-600 dark:text-red-500"><span class="font-medium">{{ $message
-                            }}</span>
-                    </p>
+                        <p class="mt-2 text-sm text-red-600 dark:text-red-500"><span
+                                class="font-medium">{{ $message }}</span>
+                        </p>
                     @enderror
                 </div>
             </div>
@@ -64,9 +64,9 @@
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                         placeholder="Masukkan Nama Ayah" required />
                     @error('nama_ayah')
-                    <p class="mt-2 text-sm text-red-600 dark:text-red-500"><span class="font-medium">{{ $message
-                            }}</span>
-                    </p>
+                        <p class="mt-2 text-sm text-red-600 dark:text-red-500"><span
+                                class="font-medium">{{ $message }}</span>
+                        </p>
                     @enderror
                 </div>
                 <div class="grow">
@@ -76,9 +76,9 @@
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                         placeholder="Masukkan Nama Ibu" required />
                     @error('nama_ibu')
-                    <p class="mt-2 text-sm text-red-600 dark:text-red-500"><span class="font-medium">{{ $message
-                            }}</span>
-                    </p>
+                        <p class="mt-2 text-sm text-red-600 dark:text-red-500"><span
+                                class="font-medium">{{ $message }}</span>
+                        </p>
                     @enderror
                 </div>
             </div>
@@ -91,9 +91,9 @@
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                         placeholder="Masukkan Nama Tempat Lahir" required />
                     @error('tempat_lahir')
-                    <p class="mt-2 text-sm text-red-600 dark:text-red-500"><span class="font-medium">{{ $message
-                            }}</span>
-                    </p>
+                        <p class="mt-2 text-sm text-red-600 dark:text-red-500"><span
+                                class="font-medium">{{ $message }}</span>
+                        </p>
                     @enderror
                 </div>
 
@@ -115,9 +115,9 @@
                         </div>
                     </div>
                     @error('tgl_lahir')
-                    <p class="mt-2 text-sm text-red-600 dark:text-red-500"><span class="font-medium">{{ $message
-                            }}</span>
-                    </p>
+                        <p class="mt-2 text-sm text-red-600 dark:text-red-500"><span
+                                class="font-medium">{{ $message }}</span>
+                        </p>
                     @enderror
                 </div>
 
@@ -128,9 +128,9 @@
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                         placeholder="Masukkan Alamat" required />
                     @error('alamat')
-                    <p class="mt-2 text-sm text-red-600 dark:text-red-500"><span class="font-medium">{{ $message
-                            }}</span>
-                    </p>
+                        <p class="mt-2 text-sm text-red-600 dark:text-red-500"><span
+                                class="font-medium">{{ $message }}</span>
+                        </p>
                     @enderror
                 </div>
             </div>
@@ -147,9 +147,9 @@
                     </select>
 
                     @error('jenis_kelamin')
-                    <p class="mt-2 text-sm text-red-600 dark:text-red-500"><span class="font-medium">{{ $message
-                            }}</span>
-                    </p>
+                        <p class="mt-2 text-sm text-red-600 dark:text-red-500"><span
+                                class="font-medium">{{ $message }}</span>
+                        </p>
                     @enderror
                 </div>
                 <div class="grow">
@@ -161,18 +161,19 @@
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                 <option selected>Pilih Diniyyah</option>
                                 @if ($dataDiniyyah->isNotEmpty())
-                                @foreach ($dataDiniyyah as $item)
-                                <option value="{{ $item->id }}">{{ $item->nama_tingkatan }} | {{ $item->kelas }}
-                                </option>
-                                @endforeach
+                                    @foreach ($dataDiniyyah as $item)
+                                        <option value="{{ $item->id }}">{{ $item->nama_tingkatan }} |
+                                            {{ $item->kelas }}
+                                        </option>
+                                    @endforeach
                                 @else
-                                <option value="" disabled>Tidak ada diniyyah</option>
+                                    <option value="" disabled>Tidak ada diniyyah</option>
                                 @endif
                             </select>
                             @error('id_diniyyah')
-                            <p class="mt-2 text-sm text-red-600 dark:text-red-500"><span class="font-medium">{{ $message
-                                    }}</span>
-                            </p>
+                                <p class="mt-2 text-sm text-red-600 dark:text-red-500"><span
+                                        class="font-medium">{{ $message }}</span>
+                                </p>
                             @enderror
                         </div>
                     </div>
@@ -186,15 +187,14 @@
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                 <option selected>Pilih Angkatan</option>
                                 @foreach ($dataTahun as $tahun)
-                                <option value="{{ $tahun }}">{{ $tahun }}
-                                </option>
+                                    <option value="{{ $tahun }}">{{ $tahun }}
+                                    </option>
                                 @endforeach
                             </select>
                             @error('tahun_angkatan')
-                            <p class="mt-2 text-sm text-red-600 dark:text-red-500"><span class="font-medium">{{
-                                    $message
-                                    }}</span>
-                            </p>
+                                <p class="mt-2 text-sm text-red-600 dark:text-red-500"><span
+                                        class="font-medium">{{ $message }}</span>
+                                </p>
                             @enderror
                         </div>
                     </div>
@@ -210,19 +210,19 @@
                         <option selected>Syahriyyah</option>
 
                         @if ($dataSyahriyyah->isNotEmpty())
-                        @foreach ($dataSyahriyyah as $item)
-                        <option value="{{ $item->id }}">{{ $item->jenis_domisili }}
-                        </option>
-                        @endforeach
+                            @foreach ($dataSyahriyyah as $item)
+                                <option value="{{ $item->id }}">{{ $item->jenis_domisili }}
+                                </option>
+                            @endforeach
                         @else
-                        <option value="" disabled>Tidak ada syahriyyah</option>
+                            <option value="" disabled>Tidak ada syahriyyah</option>
                         @endif
                     </select>
 
                     @error('id_syahriyyah')
-                    <p class="mt-2 text-sm text-red-600 dark:text-red-500"><span class="font-medium">{{ $message
-                            }}</span>
-                    </p>
+                        <p class="mt-2 text-sm text-red-600 dark:text-red-500"><span
+                                class="font-medium">{{ $message }}</span>
+                        </p>
                     @enderror
                 </div>
                 <div class="grow">
@@ -234,19 +234,19 @@
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                 <option selected>Pilih Catering</option>
                                 @if ($dataCatering->isNotEmpty())
-                                @foreach ($dataCatering as $item)
-                                <option value="{{ $item->id }}">{{ $item->jumlah_catering }} Kali Makan
-                                </option>
-                                @endforeach
+                                    @foreach ($dataCatering as $item)
+                                        <option value="{{ $item->id }}">{{ $item->jumlah_catering }} Kali Makan
+                                        </option>
+                                    @endforeach
                                 @else
-                                <option value="" disabled>Tidak ada catering</option>
+                                    <option value="" disabled>Tidak ada catering</option>
                                 @endif
                             </select>
 
                             @error('id_catering')
-                            <p class="mt-2 text-sm text-red-600 dark:text-red-500"><span class="font-medium">{{ $message
-                                    }}</span>
-                            </p>
+                                <p class="mt-2 text-sm text-red-600 dark:text-red-500"><span
+                                        class="font-medium">{{ $message }}</span>
+                                </p>
                             @enderror
                         </div>
                     </div>

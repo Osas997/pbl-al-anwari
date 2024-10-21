@@ -3,9 +3,13 @@
     @click.outside="sidebarToggle = false">
     <!-- SIDEBAR HEADER -->
     <div class="flex items-center justify-between gap-2 px-6 py-3 lg:py-6.5">
-        <a href="index.html">
-            ALANWARI
-        </a>
+        <div class="flex items-center">
+            <img class="float-left w-15 px-2" src="{{ asset('images/Logo Pondok Baru.png') }}" class="h-8" />
+            <a href="index.html" class="text-lg font-semibold">
+                ALANWARI
+            </a>
+        </div>
+
 
         <button class="block lg:hidden" @click.stop="sidebarToggle = !sidebarToggle">
             <svg class="fill-current" width="20" height="18" viewBox="0 0 20 18" fill="none"
