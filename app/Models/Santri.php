@@ -20,6 +20,10 @@ class Santri extends Authenticatable
         'password' => 'hashed',
     ];
 
+    public function username()
+    {
+        return 'nis';
+    }
     public function syahriyyah()
     {
         return $this->belongsTo(Syahriyyah::class, 'id_syahriyyah', 'id');
@@ -48,7 +52,7 @@ class Santri extends Authenticatable
     public function scopeSearchFilter($query, $search, $status)
     {
         if ($search) {
-            $query->where(fn ($query) =>
+            $query->where(fn($query) =>
             $query->where('nama_santri', 'like', '%' . $search . '%')
                 ->orWhere('nis', 'like', '%' . $search . '%')
                 ->orWhere('no_nik', 'like', '%' . $search . '%')
