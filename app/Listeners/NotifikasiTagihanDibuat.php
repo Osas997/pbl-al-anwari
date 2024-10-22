@@ -36,14 +36,16 @@ class NotifikasiTagihanDibuat implements ShouldQueue
 
         $nama_santri = $tagihan->santri->nama_santri;
 
-        $message = "Assalamualaikum" . $nama_santri . "\nTagihan pembayaran " . $tagihan->jenis_tagihan . " anda sebesar " . $tagihan->formatToRupiah('nominal') . " sudah dibuat. Silahkan bayar secepatnya. Terima kasih.";
+        $messageKeterangan = $tagihan->jenis_tagihan == "catering" ? "pada bulan " . $tagihan->bulan : "pada semester " . $tagihan->semester;
+
+        $message = "Assalamualaikum " . $nama_santri . "\nTagihan " . $tagihan->jenis_tagihan . " anda ". $messageKeterangan . " Tahun " .$tagihan->tahun_ajaran  ." sebesar " . "*" . $tagihan->formatToRupiah('nominal') . "*" . " sudah dibuat. Silahkan bayar secepatnya. Terima kasih.";
 
         try {
             $client->request('POST', $this->url, [
                 'form_params' => [
                     'target' => $number,
                     'message' => $message,
-                ],
+                ],  
                 'headers' => [
                     'Authorization' => 'buaSzEaEwZ8rKS+SqpMv',
                 ],

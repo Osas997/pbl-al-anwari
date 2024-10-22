@@ -94,6 +94,7 @@
                 Swal.fire({
                 title: "Deleted!",
                 text: "Your file has been deleted.",
+                confirmButtonColor: "#3085d6",
                 icon: "success"
             });
             

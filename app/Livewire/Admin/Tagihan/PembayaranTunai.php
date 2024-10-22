@@ -66,7 +66,7 @@ class PembayaranTunai extends Component
 
             $this->reset('tanggal_bayar', 'jumlah_bayar');
 
-            // CreatePembayaran::dispatch($pembayaran->load(['tagihan', 'tagihan.santri']));
+            CreatePembayaran::dispatch($pembayaran->load(['tagihan', 'tagihan.santri']));
 
             $this->dispatch('pembayaran-tunai');
             flash('Berhasil Melakukan Pembayaran Tagihan !', 'success');

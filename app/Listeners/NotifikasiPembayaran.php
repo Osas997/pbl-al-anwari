@@ -4,16 +4,18 @@ namespace App\Listeners;
 
 use App\Events\CreatePembayaran;
 use GuzzleHttp\Client;
+use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 
 class NotifikasiPembayaran implements ShouldQueue
 {
+    use Queueable;
     /**
      * Create the event listener.
      */
 
-    protected $url = "http://localhost:3000/send-message";
+    protected $url = "https://api.fonnte.com/send";
 
     public function __construct()
     {
@@ -31,16 +33,20 @@ class NotifikasiPembayaran implements ShouldQueue
 
         $number = $pembayaran->tagihan->santri->no_hp;
 
-        $message = "Assalamualaikum. \n Terima kasih sudah melakukan membayar tagihan Anda. Sebesar " . formatToRupiah($pembayaran->nominal)  . " \n Terima kasih";
+        $nama_santri = $pembayaran->tagihan->santri->nama_santri;
+
+        $messageKeterangan = $pembayaran->tagihan->jenis_tagihan == "catering" ? "pada bulan " . $pembayaran->tagihan->bulan : "pada semester " . $pembayaran->tagihan->semester;
+
+        $message = "Assalamualaikum ". $nama_santri . "\nTerima kasih sudah membayar tagihan ". $pembayaran->tagihan->jenis_tagihan . " " . $messageKeterangan . " Tahun " .$pembayaran->tagihan->tahun_ajaran . " anda sebesar " . "*" . formatToRupiah($pembayaran->jumlah_bayar)  . "*" . "  Terima kasih";
 
         try {
             $client->request('POST', $this->url, [
                 'form_params' => [
-                    'number' => $number,
+                    'target' => $number,
                     'message' => $message,
                 ],
                 'headers' => [
-                    'Authorization' => 'bearer ' . config('app.secret_key'),
+                    'Authorization' => 'buaSzEaEwZ8rKS+SqpMv',
                 ],
             ]);
         } catch (\Throwable $th) {

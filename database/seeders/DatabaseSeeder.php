@@ -23,7 +23,7 @@ class DatabaseSeeder extends Seeder
             IndoBankSeeder::class
         ]);
 
-        Santri::factory(100)->create();
+        // Santri::factory(100)->create();
 
         Admin::create([
             "nama_admin" => "Admin Pondok",
@@ -36,6 +36,13 @@ class DatabaseSeeder extends Seeder
             "sandi_bank" => "008",
             "nomor_rekening" => "1234567890",
             "nama_rekening" => "RUOK FF"
+        ]);
+
+        BankPondok::create([
+            "nama_bank" => "BANK BCA",
+            "sandi_bank" => "008",
+            "nomor_rekening" => "1234567890",
+            "nama_rekening" => "ELANG PRAKOSA"
         ]);
     }
 }
