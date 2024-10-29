@@ -44,39 +44,7 @@ class LoginTest extends TestCase
 
     public function test_user_can_login()
     {
-        Syahriyyah::create([
-            "jenis_domisili" => "Mukim",
-            "biaya" => 100_000
-        ]);
-
-        Catering::create([
-            "jumlah_catering" => 1,
-            "biaya" => 50_000
-        ]);
-
-        Diniyyah::create([
-            "nama_tingkatan" => "GUS",
-            "kelas" => "1",
-        ]);
-
-        $user = Santri::factory()->create([
-            'nama_santri' => 'Ahmad Rizki',
-            'nis' => '351016040604000808',
-            'password' => bcrypt('password'),
-            'no_nik' => '9876543210123456',
-            'no_hp' => '08123456789',
-            'jenis_kelamin' => 'L',
-            'tempat_lahir' => 'Bandung',
-            'tgl_lahir' => '2005-06-15',
-            'alamat' => 'Jl. Raya No. 123, Bandung',
-            'nama_ayah' => 'Budi Santoso',
-            'nama_ibu' => 'Siti Aminah',
-            'status' => 'Aktif',
-            'id_syahriyyah' => 1,
-            'id_catering' => 1,
-            'tahun_angkatan' => 2023,
-            'id_diniyyah' => 1,
-        ]);
+        $user = $this->createUser();
 
         Livewire::test(Login::class)
             ->set('username', '351016040604000808')
@@ -96,9 +64,17 @@ class LoginTest extends TestCase
             ->assertHasErrors(['username', 'password']);
     }
 
-    public function test_shows_login_failed_when_wrong_password()
+    public function test_shows_login_failed_invalid_username()
     {
+        Livewire::test(Login::class)
+            ->set('username', 'wrongusername')
+            ->set('password', 'password')
+            ->call('authenticate')
+            ->assertSee('Username Atau Password Anda Salah');
+    }
 
+    public function test_shows_login_failed_invalid_password()
+    {
         Livewire::test(Login::class)
             ->set('username', '351016040604000808')
             ->set('password', 'wrongpassword')
@@ -146,5 +122,84 @@ class LoginTest extends TestCase
             ->call('authenticate');
 
         $this->assertTrue(Auth::guard('admin')->check());
+    }
+
+    /** @test */
+    public function test_login_gagal_username_empty()
+    {
+        Livewire::test(Login::class)
+            ->set('username', '')
+            ->set('password', '123456')
+            ->call('authenticate')
+            ->assertHasErrors(['username' => 'required']);
+    }
+
+    /** @test */
+    public function test_login_gagal_password_empty()
+    {
+        Livewire::test(Login::class)
+            ->set('username', '123456789012345')
+            ->set('password', '')
+            ->call('authenticate')
+            ->assertHasErrors(['password' => 'required']);
+    }
+
+    /** @test */
+    public function test_login_failed_username_less_than_3_digits()
+    {
+        Livewire::test(Login::class)
+            ->set('username', '12')
+            ->set('password', '1233456')
+            ->call('authenticate')
+            ->assertHasErrors(['username']);
+    }
+
+    /** @test */
+    public function test_login_failed_password_less_than_4_digits()
+    {
+        Livewire::test(Login::class)
+            ->set('username', '12345678901')
+            ->set('password', '222')
+            ->call('authenticate')
+            ->assertHasErrors(['password']);
+    }
+
+    public function createUser()
+    {
+        Syahriyyah::create([
+            "jenis_domisili" => "Mukim",
+            "biaya" => 100_000
+        ]);
+
+        Catering::create([
+            "jumlah_catering" => 1,
+            "biaya" => 50_000
+        ]);
+
+        $diniyah = Diniyyah::create([
+            "nama_tingkatan" => "GUS",
+            "kelas" => "1",
+        ]);
+
+        $user = Santri::factory()->create([
+            'nama_santri' => 'Ahmad Rizki',
+            'nis' => '351016040604000808',
+            'password' => bcrypt('password'),
+            'no_nik' => '9876543210123456',
+            'no_hp' => '08123456789',
+            'jenis_kelamin' => 'L',
+            'tempat_lahir' => 'Bandung',
+            'tgl_lahir' => '2005-06-15',
+            'alamat' => 'Jl. Raya No. 123, Bandung',
+            'nama_ayah' => 'Budi Santoso',
+            'nama_ibu' => 'Siti Aminah',
+            'status' => 'Aktif',
+            'id_syahriyyah' => 1,
+            'id_catering' => 1,
+            'tahun_angkatan' => 2023,
+            'id_diniyyah' => $diniyah->id,
+        ]);
+
+        return $user;
     }
 }
