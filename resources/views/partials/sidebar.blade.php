@@ -2,12 +2,16 @@
     class="absolute left-0 top-0 z-99 flex h-screen w-65 flex-col overflow-y-hidden bg-black duration-300 ease-linear dark:bg-boxdark lg:static lg:translate-x-0"
     @click.outside="sidebarToggle = false">
     <!-- SIDEBAR HEADER -->
-    <div class="flex items-center justify-between gap-2 px-6 py-3 lg:py-6.5">
-        <div class="flex items-center">
-            <img class="float-left w-15 px-2" src="{{ asset('images/Logo Pondok Baru.png') }}" class="h-8" />
-            <a href="index.html" class="text-lg font-semibold">
-                ALANWARI
-            </a>
+    <div class="flex items-center justify-between gap-2 px-6 py-3 lg:pt-6.5">
+        <div class="px-2">
+            <div class="flex justify-center">
+                <img class="w-9/12 px-2" src="{{ asset('images/Logo Pondok Baru.png') }}"/>
+            </div>
+            <div class="flex items-center justify-center">
+                <a href="/" class="text-lg md:text-2xl pt-4 font-semibold text-white">
+                    🕌 AL-ANWARI 
+                </a>
+            </div>
         </div>
 
 
@@ -24,7 +28,7 @@
 
     <div class="no-scrollbar flex flex-col overflow-y-auto duration-300 ease-linear">
         <!-- Sidebar Menu -->
-        <nav class="mt-5 px-4 py-4 lg:mt-2 lg:px-6" x-data="{ selected: $persist('Dashboard') }">
+        <nav class="px-4 py-4 lg:px-6" x-data="{ selected: $persist('Dashboard') }">
             <!-- Menu Group -->
             <div>
                 <h3 class="mb-4 ml-4 text-sm font-medium text-bodydark2">MENU</h3>
