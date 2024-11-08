@@ -16,12 +16,12 @@ class DiniyyahCreateTest extends TestCase
     public function admin_dapat_menambah_diniyyah_dengan_input_valid()
     {
         Livewire::test('admin.diniyyah.dinyyah-create')
-            ->set('nama_tingkatan', 'Tingkat 1')
-            ->set('kelas', 'A')
+            ->set('nama_tingkatan', 'ULA')
+            ->set('kelas', '1')
             ->call('store')
             ->assertDispatched('toast', 'Berhasil Menambah Diniyyah');
 
-        $this->assertTrue(Diniyyah::where('nama_tingkatan', 'Tingkat 1')->where('kelas', 'A')->exists());
+        $this->assertTrue(Diniyyah::where('nama_tingkatan', 'ULA')->where('kelas', '1')->exists());
     }
 
     /** @test */
@@ -29,7 +29,7 @@ class DiniyyahCreateTest extends TestCase
     {
         Livewire::test('admin.diniyyah.dinyyah-create')
             ->set('nama_tingkatan', '')
-            ->set('kelas', 'A')
+            ->set('kelas', '1')
             ->call('store')
             ->assertHasErrors(['nama_tingkatan' => 'required']);
     }
@@ -38,7 +38,7 @@ class DiniyyahCreateTest extends TestCase
     public function admin_gagal_menambah_diniyyah_dengan_kelas_kosong()
     {
         Livewire::test('admin.diniyyah.dinyyah-create')
-            ->set('nama_tingkatan', 'Tingkat 1')
+            ->set('nama_tingkatan', 'ULA')
             ->set('kelas', '')
             ->call('store')
             ->assertHasErrors(['kelas' => 'required']);
