@@ -33,18 +33,41 @@ class SantriFactory extends Factory
             'nama_ayah' => fake()->name('male'),
             'nama_ibu' => fake()->name('female'),
             'status' => fake()->randomElement(['Aktif', 'Lulus', 'Tidak Lulus']),
-            'id_syahriyyah' => function () {
-                return Syahriyyah::inRandomOrder()->first()->id;
-            },
-            'id_catering' => function () {
-                return Catering::inRandomOrder()->first()->id;
-            },
-            'tahun_angkatan' => function () {
-                return rand(2022, 2024);
-            },
-            'id_diniyyah' => function () {
-                return Diniyyah::inRandomOrder()->first()->id;
-            },
+            // Menggunakan firstOrCreate agar data ada jika belum tersedia
+            'id_syahriyyah' => Syahriyyah::firstOrCreate(['jenis_domisili' => 'mukim', 'biaya' => 100000])->id,
+            'id_catering' => Catering::firstOrCreate(['jumlah_catering' => 1, 'biaya' => 100000])->id,
+            'tahun_angkatan' => rand(2022, 2024),
+            'id_diniyyah' => Diniyyah::firstOrCreate(['nama_tingkatan' => 'ULA', 'kelas' => '1'])->id,
         ];
     }
+
+    // public function definition(): array
+    // {
+    //     return [
+    //         'nama_santri' => fake()->name,
+    //         'nis' => fake()->unique()->numerify('##########'),
+    //         'password' => bcrypt('password'),
+    //         'no_nik' => fake()->unique()->numerify('################'),
+    //         'no_hp' => fake()->numerify('08##########'),
+    //         'jenis_kelamin' => fake()->randomElement(['L', 'P']),
+    //         'tempat_lahir' => fake()->city,
+    //         'tgl_lahir' => fake()->date,
+    //         'alamat' => fake()->address,
+    //         'nama_ayah' => fake()->name('male'),
+    //         'nama_ibu' => fake()->name('female'),
+    //         'status' => fake()->randomElement(['Aktif', 'Lulus', 'Tidak Lulus']),
+    //         'id_syahriyyah' => function () {
+    //             return Syahriyyah::inRandomOrder()->first()->id;
+    //         },
+    //         'id_catering' => function () {
+    //             return Catering::inRandomOrder()->first()->id;
+    //         },
+    //         'tahun_angkatan' => function () {
+    //             return rand(2022, 2024);
+    //         },
+    //         'id_diniyyah' => function () {
+    //             return Diniyyah::inRandomOrder()->first()->id;
+    //         },
+    //     ];
+    // }
 }

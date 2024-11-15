@@ -15,16 +15,12 @@ class DiniyyahEditTest extends TestCase
     /** @test */
     public function it_can_edit_and_update_diniyyah()
     {
-        // Simulasi data Diniyyah yang ada
-        $diniyyah = Diniyyah::create([
-            'nama_tingkatan' => 'Angkatan Lama',
-            'kelas' => 'Kelas Lama',
-        ]);
+        $diniyyah = $this->createDiniyyah();
 
         // Simulasi data baru untuk update
         $newData = [
-            'nama_tingkatan' => 'Angkatan Baru',
-            'kelas' => 'Kelas Baru',
+            'nama_tingkatan' => 'Wustho',
+            'kelas' => '2',
         ];
 
         // Lakukan test pada komponen Livewire
@@ -45,21 +41,40 @@ class DiniyyahEditTest extends TestCase
     }
 
     /** @test */
-    public function it_validates_required_fields_when_updating()
+    public function it_cannot_edit_and_update_diniyyah_when_nama_tingkatan_empty()
     {
-        // Simulasi data Diniyyah yang ada
-        $diniyyah = Diniyyah::create([
-            'nama_tingkatan' => 'Angkatan Lama',
-            'kelas' => 'Kelas Lama',
-        ]);
+        $diniyyah = $this->createDiniyyah();
 
         // Lakukan test validasi dengan field kosong
         Livewire::test(DinyyahEdit::class)
             ->call('edit', $diniyyah->id)
             ->set('nama_tingkatan', '')
+            ->set('kelas', '2')
+            ->call('update')
+            ->assertHasErrors(['nama_tingkatan' => 'required']);
+    }
+
+    /** @test */
+    public function it_cannot_edit_and_update_diniyyah_when_kelas_empty()
+    {
+        $diniyyah = $this->createDiniyyah();
+
+        // Lakukan test validasi dengan field kosong
+        Livewire::test(DinyyahEdit::class)
+            ->call('edit', $diniyyah->id)
+            ->set('nama_tingkatan', 'Wustho')
             ->set('kelas', '')
             ->call('update')
-            ->assertHasErrors(['nama_tingkatan' => 'required'])
             ->assertHasErrors(['kelas' => 'required']);
+    }
+
+    public function createDiniyyah()
+    {
+        $diniyyah = Diniyyah::create([
+            'nama_tingkatan' => 'ULA',
+            'kelas' => '1',
+        ]);
+
+        return $diniyyah;
     }
 }

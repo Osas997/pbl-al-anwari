@@ -15,10 +15,7 @@ class DiniyyahDeleteFileTest extends TestCase
     /** @test */
     public function it_can_deleted_diniyyah_with_soft_delete()
     {
-        $diniyyah = Diniyyah::create([
-            'nama_tingkatan' => 'Angkatan 2024',
-            'kelas' => 'Kelas A'
-        ]);
+        $diniyyah = $this->createDiniyyah();
 
         $diniyyah->delete();
 
@@ -29,10 +26,7 @@ class DiniyyahDeleteFileTest extends TestCase
     public function it_can_restore_deleted_diniyyah()
     {
         // Simulasi data Diniyyah yang dihapus
-        $diniyyah = Diniyyah::create([
-            'nama_tingkatan' => 'Angkatan 2024',
-            'kelas' => 'Kelas A'
-        ]);
+        $diniyyah = $this->createDiniyyah();
         $diniyyah->delete();
 
         // Pastikan data berada di trash
@@ -54,10 +48,7 @@ class DiniyyahDeleteFileTest extends TestCase
     public function it_can_permanently_delete_diniyyah()
     {
         // Simulasi data Diniyyah yang dihapus
-        $diniyyah = Diniyyah::create([
-            'nama_tingkatan' => 'Angkatan 2024',
-            'kelas' => 'Kelas A'
-        ]);
+        $diniyyah = $this->createDiniyyah();
         $diniyyah->delete();
 
         // Pastikan data berada di trash
@@ -72,5 +63,15 @@ class DiniyyahDeleteFileTest extends TestCase
         $this->assertDatabaseMissing('diniyyah', [
             'id' => $diniyyah->id,
         ]);
+    }
+
+    public function createDiniyyah()
+    {
+        $diniyyah = Diniyyah::create([
+            'nama_tingkatan' => 'ULA',
+            'kelas' => '1'
+        ]);
+
+        return $diniyyah;
     }
 }
