@@ -45,6 +45,7 @@ class DinyyahEdit extends Component
         }
     }
 
+
     public function render()
     {
         return view('livewire.admin.diniyyah.dinyyah-edit');

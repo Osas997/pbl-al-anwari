@@ -26,7 +26,8 @@ class RekeningCreateTest extends TestCase
         $this->user = Santri::factory()->create();
 
         // Create test bank
-        $this->bank = Bank::factory()->create([
+        $this->bank = Bank::insert([
+            'id' => 1,
             'nama_bank' => 'BCA',
             'sandi_bank' => '014'
         ]);
@@ -61,7 +62,7 @@ class RekeningCreateTest extends TestCase
     public function it_validates_unique_nomor_rekening()
     {
         // Create existing bank account
-        BankSantri::factory()->create([
+        BankSantri::create([
             'nomor_rekening' => '1234567890'
         ]);
 
@@ -102,7 +103,7 @@ class RekeningCreateTest extends TestCase
         $component = Livewire::test(RekeningCreate::class)
             ->set('nama_rekening', 'John Doe')
             ->set('nomor_rekening', '1234567890')
-            ->set('id_bank', $this->bank->id)
+            ->set('id_bank', 1)
             ->call('store');
 
         $component
