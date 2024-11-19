@@ -21,6 +21,8 @@ class LaporanPembayaran extends Component
 
     public $bulan;
 
+    public $errorMessage;
+
     public function rules()
     {
         return [
@@ -81,7 +83,8 @@ class LaporanPembayaran extends Component
         $pembayaran = $pembayaran->get();
 
         if ($pembayaran->isEmpty()) {
-            flash("Hasil Laporan Pembayaran Tidak Ditemukan", "warning");
+            $this->errorMessage = "Hasil Laporan Pembayaran Tidak Ditemukan";
+            flash($this->errorMessage, "warning");
             return;
         }
 

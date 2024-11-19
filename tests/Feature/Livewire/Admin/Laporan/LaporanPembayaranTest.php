@@ -139,7 +139,6 @@ class LaporanPembayaranTest extends TestCase
   {
     Livewire::test(LaporanPembayaran::class)
       ->set('jenis_tagihan', 'syahriyyah')
-      ->set('status', 'belum lunas')
       ->set('tahun_ajaran', Carbon::now()->year)
       ->set('semester', null)
       ->call('cetakPdf')
@@ -149,8 +148,7 @@ class LaporanPembayaranTest extends TestCase
   public function test_validation_bulan_for_pembayaran_catering()
   {
     Livewire::test(LaporanPembayaran::class)
-      ->set('jenis_tagihan', 'syahriyyah')
-      ->set('status', 'belum lunas')
+      ->set('jenis_tagihan', 'catering')
       ->set('tahun_ajaran', Carbon::now()->year)
       ->set('bulan', null)
       ->call('cetakPdf')
@@ -180,6 +178,6 @@ class LaporanPembayaranTest extends TestCase
       ->set('tahun_ajaran', Carbon::now()->year)
       ->set('bulan', 'Februari')
       ->call('cetakPdf')
-      ->assertSessionHas('flash_notification.0.message', 'Hasil Laporan Pembayaran Tidak Ditemukan'); // Check for flash message
+      ->assertSet('errorMessage', 'Hasil Laporan Pembayaran Tidak Ditemukan');
   }
 }

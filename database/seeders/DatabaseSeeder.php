@@ -23,7 +23,7 @@ class DatabaseSeeder extends Seeder
             IndoBankSeeder::class
         ]);
 
-        // Santri::factory(100)->create();
+        Santri::factory(5)->create();
 
         Admin::create([
             "nama_admin" => "Admin Pondok",

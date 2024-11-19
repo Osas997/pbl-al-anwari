@@ -14,7 +14,7 @@ use App\Models\Syahriyyah;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Livewire\Livewire;
 
-class PembayaranTunaiTest extends TestCase
+class LaporanTagihanTest extends TestCase
 {
   use RefreshDatabase;
 
@@ -121,7 +121,7 @@ class PembayaranTunaiTest extends TestCase
   public function test_validation_bulan_for_tagihan_catering()
   {
     Livewire::test(LaporanTagihan::class)
-      ->set('jenis_tagihan', 'syahriyyah')
+      ->set('jenis_tagihan', 'catering')
       ->set('status', 'belum lunas')
       ->set('tahun_ajaran', Carbon::now()->year)
       ->set('bulan', null)
@@ -155,6 +155,6 @@ class PembayaranTunaiTest extends TestCase
       ->set('tahun_ajaran', Carbon::now()->year)
       ->set('bulan', 'Februari')
       ->call('cetakPdf')
-      ->assertSessionHas('flash_notification.0.message', 'Hasil Laporan Tidak Ditemukan'); // Check for flash message
+      ->assertSet('errorMessage', 'Hasil Laporan Tidak Ditemukan');
   }
 }

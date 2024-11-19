@@ -25,6 +25,8 @@ class LaporanTagihan extends Component
 
     public $bulan;
 
+    public $errorMessage;
+
     public function rules()
     {
         return [
@@ -77,7 +79,8 @@ class LaporanTagihan extends Component
         $tagihan = $tagihan->get();
 
         if ($tagihan->isEmpty()) {
-            flash("Hasil Laporan Tidak Ditemukan", "warning");
+            $this->errorMessage = "Hasil Laporan Tidak Ditemukan";
+            flash($this->errorMessage, "warning");
             return;
         }
 
