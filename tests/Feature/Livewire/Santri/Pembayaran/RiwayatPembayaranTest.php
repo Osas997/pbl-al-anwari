@@ -2,12 +2,11 @@
 
 namespace Tests\Feature\Livewire\Admin\Tagihan;
 
-use App\Livewire\Admin\Pembayaran\RiwayatPembayaranTable;
 use Tests\TestCase;
 use App\Models\Santri;
 use Livewire\Livewire;
 use App\Models\Tagihan;
-use App\Livewire\Admin\Tagihan\TagihanTable;
+use App\Livewire\Santri\Pembayaran\RiwayatPembayaranTable;
 use App\Models\Admin;
 use App\Models\Pembayaran;
 use Carbon\Carbon;
@@ -34,16 +33,16 @@ class RiwayatPembayaranTest extends TestCase
     $this->pembayaran = $this->createPembayaranForSantri($this->tagihan);
   }
 
-  public function test_admin_can_see_riwayat_pembayaran_table()
+  public function test_santri_can_see_riwayat_pembayaran_table()
   {
     Livewire::test(RiwayatPembayaranTable::class)
-      ->assertViewIs('livewire.admin.pembayaran.riwayat-pembayaran-table')
+      ->assertViewIs('livewire.santri.pembayaran.riwayat-pembayaran-table')
       ->assertStatus(200);
   }
 
   public function test_unauthorized_user_cannot_see_riwayat_pembayaran_table()
   {
-    $response = $this->get(route('riwayat-pembayaran'));
+    $response = $this->get(route('riwayat-pembayaran-santri'));
 
     $response->assertRedirect(route('login'));
   }
@@ -51,11 +50,12 @@ class RiwayatPembayaranTest extends TestCase
   public function test_verify_field_pembayaran_is_valid()
   {
     Livewire::test(RiwayatPembayaranTable::class)
-      ->assertSee($this->pembayaran->tagihan->santri->nama_santri)
       ->assertSee($this->pembayaran->tagihan->jenis_tagihan)
-      ->assertSee($this->pembayaran->metode_pembayaran)
-      ->assertSee($this->pembayaran->status)
-      ->assertSee($this->pembayaran->tagihan->tgl_tagihan->translatedFormat('d F Y'));
+      ->assertSee($this->pembayaran->tagihan->semester ?? '-')
+      ->assertSee($this->pembayaran->tagihan->bulan ?? '-')
+      ->assertSee($this->pembayaran->tagihan->tahun_ajaran)
+      ->assertSee($this->pembayaran->tagihan->formatToRupiah('nominal'))
+      ->assertSee(ucwords($this->pembayaran->tagihan->status));
   }
 
   public function test_failed_table_pembayaran_is_empty()
