@@ -12,7 +12,7 @@ use App\Models\Pembayaran;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
-class RiwayatPembayaranTest extends TestCase
+class RiwayatPembayaranSantriTest extends TestCase
 {
   use RefreshDatabase;
 

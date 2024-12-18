@@ -13,7 +13,7 @@ use App\Livewire\Santri\Tagihan\TagihanTable;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Auth;
 
-class TagihanTableTest extends TestCase
+class TagihanTableSantriTest extends TestCase
 {
   use RefreshDatabase;
 
