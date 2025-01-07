@@ -1,4 +1,4 @@
-<div class="bg-gray-100 min-h-screen flex items-center justify-center p-4">
+<div class="min-h-screen flex items-center justify-center p-4">
     <div class="w-full max-w-4xl bg-white shadow-lg rounded-lg overflow-hidden flex flex-col md:flex-row">
         <div class="w-full md:w-1/2 relative h-[400px] md:h-auto">
             <img 
