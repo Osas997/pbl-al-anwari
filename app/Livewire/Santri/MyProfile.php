@@ -14,10 +14,6 @@ class MyProfile extends Component
     #[Validate('required', message: "Nama Santri Tidak Boleh Kosong")]
     public $nama_santri;
 
-    #[Validate('required', message: "No KK Tidak Boleh Kosong")]
-    #[Validate('numeric', message: "No KK Harus Angka")]
-    #[Validate('digits_between:11,13', message: "No HP Harus 11-13 Digit")]
-    #[Validate('unique:santri,no_hp', message: "No HP Sudah Terdaftar")]
     public $no_hp;
     #[Validate('required', message: "Tempat Lahir Tidak Boleh Kosong")]
     public $tempat_lahir;
