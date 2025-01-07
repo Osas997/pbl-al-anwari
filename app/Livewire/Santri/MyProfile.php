@@ -24,6 +24,7 @@ class MyProfile extends Component
 
     #[Validate('required', message: "Alamat Tidak Boleh Kosong")]
     public $alamat;
+
     public function mount()
     {
         $user = Auth::guard('web')->user();
@@ -70,7 +71,7 @@ class MyProfile extends Component
         return [
             'no_hp.required' => 'Nomor HP tidak boleh kosong.',
             'no_hp.numeric' => 'Nomor HP harus angka.',
-            'no_hp.digits' => 'No HP Harus 11-13 Digit',
+            'no_hp.digits_between' => 'No HP Harus 11-13 Digit',
             'no_hp.unique' => 'Nomor HP sudah terdaftar.',
         ];
     }
